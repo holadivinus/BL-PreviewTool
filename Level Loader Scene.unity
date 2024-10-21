@@ -157,16 +157,14 @@ MonoBehaviour:
   - C:/Program Files (x86)/Steam/steamapps/common/BONELAB/BONELAB_Steam_Windows64_Data/StreamingAssets/aa/StandaloneWindows64/catalog_SLZ.Marrow.json
   - C:/Program Files (x86)/Steam/steamapps/common/BONELAB/BONELAB_Steam_Windows64_Data/StreamingAssets/aa/StandaloneWindows64/catalog_BONELAB.json
   - C:/Program Files (x86)/Steam/steamapps/common/BONELAB/BONELAB_Steam_Windows64_Data/StreamingAssets/aa/StandaloneWindows64/catalog_BONELAB.json
-  - C:/Users/Holadivinus/Downloads/babacorp711.2/BaBaCorp.711/catalog_BaBaCorp.711.json
-  - C:/Users/Holadivinus/Downloads/babacorp711.2/BaBaCorp.711/catalog_BaBaCorp.711.json
   Pallet:
     _barcode:
       _id: SLZ.BONELAB.Content
   level:
     _barcode:
-      _id: SLZ.BONELAB.Content.Level.LevelMirror
+      _id: c2534c5a-4197-4879-8cd3-4a695363656e
   Bonelab_Folder: C:/Program Files (x86)/Steam/steamapps/common/BONELAB/BONELAB_Steam_Windows64_Data
-  stupid_key: 90ae75e2d9880fa4883c1a2c9b7e991e
+  stupid_key: 2f0719e891f97ac4f91198eb22542d17
 --- !u!4 &1751767911
 Transform:
   m_ObjectHideFlags: 0

@@ -9,160 +9,176 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-[ExecuteAlways]
-public class MaterialCopier : MonoBehaviour
+namespace BLPTool
 {
+    [ExecuteAlways]
+    public class MaterialCopier : MonoBehaviour
+    {
 #if UNITY_EDITOR
-    private FieldInfo targSetter => typeof(PersistentCall).GetField("_Target", UltEventUtils.AnyAccessBindings);
-    public Material targetMaterial
-    {
-        get => _targMat;
-        set
+        private FieldInfo targSetter => typeof(PersistentCall).GetField("_Target", UltEventUtils.AnyAccessBindings);
+        public Material targetMaterial
         {
-            if (_targMat == value) return;
-            Revert(_targMat);
-            if (TargMatEvent != null) 
+            get => _targMat;
+            set
             {
-                Material orig = _targMat;
-                if (orig == null) orig = RefHolderMat;
-                Material newMat = value;
-                if (newMat == null) newMat = RefHolderMat;
-                foreach (var targMatEvent in new[] { TargMatEvent.Event, CopyMatEvent.EnableEvent })
-                    foreach (var call in targMatEvent.PersistentCallsList)
-                        if (call.Target == orig)
-                        {
-                            targSetter.SetValue(call, newMat);
-                            PrefabUtility.RecordPrefabInstancePropertyModifications(TargMatEvent);
-                            PrefabUtility.RecordPrefabInstancePropertyModifications(CopyMatEvent);
-                        }
-            }
-            _targMat = value;
-            PrefabUtility.RecordPrefabInstancePropertyModifications(this);
-            Preview(value);
-        }
-    }
-    public UltEventHolder TargMatEvent;
-    public LifeCycleEvents CopyMatEvent;
-    private Material _curSLZMat;
-    private Material FindSLZMat() => Resources.FindObjectsOfTypeAll<Material>().FirstOrDefault(mat => mat.ToString() == slzMaterialName);
-    public Material _targMat;
-    public UltEventHolder MatNameEvent;
-    public Renderer2DData Storager 
-    { 
-        get
-        {
-            if (sr == null)
-            {
-                sr = ScriptableObject.CreateInstance<Renderer2DData>();
-                AssetDatabase.CreateAsset(sr, "Assets/BLPreviewTool/MatScan Storages/" + GUID.Generate().ToString() + ".asset");
+                if (_targMat == value) return;
+                Revert(_targMat);
+                if (TargMatEvent != null)
+                {
+                    Material orig = _targMat;
+                    if (orig == null) orig = RefHolderMat;
+                    Material newMat = value;
+                    if (newMat == null) newMat = RefHolderMat;
+                    foreach (var targMatEvent in new[] { TargMatEvent.Event, CopyMatEvent.EnableEvent })
+                        foreach (var call in targMatEvent.PersistentCallsList)
+                            if (call.Target == orig)
+                            {
+                                targSetter.SetValue(call, newMat);
+                                PrefabUtility.RecordPrefabInstancePropertyModifications(TargMatEvent);
+                                PrefabUtility.RecordPrefabInstancePropertyModifications(CopyMatEvent);
+                            }
+                }
+                _targMat = value;
                 PrefabUtility.RecordPrefabInstancePropertyModifications(this);
+                Preview(value);
             }
-            return sr;
         }
-    }
-    public UltEventHolder[] StoragerReffers;
-    [SerializeField] Renderer2DData sr;
-    public string slzMaterialName 
-    {
-        get => MatNameEvent.Event.PersistentCallsList[2].PersistentArguments[1].String;
-        set
+        public UltEventHolder TargMatEvent;
+        public LifeCycleEvents CopyMatEvent;
+        private Material _curSLZMat;
+        private Material FindSLZMat() => Resources.FindObjectsOfTypeAll<Material>().FirstOrDefault(mat => mat.ToString() == slzMaterialName);
+        public Material _targMat;
+        public UltEventHolder MatNameEvent;
+        public Renderer2DData Storager
         {
-            MatNameEvent.Event.PersistentCallsList[2].PersistentArguments[1].String = value;
-            PrefabUtility.RecordPrefabInstancePropertyModifications(MatNameEvent);
-        }
-    }
-
-    static Material DefaultMat => s_dm ??= AssetDatabase.LoadAssetAtPath<Material>("Assets/BLPreviewTool/DefaultMat.mat");
-    private static Material s_dm;
-    static Material RefHolderMat => s_rm ??= AssetDatabase.LoadAssetAtPath<Material>("Assets/BLPreviewTool/RefHolderMat.mat");
-    private static Material s_rm;
-    
-    public const string PreviewTag = " (IN PREVIEW MODE)";
-    private void Preview(Material mat)
-    {
-        _curSLZMat = FindSLZMat();
-        if (mat == null)
-            return;
-        bool currentlyPreviewing = mat.name.EndsWith(PreviewTag);
-        if (currentlyPreviewing)
-        {
-            Revert(mat);
-            currentlyPreviewing = false;
-        }
-        
-
-        if (_curSLZMat != null) // the SLZ mat is valid
-        {
-            // find the local version of the external shader
-            Shader projShader = Shader.Find(_curSLZMat.shader.name);
-            if (projShader != null)
-                mat.shader = projShader;
-            else mat.shader = DefaultMat.shader;
-
-            if (mat.shader.name == _curSLZMat.shader.name)
-                mat.CopyPropertiesFromMaterial(_curSLZMat);
-
-            mat.name += PreviewTag;
-            doLater.Enqueue(TargMatEvent.Event.Invoke);
-        }
-    }
-    private Queue<Action> doLater = new();
-    public WhichCrate wc;
-    public CrateSpawner spawner;
-    public static void Revert(Material mat) 
-    {
-        if (mat == null)
-            return;
-        bool currentlyPreviewing = mat.name.EndsWith(PreviewTag);
-        if (currentlyPreviewing)
-        {
-            // reset the material
-            Shader defMatShader = DefaultMat.shader;
-            DefaultMat.shader = mat.shader;
-            mat.CopyPropertiesFromMaterial(DefaultMat);
-            DefaultMat.shader = defMatShader;
-
-            mat.name = mat.name.Substring(0, mat.name.Length - PreviewTag.Length);
-        }
-    }
-    [NonSerialized]public bool real;
-    private void Update()
-    {
-        real = true;
-        if (gameObject.scene.name == gameObject.name)
-            return;
-
-        if (spawner.spawnableCrateReference != null && spawner.spawnableCrateReference.Crate != null)
-            if (wc.CrateRef != null && wc.CrateRef.Crate != null)
+            get
             {
-                spawner.spawnableCrateReference.Barcode = new Barcode(wc.CrateRef.Barcode);
-                PrefabUtility.RecordPrefabInstancePropertyModifications(spawner);
-            }
-
-        if (targetMaterial != null)
-        {
-            if (!targetMaterial.name.EndsWith(PreviewTag))
-                Preview(targetMaterial);
-            else if (_curSLZMat == null)
-                Revert(targetMaterial);
-            else if (_curSLZMat.ToString() != slzMaterialName)
-            {
-                _curSLZMat = FindSLZMat();
-                if (_curSLZMat != null) Preview(targetMaterial);
-                else Revert(targetMaterial);
+                if (sr == null)
+                {
+                    sr = ScriptableObject.CreateInstance<Renderer2DData>();
+                    AssetDatabase.CreateAsset(sr, MatscanStoragePath.Replace("LevelLoader.cs", "MatScan Storages/" + GUID.Generate().ToString() + ".asset"));
+                    PrefabUtility.RecordPrefabInstancePropertyModifications(this);
+                }
+                return sr;
             }
         }
-        if (doLater.Count > 0)
-            doLater.Dequeue()?.Invoke();
-        datas[this] = Storager;
-        if (datas.Any(d => d.Value == Storager && d.Key != this))
-            sr = null;
-        
-        foreach (var storEvt in StoragerReffers)
-            foreach (var evt in storEvt.Event.PersistentCallsList)
-                if (evt.Target != Storager)
-                    targSetter.SetValue(evt , Storager);
-    }
-    private static Dictionary<MaterialCopier, Renderer2DData> datas = new();
+        public UltEventHolder[] StoragerReffers;
+        [SerializeField] Renderer2DData sr;
+        public string slzMaterialName
+        {
+            get => MatNameEvent.Event.PersistentCallsList[2].PersistentArguments[1].String;
+            set
+            {
+                MatNameEvent.Event.PersistentCallsList[2].PersistentArguments[1].String = value;
+                PrefabUtility.RecordPrefabInstancePropertyModifications(MatNameEvent);
+            }
+        }
+
+        static Material DefaultMat => s_dm ??=
+            AssetDatabase.LoadAssetAtPath<Material>(
+                AssetDatabase.FindAssets("t:Material DefaultMat")
+                             .Select(m => AssetDatabase.GUIDToAssetPath(m))
+                             .First(m => m.Contains("BL-PreviewTool")));
+        private static string sp;
+        static string MatscanStoragePath => sp ??=
+                AssetDatabase.FindAssets("t:MonoScript LevelLoader")
+                             .Select(m => AssetDatabase.GUIDToAssetPath(m))
+                             .First(m => m.Contains("BL-PreviewTool"));
+        private static Material s_dm;
+        static Material RefHolderMat => s_rm ??=
+            AssetDatabase.LoadAssetAtPath<Material>(
+                AssetDatabase.FindAssets("t:Material RefHolderMat")
+                             .Select(m => AssetDatabase.GUIDToAssetPath(m))
+                             .First(m => m.Contains("BL-PreviewTool")));
+        private static Material s_rm;
+
+        public const string PreviewTag = " (IN PREVIEW MODE)";
+        private void Preview(Material mat)
+        {
+            _curSLZMat = FindSLZMat();
+            if (mat == null)
+                return;
+            bool currentlyPreviewing = mat.name.EndsWith(PreviewTag);
+            if (currentlyPreviewing)
+            {
+                Revert(mat);
+                currentlyPreviewing = false;
+            }
+
+
+            if (_curSLZMat != null) // the SLZ mat is valid
+            {
+                // find the local version of the external shader
+                Shader projShader = Shader.Find(_curSLZMat.shader.name);
+                if (projShader != null)
+                    mat.shader = projShader;
+                else mat.shader = DefaultMat.shader;
+
+                if (mat.shader.name == _curSLZMat.shader.name)
+                    mat.CopyPropertiesFromMaterial(_curSLZMat);
+
+                mat.name += PreviewTag;
+                doLater.Enqueue(TargMatEvent.Event.Invoke);
+            }
+        }
+        private Queue<Action> doLater = new();
+        public WhichCrate wc;
+        public CrateSpawner spawner;
+        public static void Revert(Material mat)
+        {
+            if (mat == null)
+                return;
+            bool currentlyPreviewing = mat.name.EndsWith(PreviewTag);
+            if (currentlyPreviewing)
+            {
+                // reset the material
+                Shader defMatShader = DefaultMat.shader;
+                DefaultMat.shader = mat.shader;
+                mat.CopyPropertiesFromMaterial(DefaultMat);
+                DefaultMat.shader = defMatShader;
+
+                mat.name = mat.name.Substring(0, mat.name.Length - PreviewTag.Length);
+            }
+        }
+        [NonSerialized] public bool real;
+        private void Update()
+        {
+            real = true;
+            if (gameObject.scene.name == gameObject.name)
+                return;
+
+            if (spawner.spawnableCrateReference != null && spawner.spawnableCrateReference.Crate != null)
+                if (wc.CrateRef != null && wc.CrateRef.Crate != null)
+                {
+                    spawner.spawnableCrateReference.Barcode = new Barcode(wc.CrateRef.Barcode);
+                    PrefabUtility.RecordPrefabInstancePropertyModifications(spawner);
+                }
+
+            if (targetMaterial != null)
+            {
+                if (!targetMaterial.name.EndsWith(PreviewTag))
+                    Preview(targetMaterial);
+                else if (_curSLZMat == null)
+                    Revert(targetMaterial);
+                else if (_curSLZMat.ToString() != slzMaterialName)
+                {
+                    _curSLZMat = FindSLZMat();
+                    if (_curSLZMat != null) Preview(targetMaterial);
+                    else Revert(targetMaterial);
+                }
+            }
+            if (doLater.Count > 0)
+                doLater.Dequeue()?.Invoke();
+            datas[this] = Storager;
+            if (datas.Any(d => d.Value == Storager && d.Key != this))
+                sr = null;
+
+            foreach (var storEvt in StoragerReffers)
+                foreach (var evt in storEvt.Event.PersistentCallsList)
+                    if (evt.Target != Storager)
+                        targSetter.SetValue(evt, Storager);
+        }
+        private static Dictionary<MaterialCopier, Renderer2DData> datas = new();
 #endif
+    }
 }

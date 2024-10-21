@@ -1,58 +1,80 @@
 using SLZ.Marrow.Warehouse;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using System;
-using UnityEngine.ResourceManagement.ResourceLocations;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
-[InitializeOnLoad]
-public static class BLPTool
+namespace BLPTool
 {
-    static BLPTool()
+    [InitializeOnLoad]
+    public static class BLPTool
     {
-        EditorApplication.update += OnUpdate;
-        AssetBundle.UnloadAllAssetBundles(false);
-        SceneView.duringSceneGui += DuringSceneGui;
-
-        foreach (var item in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
-            if (item != null && item.GetComponent<MeshRenderer>())
-                item.GetComponent<MeshRenderer>().enabled = true;
-    }
-
-    static void OnUpdate()
-    {
-        if (Application.isPlaying) return;
-        if (Selection.activeGameObject != null)
+        static BLPTool()
         {
-            CratePreview selectedPreview = Selection.activeGameObject.GetComponentInParent<CratePreview>();
-            if (!(selectedPreview?.ExplorablePreview ?? true))
-                Selection.activeGameObject = selectedPreview.gameObject;
+            EditorApplication.update += OnUpdate;
+            AssetBundle.UnloadAllAssetBundles(false);
+            SceneView.duringSceneGui += DuringSceneGui;
+
+            foreach (var item in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
+                if (item != null && item.GetComponent<MeshRenderer>())
+                    item.GetComponent<MeshRenderer>().enabled = true;
         }
-        foreach (CrateSpawner spawner in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
-        {
-            CratePreview previewer = spawner.GetComponent<CratePreview>();
-            if (previewer == null) spawner.AddComponent<CratePreview>();
-        }
-    }
 
-    private static void DuringSceneGui(SceneView sceneView)
-    {
-        Event e = Event.current;
-        if (e.type == EventType.DragUpdated) CratePreview.InDrag = true;
-        if (e.type == EventType.DragExited) // ondrop
+        static void OnUpdate()
         {
-            if (CratePreview.DraggedCols.Count > 0)
+            if (Application.isPlaying) return;
+            UnityEngine.Object[] selecteds = Selection.objects.ToArray();
+            bool changed = false;
+            for (int i = 0; i < selecteds.Length; i++)
             {
-                foreach (var item in CratePreview.DraggedCols)
-                    if (item != null)
-                        item.enabled = true;
-                CratePreview.DraggedCols.Clear();
-                CratePreview.InDrag = false;
+                if (selecteds[i] is GameObject selectedGameObject)
+                {
+                    CratePreview selectedPreview = selectedGameObject.GetComponentInParent<CratePreview>();
+                    if (!(selectedPreview?.ExplorablePreview ?? true))
+                        selecteds[i] = selectedPreview.gameObject;
+                    changed = true;
+                }
+            }
+            if (changed) Selection.objects = selecteds;
+            foreach (CrateSpawner spawner in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
+            {
+                CratePreview previewer = spawner.GetComponent<CratePreview>();
+                if (previewer == null) spawner.gameObject.AddComponent<CratePreview>();
             }
         }
+
+        private static void DuringSceneGui(SceneView sceneView)
+        {
+            Event e = Event.current;
+            if (e.type == EventType.DragUpdated) CratePreview.InDrag = true;
+            if (e.type == EventType.DragExited) // ondrop
+            {
+                if (CratePreview.DraggedCols.Count > 0)
+                {
+                    foreach (var item in CratePreview.DraggedCols)
+                        if (item != null)
+                            item.enabled = true;
+                    CratePreview.DraggedCols.Clear();
+                    CratePreview.InDrag = false;
+                }
+            }
+        }
+
+        [MenuItem("GameObject/MarrowSDK/(BLPTool) Material Copier", priority = 1)]
+        static void CreateMaterialCopier(UnityEditor.MenuCommand menuCommand)
+        {
+            GameObject prefabSource = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("t:Prefab Material Copier")[0]));
+            GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(prefabSource);
+
+            GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject);
+            Selection.activeObject = go;
+        }
+        [MenuItem("Stress Level Zero/Void Tools/(BLPTool) Level Loader", priority = 1)]
+        static void LevelLoader(UnityEditor.MenuCommand menuCommand)
+        {
+            EditorSceneManager.OpenScene(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("t:Scene Level Loader Scene")[0]));
+        }
+
     }
 }
