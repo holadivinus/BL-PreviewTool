@@ -2,6 +2,7 @@ using SLZ.Marrow.Warehouse;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using UltEvents;
@@ -56,7 +57,8 @@ namespace BLPTool
                 if (sr == null)
                 {
                     sr = ScriptableObject.CreateInstance<Renderer2DData>();
-                    AssetDatabase.CreateAsset(sr, MatscanStoragePath.Replace("LevelLoader.cs", "MatScan Storages/" + GUID.Generate().ToString() + ".asset"));
+                    if (!Directory.Exists("Assets/BLPTool/MatScan Storages/")) Directory.CreateDirectory("Assets/BLPTool/MatScan Storages/");
+                    AssetDatabase.CreateAsset(sr, "Assets/BLPTool/MatScan Storages/" + GUID.Generate().ToString() + ".asset");
                     PrefabUtility.RecordPrefabInstancePropertyModifications(this);
                 }
                 return sr;
