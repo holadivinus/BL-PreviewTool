@@ -1,0 +1,10 @@
+{
+    "name": "com.holadivinus.blpreviewtool",
+    "version": "1.0.0",
+    "description": "MarrowSDK Addon (Patch 6) that remotely loads Spawnable, Level, and Avatar data from your bonelab install / Mods.",
+    "unity": "2021.3",
+    "author": 
+    {
+        "name": "holadivinus"
+    }
+}
