@@ -73,29 +73,22 @@ namespace BLPTool
                 PrefabUtility.RecordPrefabInstancePropertyModifications(MatNameEvent);
             }
         }
+        private void Awake()
+        {
+            Debug.Log(DefaultMat);
+            Debug.Log(RefHolderMat);
+        }
 
-        static Material DefaultMat => s_dm ??=
-            AssetDatabase.LoadAssetAtPath<Material>(
-                AssetDatabase.FindAssets("t:Material DefaultMat")
-                             .Select(m => AssetDatabase.GUIDToAssetPath(m))
-                             .First(m => m.Contains("BL-PreviewTool")));
+        static Material DefaultMat => s_dm ??= AssetDatabase.LoadAssetAtPath<Material>(MatscanStoragePath.Replace("LevelLoader.cs", "DefaultMat.mat"));
         private static string sp;
-        static string MatscanStoragePath => sp ??=
-                AssetDatabase.FindAssets("t:MonoScript LevelLoader")
-                             .Select(m => AssetDatabase.GUIDToAssetPath(m))
-                             .First(m => m.Contains("BL-PreviewTool"));
+        static string MatscanStoragePath => AssetDatabase.GetAssetPath(MonoScript.FromMonoBehaviour(UnityEngine.Object.FindObjectOfType<MaterialCopier>(true))).Replace("MaterialCopier.cs", "LevelLoader.cs");
         private static Material s_dm;
-        static Material RefHolderMat => s_rm ??=
-            AssetDatabase.LoadAssetAtPath<Material>(
-                AssetDatabase.FindAssets("t:Material RefHolderMat")
-                             .Select(m => AssetDatabase.GUIDToAssetPath(m))
-                             .First(m => m.Contains("BL-PreviewTool")));
+        static Material RefHolderMat => s_rm ??= AssetDatabase.LoadAssetAtPath<Material>(MatscanStoragePath.Replace("LevelLoader.cs", "RefHolderMat.mat"));
         private static Material s_rm;
 
         public const string PreviewTag = " (IN PREVIEW MODE)";
         private void Preview(Material mat)
         {
-            _curSLZMat = FindSLZMat();
             if (mat == null)
                 return;
             bool currentlyPreviewing = mat.name.EndsWith(PreviewTag);
@@ -154,18 +147,18 @@ namespace BLPTool
                     PrefabUtility.RecordPrefabInstancePropertyModifications(spawner);
                 }
 
-            if (targetMaterial != null)
+            if (targetMaterial != null) 
             {
-                if (!targetMaterial.name.EndsWith(PreviewTag))
-                    Preview(targetMaterial);
-                else if (_curSLZMat == null)
-                    Revert(targetMaterial);
-                else if (_curSLZMat.ToString() != slzMaterialName)
+                if ((_curSLZMat != null && _curSLZMat.ToString() != slzMaterialName) || _curSLZMat == null)
                 {
                     _curSLZMat = FindSLZMat();
                     if (_curSLZMat != null) Preview(targetMaterial);
                     else Revert(targetMaterial);
                 }
+                if (!targetMaterial.name.EndsWith(PreviewTag) && _curSLZMat != null)
+                    Preview(targetMaterial);
+                else if (_curSLZMat == null)
+                    Revert(targetMaterial);
             }
             if (doLater.Count > 0)
                 doLater.Dequeue()?.Invoke();

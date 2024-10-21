@@ -53,7 +53,7 @@ MonoBehaviour:
     - _Target: {fileID: 4966337948714140394}
       _MethodName: get_sharedMaterial
       _PersistentArguments: []
-    - _Target: {fileID: 2100000, guid: 8b0e2075e18ff164ba0df4bff751d98f, type: 2}
+    - _Target: {fileID: 2100000, guid: 60c0feddcd7608649a75a7a734d3302b, type: 2}
       _MethodName: CopyPropertiesFromMaterial
       _PersistentArguments:
       - _Type: 15
