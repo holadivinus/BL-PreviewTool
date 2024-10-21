@@ -1,9 +1,11 @@
+#if UNITY_EDITOR
 using SLZ.Marrow.Warehouse;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEditor.SceneManagement;
 
 namespace BLPTool
 {
@@ -19,6 +21,11 @@ namespace BLPTool
             foreach (var item in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
                 if (item != null && item.GetComponent<MeshRenderer>())
                     item.GetComponent<MeshRenderer>().enabled = true;
+
+            //foreach (var item in AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes()).Where(t => t.IsSubclassOf(typeof(ScriptableObject))))
+            //{
+
+            //}
         }
 
         static void OnUpdate()
@@ -76,6 +83,28 @@ namespace BLPTool
             EditorSceneManager.NewScene(NewSceneSetup.EmptyScene);
             Selection.activeGameObject = new GameObject("LevelLoader", typeof(LevelLoader));
         }
-
+        //[MenuItem("Stress Level Zero/Void Tools/Test", priority = 1)]
+        static void Test(UnityEditor.MenuCommand menuCommand)
+        {
+            foreach (var item in Addressables.ResourceLocators)
+            {
+                if (item is ResourceLocationMap map)
+                {
+                    foreach (var item1 in map.Locations)
+                    {
+                        if (item1.Value.First().ResourceType == typeof(Material))
+                            Debug.Log(item1.Key + ": " + item1.Value.First().InternalId);
+                    }
+                }
+            }
+        }
+        //[MenuItem("Stress Level Zero/Void Tools/Test2", priority = 1)]
+        static void Test2(UnityEditor.MenuCommand menuCommand)
+        {
+            var c = AssetDatabase.LoadAssetAtPath<SpawnableCrate>(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("New Prefab.sc").First()));
+            c.PackedAssets[0].subAssets[0].subAsset.GetType().GetField("_assetGUID", UltEvents.UltEventUtils.AnyAccessBindings)
+                .SetValue(c.PackedAssets[0].subAssets[0].subAsset, "4410f9778dbf072479c27b5df5a3dee1");
+        }
     }
 }
+#endif

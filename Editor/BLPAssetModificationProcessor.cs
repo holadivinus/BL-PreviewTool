@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace BLPTool
 {
+#if UNITY_EDITOR
     [InitializeOnLoad]
     class BLPAssetModificationProcessor : AssetModificationProcessor
     {
@@ -26,4 +27,5 @@ namespace BLPTool
             return paths;
         }
     }
+#endif
 }

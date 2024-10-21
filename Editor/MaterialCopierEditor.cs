@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace BLPTool
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(MaterialCopier))]
     public class MaterialCopierEditor : Editor
     {
@@ -81,4 +82,5 @@ namespace BLPTool
             }
         }
     }
+#endif
 }
