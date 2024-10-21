@@ -73,7 +73,8 @@ namespace BLPTool
         [MenuItem("Stress Level Zero/Void Tools/(BLPTool) Level Loader", priority = 1)]
         static void LevelLoader(UnityEditor.MenuCommand menuCommand)
         {
-            EditorSceneManager.OpenScene(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("t:Scene Level Loader Scene")[0]));
+            EditorSceneManager.NewScene(NewSceneSetup.EmptyScene);
+            Selection.activeGameObject = new GameObject("LevelLoader", typeof(LevelLoader));
         }
 
     }

@@ -106,7 +106,6 @@ namespace BLPTool
         private List<string> LoadedScenes = new List<string>();
         private void OnLoad_Completed(AsyncOperationHandle<SceneInstance> obj)
         {
-            print("ITS ODNWNEEW!!!!");
             foreach (var item in FindObjectsOfType<SceneChunk>())
             {
                 foreach (var item1 in (MarrowScene[])item.GetType().GetField("sceneLayers", UltEventUtils.AnyAccessBindings).GetValue(item))
