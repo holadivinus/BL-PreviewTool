@@ -162,7 +162,7 @@ namespace BLPTool
                 else if (_curSLZMat == null)
                     Revert(targetMaterial);
             }
-            if (doLater.Count > 0)
+            if (doLater.Count > 0) 
                 doLater.Dequeue()?.Invoke();
             datas[this] = Storager;
             if (datas.Any(d => d.Value == Storager && d.Key != this))
@@ -170,8 +170,9 @@ namespace BLPTool
 
             foreach (var storEvt in StoragerReffers)
                 foreach (var evt in storEvt.Event.PersistentCallsList)
-                    if (evt.Target != Storager)
-                        targSetter.SetValue(evt, Storager);
+                    if (evt.Target != null)
+                        if (evt.Target?.GetType() == Storager?.GetType())
+                            targSetter.SetValue(evt, Storager);
         }
         private static Dictionary<MaterialCopier, Renderer2DData> datas = new();
 #endif
