@@ -24,32 +24,43 @@ namespace BLPTool
             {
                 if (_targMat == value) return;
                 Revert(_targMat);
-                if (TargMatEvent != null)
-                {
-                    Material orig = _targMat;
-                    if (orig == null) orig = RefHolderMat;
-                    Material newMat = value;
-                    if (newMat == null) newMat = RefHolderMat;
-                    foreach (var targMatEvent in new[] { TargMatEvent.Event, CopyMatEvent.EnableEvent })
-                        foreach (var call in targMatEvent.PersistentCallsList)
-                            if (call.Target == orig)
-                            {
-                                targSetter.SetValue(call, newMat);
-                                PrefabUtility.RecordPrefabInstancePropertyModifications(TargMatEvent);
-                                PrefabUtility.RecordPrefabInstancePropertyModifications(CopyMatEvent);
-                            }
-                }
+                ReValidateEvtMatRefs(value);
                 _targMat = value;
                 PrefabUtility.RecordPrefabInstancePropertyModifications(this);
                 Preview(value);
             }
         }
         public UltEventHolder TargMatEvent;
-        public LifeCycleEvents CopyMatEvent;
+        public UltEventHolder CopyMatEvent;
         private Material _curSLZMat;
         private Material FindSLZMat() => Resources.FindObjectsOfTypeAll<Material>().FirstOrDefault(mat => mat.ToString() == slzMaterialName);
         public Material _targMat;
         public UltEventHolder MatNameEvent;
+        private void ReValidateEvtMatRefs(Material targMat)
+        {
+            if (TargMatEvent != null)
+            {
+                Material orig = _targMat;
+                if (orig == null) orig = RefHolderMat;
+                Material newMat = targMat;
+                if (newMat == null) newMat = RefHolderMat;
+                if (orig == targMat) orig = RefHolderMat;
+                foreach (var targMatEvent in new[] { TargMatEvent.Event, CopyMatEvent.Event })
+                {
+                    //Debug.Log(targMatEvent);
+                    foreach (var call in targMatEvent.PersistentCallsList)
+                    {
+                        //Debug.Log("  " + call);
+                        if (call.Target == orig)
+                        {
+                            targSetter.SetValue(call, newMat);
+                            PrefabUtility.RecordPrefabInstancePropertyModifications(TargMatEvent);
+                            PrefabUtility.RecordPrefabInstancePropertyModifications(CopyMatEvent);
+                        }
+                    }
+                }
+            }
+        }
         public Renderer2DData Storager
         {
             get
@@ -86,6 +97,7 @@ namespace BLPTool
         static string MatscanStoragePath => AssetDatabase.GetAssetPath(MonoScript.FromMonoBehaviour(UnityEngine.Object.FindObjectOfType<MaterialCopier>(true))).Replace("MaterialCopier.cs", "LevelLoader.cs");
         private static Material s_dm;
         static Material RefHolderMat => s_rm ??= AssetDatabase.LoadAssetAtPath<Material>(MatscanStoragePath.Replace("LevelLoader.cs", "RefHolderMat.mat"));
+        static Material RefHolderMat2 => s_rm ??= AssetDatabase.LoadAssetAtPath<Material>(MatscanStoragePath.Replace("LevelLoader.cs", "RefHolderMat2.mat"));
         private static Material s_rm;
 
         public const string PreviewTag = " (IN PREVIEW MODE)";
@@ -103,14 +115,9 @@ namespace BLPTool
 
             if (_curSLZMat != null) // the SLZ mat is valid
             {
-                // find the local version of the external shader
-                Shader projShader = Shader.Find(_curSLZMat.shader.name);
-                if (projShader != null)
-                    mat.shader = projShader;
-                else mat.shader = DefaultMat.shader;
-
-                if (mat.shader.name == _curSLZMat.shader.name)
-                    mat.CopyPropertiesFromMaterial(_curSLZMat);
+                //use the SLZ Shader
+                mat.shader = _curSLZMat.shader;
+                mat.CopyPropertiesFromMaterial(_curSLZMat);
 
                 mat.name += PreviewTag;
                 doLater.Enqueue(TargMatEvent.Event.Invoke);
@@ -127,10 +134,8 @@ namespace BLPTool
             if (currentlyPreviewing)
             {
                 // reset the material
-                Shader defMatShader = DefaultMat.shader;
-                DefaultMat.shader = mat.shader;
+                mat.shader = DefaultMat.shader;
                 mat.CopyPropertiesFromMaterial(DefaultMat);
-                DefaultMat.shader = defMatShader;
 
                 mat.name = mat.name.Substring(0, mat.name.Length - PreviewTag.Length);
             }
@@ -173,6 +178,9 @@ namespace BLPTool
                     if (evt.Target != null)
                         if (evt.Target?.GetType() == Storager?.GetType())
                             targSetter.SetValue(evt, Storager);
+
+            // this shouldn't be in update
+            ReValidateEvtMatRefs(_targMat);
         }
         private static Dictionary<MaterialCopier, Renderer2DData> datas = new();
 #endif
