@@ -539,6 +539,9 @@ MonoBehaviour:
     - _Target: {fileID: 1496469450108833465}
       _MethodName: Invoke
       _PersistentArguments: []
+    - _Target: {fileID: 4966337948216392811}
+      _MethodName: Invoke
+      _PersistentArguments: []
   _Delay: 0.1
 --- !u!1 &4966337947959488291
 GameObject:
