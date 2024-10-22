@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEditor.SceneManagement;
+using System;
 
 namespace BLPTool
 {
@@ -21,11 +22,6 @@ namespace BLPTool
             foreach (var item in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
                 if (item != null && item.GetComponent<MeshRenderer>())
                     item.GetComponent<MeshRenderer>().enabled = true;
-
-            //foreach (var item in AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes()).Where(t => t.IsSubclassOf(typeof(ScriptableObject))))
-            //{
-
-            //}
         }
 
         static void OnUpdate()
@@ -101,9 +97,11 @@ namespace BLPTool
         //[MenuItem("Stress Level Zero/Void Tools/Test2", priority = 1)]
         static void Test2(UnityEditor.MenuCommand menuCommand)
         {
-            var c = AssetDatabase.LoadAssetAtPath<SpawnableCrate>(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("New Prefab.sc").First()));
-            c.PackedAssets[0].subAssets[0].subAsset.GetType().GetField("_assetGUID", UltEvents.UltEventUtils.AnyAccessBindings)
-                .SetValue(c.PackedAssets[0].subAssets[0].subAsset, "4410f9778dbf072479c27b5df5a3dee1");
+            foreach (var item in AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes()).Where(t => t.IsSubclassOf(typeof(ScriptableObject))))
+            {
+                if (!item.Namespace.Contains("Unity"))
+                    Debug.Log(item);
+            }
         }
     }
 }
