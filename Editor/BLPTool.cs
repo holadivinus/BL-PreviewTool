@@ -61,6 +61,7 @@ namespace BLPTool
                 if (matLink.AssetMat == null)
                 {
                     BLPDefinitions.Instance.Links.Remove(matLink);
+                    EditorUtility.SetDirty(BLPDefinitions.Instance);
                     return;
                 }
                 if (!matLink.AssetMat.name.EndsWith(PreviewTag))
@@ -250,6 +251,7 @@ namespace BLPTool
                     }
 
                     link.MatChanges = changes;
+                    EditorUtility.SetDirty(BLPDefinitions.Instance);
                 }
 
                 // reset the material

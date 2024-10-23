@@ -215,6 +215,7 @@ namespace BLPTool
 
                         BLPDefinitions.Instance.Links.Add(matLink);
                         EditorGUIUtility.PingObject(newMat);
+                        EditorUtility.SetDirty(BLPDefinitions.Instance);
                     };
                 }
             }
