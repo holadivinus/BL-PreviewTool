@@ -104,7 +104,9 @@ namespace BLPTool
                         if (!AssetMat.name.EndsWith(BLPTool.PreviewTag))
                             AssetMat.name += BLPTool.PreviewTag; // do this, so that we Preview() isn't called 6000 times
 
-                        await Addressables.LoadAssetAsync<Material>(SpawnerAssetGUID).Task;
+
+                        await Addressables.LoadAssetAsync<GameObject>(SpawnerAssetGUID).Task;
+
                         SLZMat = Resources.FindObjectsOfTypeAll<Material>().FirstOrDefault(m => m.ToString() == SLZAssetName && AssetDatabase.GetAssetPath(m) == "");
                         AssetMat.name = AssetMat.name.Substring(0, AssetMat.name.Length - BLPTool.PreviewTag.Length);
                     }
