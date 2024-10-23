@@ -138,14 +138,11 @@ namespace BLPTool
         }
         private static string GetActiveFolderPath()
         {
-            string path;
-            var _tryGetActiveFolderPath = typeof(ProjectWindowUtil).GetMethod("TryGetActiveFolderPath", BindingFlags.Static | BindingFlags.NonPublic);
-
-            object[] args = new object[] { null };
-            bool found = (bool)_tryGetActiveFolderPath.Invoke(null, args);
-            path = (string)args[0];
-
-            return path + "/";
+            Type projectWindowUtilType = typeof(ProjectWindowUtil);
+            MethodInfo getActiveFolderPath = projectWindowUtilType.GetMethod("GetActiveFolderPath", BindingFlags.Static | BindingFlags.NonPublic);
+            object obj = getActiveFolderPath.Invoke(null, new object[0]);
+            string pathToCurrentFolder = obj.ToString();
+            return pathToCurrentFolder + '/';
         }
         private void ShowMoreResults(int num)
         {
