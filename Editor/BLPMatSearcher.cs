@@ -179,6 +179,7 @@ namespace BLPTool
                             }
                         }
                         e = (MaterialEditor)MaterialEditor.CreateEditor(mat);
+                        found = mat;
                     }
                     if (found == null)
                     {
