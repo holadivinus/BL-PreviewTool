@@ -130,6 +130,17 @@ namespace BLPTool
             // Okay, it should steal and setup the texture properly now.
         }
 
+        private void Update()
+        {
+            var rend = CrateSpawner.GetComponent<Renderer>();
+            if (rend)
+                rend.enabled = false;
+
+            var prev = CrateSpawner.GetComponent<CratePreview>();
+            if (prev)
+                prev.enabled = false;
+        }
+
         private FieldInfo callRetargetter = typeof(PersistentCall).GetField("_Target", UltEventUtils.AnyAccessBindings);
 #endif
     }

@@ -32,6 +32,8 @@ namespace BLPTool
             foreach (var item in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
                 if (item != null && item.GetComponent<MeshRenderer>())
                     item.GetComponent<MeshRenderer>().enabled = true;
+
+            Menu.SetChecked("Stress Level Zero/Void Tools/(BLPTool) Auto Preview Spawners?", PreviewDefault);
         }
 
         static bool setupMats = false;
@@ -103,6 +105,20 @@ namespace BLPTool
         {
             EditorSceneManager.NewScene(NewSceneSetup.EmptyScene);
             Selection.activeGameObject = new GameObject("LevelLoader", typeof(LevelLoader));
+        }
+
+        public static bool PreviewDefault
+        {
+            get => EditorPrefs.GetBool("BLPTOOL_PreviewDefault", true);
+            set => EditorPrefs.SetBool("BLPTOOL_PreviewDefault", value);
+        }
+        [MenuItem("Stress Level Zero/Void Tools/(BLPTool) Auto Preview Spawners?", priority = 1)]
+        static void PreviewDefaultToggle(UnityEditor.MenuCommand menuCommand)
+        {
+            PreviewDefault = !PreviewDefault;
+            Menu.SetChecked("Stress Level Zero/Void Tools/(BLPTool) Auto Preview Spawners?", PreviewDefault);
+            foreach (var item in Resources.FindObjectsOfTypeAll<CratePreview>())
+                item.enabled = BLPTool.PreviewDefault;
         }
         //[MenuItem("Stress Level Zero/Void Tools/Test", priority = 1)]
         static void Test(MenuCommand menuCommand) { }

@@ -35,6 +35,7 @@ namespace BLPTool
         private void Start()
         {
             CrateSpawner = GetComponent<CrateSpawner>();
+            this.enabled = BLPTool.PreviewDefault;
         }
         // Update is called once per frame
         void Update()
@@ -85,6 +86,17 @@ namespace BLPTool
                 _curPreview.name = $"Preview: {(int)(_curLoadTask.Value.PercentComplete * 100)}%";
             if (_curPreview != null)
                 _curPreview.hideFlags = ExplorablePreview ? HideFlags.DontSave : HideFlags.HideAndDontSave;
+        }
+
+        private void OnDisable()
+        {
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                //delete other previews 
+                if (transform.GetChild(i).name == "Preview")
+                    DestroyImmediate(transform.GetChild(i).gameObject);
+            }
+            if (CrateMeshRenderer) CrateMeshRenderer.enabled = true;
         }
 
         public static bool InDrag;
