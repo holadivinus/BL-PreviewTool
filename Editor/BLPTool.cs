@@ -11,7 +11,16 @@ namespace BLPTool
     [InitializeOnLoad]
     public static class BLPTool
     { 
-        public static string PluginPath => "Assets/" + Path.GetRelativePath(Application.dataPath, Directory.GetParent(new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileName()).Parent.FullName) + '/';
+        public static string PluginPath
+        {
+            get
+            {
+                string a = "Assets/" + Path.GetRelativePath(Application.dataPath, Directory.GetParent(new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileName()).Parent.FullName) + '/';
+                if (a.Contains("PackageCache"))
+                    a = "Packages/com.holadivinus.blpreviewtool/";
+                return a;
+            }
+        }
         static BLPTool()
         { 
             EditorApplication.update += OnUpdate;
