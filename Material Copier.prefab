@@ -386,6 +386,74 @@ MonoBehaviour:
     - _Target: {fileID: 1899868460220323019}
       _MethodName: Invoke
       _PersistentArguments: []
+--- !u!1 &2741068555576412765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7603152310011509545}
+  - component: {fileID: 6109823986116390573}
+  - component: {fileID: 4305955426265928583}
+  m_Layer: 0
+  m_Name: ApplyMatProps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7603152310011509545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741068555576412765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5209532321204788927}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6109823986116390573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741068555576412765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f574d8b2153a0d4fa15f5de878f680c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event:
+    _PersistentCalls:
+    - _Target: {fileID: 4305955426265928583}
+      _MethodName: Invoke
+      _PersistentArguments: []
+    - _Target: {fileID: 4966337948216392811}
+      _MethodName: Invoke
+      _PersistentArguments: []
+  _Delay: 0.1
+--- !u!114 &4305955426265928583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741068555576412765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289ff940279d54e4e92f632d7d3823dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Event:
+    _PersistentCalls: []
 --- !u!1 &3894274964924068803
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +483,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7603152310011509545}
   m_Father: {fileID: 953335325420883339}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -539,7 +608,7 @@ MonoBehaviour:
     - _Target: {fileID: 1496469450108833465}
       _MethodName: Invoke
       _PersistentArguments: []
-    - _Target: {fileID: 4966337948216392811}
+    - _Target: {fileID: 6109823986116390573}
       _MethodName: Invoke
       _PersistentArguments: []
   _Delay: 0.1
@@ -1292,7 +1361,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4966337948805426472}
   - component: {fileID: 6192860928740823737}
-  - component: {fileID: 8304415441061544470}
   m_Layer: 0
   m_Name: Material Copier
   m_TagString: Untagged
@@ -1328,32 +1396,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca054293d7b5d346977de694f168b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargMatEvent: {fileID: 4966337948216392811}
-  CopyMatEvent: {fileID: 1496469450108833465}
-  _targMat: {fileID: 0}
-  MatNameEvent: {fileID: 4966337949146592570}
-  StoragerReffers:
-  - {fileID: 4966337949540263077}
-  - {fileID: 4966337948714140395}
+  CrateSpawner: {fileID: 4966337949307865756}
+  MatArrHolder: {fileID: 0}
+  Renderer2DDataReffers:
   - {fileID: 4966337948672227849}
-  sr: {fileID: 0}
-  wc: {fileID: 8304415441061544470}
-  spawner: {fileID: 4966337949307865756}
---- !u!114 &8304415441061544470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4966337948805426473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0781a86d3fa5a74e9cf3d6de582e038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CrateRef:
-    _barcode:
-      _id: SLZ.BONELAB.Content.Spawnable.BlueApollo
+  - {fileID: 4966337948714140395}
+  - {fileID: 4966337949540263077}
+  ComparisonEvt: {fileID: 4966337949146592570}
+  IntegrationEvt: {fileID: 1496469450108833465}
+  MatPropApplyEvt: {fileID: 4305955426265928583}
 --- !u!1 &4966337949146592564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,12 +1721,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4966337949307865759}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0489097773009034eb7919bb922e03cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExplorablePreview: 0
+  ExplorablePreview: 1
 --- !u!1 &4966337949464979083
 GameObject:
   m_ObjectHideFlags: 0

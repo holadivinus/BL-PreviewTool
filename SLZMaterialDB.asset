@@ -1,0 +1,2542 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5deb9fe52c9b3cf438bf95adef32a788, type: 3}
+  m_Name: SLZMaterialDB
+  m_EditorClassIdentifier: 
+  Data:
+  - CrateGUID: a6bbcd7e1dde39443be1aab0399b4e20
+    MaterialNames:
+    - mat_autowalk (UnityEngine.Material)
+    - mat_rubber_conveyorbelt (UnityEngine.Material)
+    - Lit (UnityEngine.Material)
+    Shaders:
+    - SLZ/LitMAS/LitMAS Standard
+  - CrateGUID: f3734f4a81221db489d1170828be4843
+    MaterialNames:
+    - SW_3_Bridge (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: bd733d9b19f6d53439738642bd1e7784
+    MaterialNames:
+    - mat_escalator (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 7554dd56a02ac334796b0da0e686f85d
+    MaterialNames:
+    - texture_mat_holster_Albedo (UnityEngine.Material)
+    - mat_bodyLog (UnityEngine.Material)
+    - mat_glowGimbalCore (UnityEngine.Material)
+    - mat_line_energy_amber (UnityEngine.Material)
+    - mat_bodyLogCore (UnityEngine.Material)
+    - mat_bodyLogParticle (UnityEngine.Material)
+    - hologram_Gacha (UnityEngine.Material)
+    - mat_bodyLogUI (UnityEngine.Material)
+    - mat_zipper_dx11Shader (UnityEngine.Material)
+    - ConstelationRings (UnityEngine.Material)
+    - ConstelationLines (UnityEngine.Material)
+    - ConstelationStars (UnityEngine.Material)
+    - ConstelationStarsBillboard (UnityEngine.Material)
+    Shaders:
+    - SLZ/TextureRampEmissive
+    - SLZ/AdditiveWithDistortion
+    - Universal Render Pipeline/Particles/Unlit (Particles)
+    - SLZ/Additive HDR
+    - SLZ/Hologram Depth fade
+    - SLZ/OpaqueMotion
+    - Universal Render Pipeline/Lit (PBR Workflow)
+    - SLZ/ConstelationLines
+    - SLZ/ParticleStar
+    - SLZ/Polyblank Instanced Quad
+  - CrateGUID: 8dcf7d217f705904188e4bf70bb5cb3b
+    MaterialNames:
+    - texture_mat_hairCards_Albedo (UnityEngine.Material)
+    - mat_face_tShirt (UnityEngine.Material)
+    - texture_mat_lowerBody_Albedo (UnityEngine.Material)
+    - texture_mat_arm_Albedo (UnityEngine.Material)
+    - mat_jacket (UnityEngine.Material)
+    - zipper_dx11Shader (UnityEngine.Material)
+    - mat_teeth (UnityEngine.Material)
+    - mat_EyeAdvanceLOD0 (UnityEngine.Material)
+    Shaders:
+    - Lux URP/Human/Hair
+    - Lux URP/Human/Skin (TEMPORARYILY REPLACED WITH POSESPACE IMPACTS)
+    - SLZ/LitMAS/LitMAS Posespace
+    - EyeAdvanced_LOD0_URP
+  - CrateGUID: 1da32816037274347a11ff8f90cd2661
+    MaterialNames:
+    - mat_highlight_dim (UnityEngine.Material)
+    - mat_controllerOutline (UnityEngine.Material)
+    - Code-Pro-LC SDF Material (UnityEngine.Material)
+    - UIMaterial (UnityEngine.Material)
+    - Highlight_ui (UnityEngine.Material)
+    - Highlight_ui_no (UnityEngine.Material)
+    - nasalization-rg SDF Material (UnityEngine.Material)
+    - arlon-medium SDF Material (UnityEngine.Material)
+    - Sprites-Default (UnityEngine.Material)
+    - CCRobo SDF Material (UnityEngine.Material)
+    - mat_VantaBlack (UnityEngine.Material)
+    - mat_progressBar (UnityEngine.Material)
+    - Highlight_ui_clear (UnityEngine.Material)
+    Shaders:
+    - SLZ/Highlighter
+    - Universal Render Pipeline/Unlit
+    - TextMeshPro/Distance Field
+    - UI/Unlit/Text
+    - Custom/HighlightAlt
+    - Sprites/Default
+    - Unlit/URP Unlit Color
+    - SLZ/SpiderChart
+  - CrateGUID: 0cbb8a4bc01d31848bd700510330e482
+    MaterialNames:
+    - overlay_material (UnityEngine.Material)
+    Shaders:
+    - SimpleOverlay
+  - CrateGUID: 55e1b05f97f8eaa4fb399df621281299
+    MaterialNames:
+    - SLZ_Icon Billboard (UnityEngine.Material)
+    Shaders:
+    - SLZ/Icon Billboard
+  - CrateGUID: f20370e248b05a847945300285ceea58
+    MaterialNames:
+    - mat_angryVoidRadiation (UnityEngine.Material)
+    - glowing_blastwave_negative (UnityEngine.Material)
+    - Lightning Distortion (UnityEngine.Material)
+    - Glow_particle_black (UnityEngine.Material)
+    - mat_Voidmen (UnityEngine.Material)
+    - mat_angryVoidRadiation2 (UnityEngine.Material)
+    Shaders:
+    - SLZ/Screen Distortion
+    - SLZ/Simple Geo Skybox
+  - CrateGUID: 9147f853b25ba1f429afcac54d130d61
+    MaterialNames:
+    - DONTUSE_Metal_Rust (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a49387f8352b04445ab7ecd4c2709765
+    MaterialNames:
+    - mat_glowLamp_core (UnityEngine.Material)
+    - mat_medium_kitBash_C (UnityEngine.Material)
+    - mat_glass_security (UnityEngine.Material)
+    - GunSpark_fizzle (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: ce4bc84c5f439fc41aea2dc51115b92d
+    MaterialNames:
+    - mat_ironKeys (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: b64047a7863a32c4a9fdb0d26b185880
+    MaterialNames:
+    - mat_VoidSpillSign (UnityEngine.Material)
+    Shaders:
+    - SLZ/LitMAS Lenticular
+  - CrateGUID: 414d1dcebb18cc84b89d3c843c86d95d
+    MaterialNames:
+    - mat_twoButtonRemote (UnityEngine.Material)
+    - mat_lamp_Red (UnityEngine.Material)
+    - mat_bigButton (UnityEngine.Material)
+    - decal_Arrow (UnityEngine.Material)
+    Shaders:
+    - Universal Render Pipeline/Particles/Lit (Particles)
+  - CrateGUID: 78aff625827fd5b41b048f6146e0d12a
+    MaterialNames:
+    - mat_femPeasant_body (UnityEngine.Material)
+    - mat_femaleHead_48 (UnityEngine.Material)
+    - mat_eyeAdvanced (UnityEngine.Material)
+    - mat_teethTongue (UnityEngine.Material)
+    - mat_hairCards_C (UnityEngine.Material)
+    - mat_hairCap_C (UnityEngine.Material)
+    - mat_peasant_arm_var_F48 (UnityEngine.Material)
+    - skyWall_Dark_nogrid (UnityEngine.Material)
+    - mat_kitbash_structural_frames_A (UnityEngine.Material)
+    - mat_grid_Metal_light (UnityEngine.Material)
+    - mat_lamp_White (UnityEngine.Material)
+    - glow_grid_reactive (UnityEngine.Material)
+    Shaders:
+    - Lux URP/Human/Hair Blend
+    - SLZ/ReactiveGrid
+  - CrateGUID: c5d2e3eea74246749872db149198b020
+    MaterialNames:
+    - mat_labLinesOn (UnityEngine.Material)
+    - skyWall_Nebulae_blues (UnityEngine.Material)
+    Shaders:
+    - SLZ/Holographic Wall Simple
+  - CrateGUID: fef38fcdfb6612d42b29335bb833ec57
+    MaterialNames:
+    - mat_combineTrim (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 61463e0b7344b384091fda17d0d18b81
+    MaterialNames:
+    - mat_lamp_Amber (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 564ec8f62d15e814da378639826ae5d1
+    MaterialNames:
+    - Wood_2 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 977a29e44e060cb459aacd2397fb5dd2
+    MaterialNames:
+    - Solid Black (UnityEngine.Material)
+    - LiberationSans SDF Material (UnityEngine.Material)
+    - Laser Glow (UnityEngine.Material)
+    - Laser Particle (UnityEngine.Material)
+    Shaders:
+    - TextMeshPro/Mobile/Distance Field
+  - CrateGUID: b6f35cb77d65a51408750c20c3dd262b
+    MaterialNames:
+    - mat_harnessAndBelt (UnityEngine.Material)
+    - mat_backPack (UnityEngine.Material)
+    - mat_Brett_body (UnityEngine.Material)
+    - mat_Brett_teeth (UnityEngine.Material)
+    - mat_Brett_hairCap (UnityEngine.Material)
+    - hidden_Nothin (UnityEngine.Material)
+    - mat_Brett_eye (UnityEngine.Material)
+    - mat_Brett_face (UnityEngine.Material)
+    - M_ford_hairCap (UnityEngine.Material)
+    - mat_ford_hairCards (UnityEngine.Material)
+    - mat_Brett_hands (UnityEngine.Material)
+    Shaders:
+    - Hidden/InternalErrorShader
+    - Hidden/Nothin
+  - CrateGUID: b0542fdcda34ba0429522423559dec9e
+    MaterialNames:
+    - mat_animeBody (UnityEngine.Material)
+    - mat_animeEyes (UnityEngine.Material)
+    - mat_animeHair (UnityEngine.Material)
+    Shaders:
+    - SLZ/Anime
+  - CrateGUID: 8d9996fc3695fa7419bbdea6cb0d91f1
+    MaterialNames:
+    - m_fast_upBody (UnityEngine.Material)
+    - m_fast_loBody (UnityEngine.Material)
+    - m_fast_head (UnityEngine.Material)
+    - m_fast_hair (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 17d479e7fa251054cb30862d83153d8b
+    MaterialNames:
+    - m_fur_arms (UnityEngine.Material)
+    - m_fur_body (UnityEngine.Material)
+    - mat_fur_eyeAdvanced (UnityEngine.Material)
+    - m_fur_head (UnityEngine.Material)
+    - m_fur_mouthEyes (UnityEngine.Material)
+    - mat_fur_eyeAdvanced_dmg (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 9071854b00fd344439308010c0ea0fac
+    MaterialNames:
+    - m_heavy_arm (UnityEngine.Material)
+    - m_heavy_upperBody (UnityEngine.Material)
+    - m_heavy_lowerBody (UnityEngine.Material)
+    - lambert1 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e801da4e61189ad47a959169829f4247
+    MaterialNames:
+    - mat_femaleHead_40 (UnityEngine.Material)
+    - mat_peasant_arm_var_F40 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: c94d60a19c3e2c74781eae518e1c2d49
+    MaterialNames:
+    - mat_femaleHead_31 (UnityEngine.Material)
+    - mat_peasant_arm_var_F31 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 0a83a73f3597cde4da1be6ead51b3d83
+    MaterialNames:
+    - mat_malePeasant_body (UnityEngine.Material)
+    - mat_maleHead_40 (UnityEngine.Material)
+    - mat_peasant_arm_var_M40 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 473d08796ef487f41acf2b4e0c9cd031
+    MaterialNames:
+    - mat_maleHead_19 (UnityEngine.Material)
+    - mat_peasant_arm_var_M19 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 17d9027af8583604ea1c21a090ff479f
+    MaterialNames:
+    - mat_maleHead_22 (UnityEngine.Material)
+    - mat_hairCards_A (UnityEngine.Material)
+    - mat_hairCap_A (UnityEngine.Material)
+    - mat_peasant_arm_var_M22 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 88d09a24d5147444a995df93e51bc120
+    MaterialNames:
+    - mat_secGuard (UnityEngine.Material)
+    - mat_peasant_arm (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 40cd812b8a8a4564ba7a597351361f10
+    MaterialNames:
+    - m_strong_head (UnityEngine.Material)
+    - m_strong_arms_subSurf (UnityEngine.Material)
+    - m_strong_upperBody_SS (UnityEngine.Material)
+    - m_strong_lowerBody (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 1d9a441a905217b4b8eb47e1b729af12
+    MaterialNames:
+    - m_tall_upperBody (UnityEngine.Material)
+    - m_tall_hand (UnityEngine.Material)
+    - m_tall_arm (UnityEngine.Material)
+    - m_tall_lowerBody (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 59a9baf3126e2ec44b453c4676b2b98f
+    MaterialNames:
+    - mat_voidNullmen_disp (UnityEngine.Material)
+    Shaders:
+    - SLZ/Nullman
+  - CrateGUID: 2c3c4aa0f5c107c4b89ebe6c9d9f8e87
+    MaterialNames:
+    - mat_dog_clean (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: cfaf8363ec9d59b47b6f032b6dbc6697
+    MaterialNames:
+    - mat_VoidPuddleNormals (UnityEngine.Material)
+    Shaders:
+    - SLZ/VoidWitch
+  - CrateGUID: 2b9c1b6d5100dea4493be0b64d49d819
+    MaterialNames:
+    - glow_grid (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f6e9688c8cc72fb4ab779743405761ae
+    MaterialNames:
+    - mat_Crablet_eye (UnityEngine.Material)
+    - SLZ_Holographic Killer (UnityEngine.Material)
+    - mat_crablet_quest (UnityEngine.Material)
+    Shaders:
+    - SLZ/Holographic Visor
+  - CrateGUID: b1402b7e416254d409ac881ea5274bd2
+    MaterialNames:
+    - mat_voidTurret (UnityEngine.Material)
+    - GunSpark_trail (UnityEngine.Material)
+    - mat_voidTurret_head (UnityEngine.Material)
+    - mat_voidTurret_eye (UnityEngine.Material)
+    - mat_projectorCultist (UnityEngine.Material)
+    - mat_voidTurret_inner (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3ee1d50014ddb4a4c87cbb1ec747bf98
+    MaterialNames:
+    - mat_Brett_eyeshadow (UnityEngine.Material)
+    - mat_Brett_cornea (UnityEngine.Material)
+    Shaders:
+    - SLZ/Mod2x
+  - CrateGUID: ea4372ee7e808624195deb2d70e74c63
+    MaterialNames:
+    - mat_ford_earlyExit_body (UnityEngine.Material)
+    - mat_ford_earlyExit_head (UnityEngine.Material)
+    - mat_ford_earlyExit_eye (UnityEngine.Material)
+    - mat_teethTongue_fordexit (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e766297c3df5c7549a7356a7765823af
+    MaterialNames:
+    - mat_small_kitBash_B (UnityEngine.Material)
+    - mat_enemyTurret (UnityEngine.Material)
+    - DarkMat (UnityEngine.Material)
+    - mat_badRobot_heads_B (UnityEngine.Material)
+    - laser_green (UnityEngine.Material)
+    - Eyeflare_cyan (UnityEngine.Material)
+    - LaserDot (UnityEngine.Material)
+    - laserTrail (UnityEngine.Material)
+    - LightGlow (UnityEngine.Material)
+    - WPNM_MK18 (UnityEngine.Material)
+    - mat_small_kitBash_A (UnityEngine.Material)
+    - TacticalFlashlightMat (UnityEngine.Material)
+    - mat_kitbash_railing_orange (UnityEngine.Material)
+    - mat_kitbash_panels_medium_A (UnityEngine.Material)
+    - mat_Decal_GroundMarkings_B_yellow (UnityEngine.Material)
+    - mat_Decal_ImpactZone (UnityEngine.Material)
+    - mat_medium_kitBash_A_grey (UnityEngine.Material)
+    - kitbash_surface_accessories_B_mat (UnityEngine.Material)
+    - kitbash_connectors_mat (UnityEngine.Material)
+    - mat_small_kitBash_B_yellow (UnityEngine.Material)
+    - mat_medium_kitBash_A (UnityEngine.Material)
+    - mat_kitbash_structural_beams_A (UnityEngine.Material)
+    Shaders:
+    - SLZ/Laser
+    - SLZ/Billboard Texture Additive
+    - SLZ/AdditiveFalloff
+    - SLZ/VR ColorTint
+  - CrateGUID: a7824d4fd18cf5b47971c03c80085437
+    MaterialNames:
+    - rgby (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f4fe44a505586f442a9b332618ca25da
+    MaterialNames:
+    - mat_voidNullmen_disp_Matrix (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: b4341a33f5eb20749b598260b14a79df
+    MaterialNames:
+    - mat_corruptedNullmen_disp (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 92bcae5936922e74da475849a1f79c6c
+    MaterialNames:
+    - NullPeasant (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: c66d162899a76634fbbe027441c532b3
+    MaterialNames:
+    - mat_nullBody_capsuleCore (UnityEngine.Material)
+    - mat_nullBody_rat_eye (UnityEngine.Material)
+    - mat_nullBody_rat_slimeFur (UnityEngine.Material)
+    Shaders:
+    - SLZ/Translucent
+  - CrateGUID: b81f8c097ac772644861689c27df487d
+    MaterialNames:
+    - mat_omniProjector (UnityEngine.Material)
+    - laser Omni (UnityEngine.Material)
+    - LaserDot Omni (UnityEngine.Material)
+    - LightGlowCyan (UnityEngine.Material)
+    - LaserCore (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3b0fcd84f80656e4f96df71bf5613ef7
+    MaterialNames:
+    - mat_omniProjHazmat (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: bb91fa383ab1f71459c9254c69ec6bed
+    MaterialNames:
+    - mat_enemyRoller (UnityEngine.Material)
+    - mat_kitbash_railing_yellow (UnityEngine.Material)
+    - mat_metal_Steel_small (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: aa58bb86f0bd1df48b0101c1dd583278
+    MaterialNames:
+    - mat_nme_skeleton (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 987da8e61b9469b4a84a4359e1763b2a
+    MaterialNames:
+    - mat_Skeleton_eye (UnityEngine.Material)
+    - mat_nme_skeleton_terminator (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 0ad6fd818a250ad47980fc80f58db43c
+    MaterialNames:
+    - mat_Skeleton_eye 1 (UnityEngine.Material)
+    - mat_nme_skeleton_burning (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: fe2a007761450ab4ab7c44c9d7a6f65b
+    MaterialNames:
+    - Vase (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 67b6255bc680df540862d61e2811cec6
+    MaterialNames:
+    - M_ammoDisp_A (UnityEngine.Material)
+    - M_ammoDisp_B (UnityEngine.Material)
+    - mat_bigButton_glow (UnityEngine.Material)
+    - mat_holographic_signH (UnityEngine.Material)
+    Shaders:
+    - SLZ/Additive Hologram with Depth
+  - CrateGUID: 8fb73bf25600b164391dbba1f9ecde57
+    MaterialNames:
+    - Trail (UnityEngine.Material)
+    - mat_capsule_arena (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5ea38e742a3762240a7a0644a8794ee6
+    MaterialNames:
+    - mat_lamp_Yellow (UnityEngine.Material)
+    - hologram_keycolor_yellow (UnityEngine.Material)
+    - mat_large_kitBash_A (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 09601e2dae8a16b43a59b7c872a1ac2b
+    MaterialNames:
+    - mat_balloonGun (UnityEngine.Material)
+    - Generic Glass clean (UnityEngine.Material)
+    - mat_balloonGunCore (UnityEngine.Material)
+    - BalloonColor (UnityEngine.Material)
+    Shaders:
+    - SLZ/Glass SLZ
+  - CrateGUID: 89e31a94b7c187f48b5c9d7604e95645
+    MaterialNames:
+    - mat_batteryRetexture (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 1679a7c1c5510d641add5d1e5afe0a77
+    MaterialNames:
+    - battery_A_pad (UnityEngine.Material)
+    - battery_A_mat (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 45228246c63be3043bc221d69f2e09d1
+    MaterialNames:
+    - mat_boardGun (UnityEngine.Material)
+    - mat_hologramBoardGun (UnityEngine.Material)
+    - laser_blue (UnityEngine.Material)
+    - LaserDot blue (UnityEngine.Material)
+    - LightGlowBlue (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: bf9c97bf88c22dc4f981578e75d9aa12
+    MaterialNames:
+    - mat_constrainer (UnityEngine.Material)
+    - mat_constrainerIcons (UnityEngine.Material)
+    - WPNM_Eder22 (UnityEngine.Material)
+    - mat_highlight_gun_helper (UnityEngine.Material)
+    Shaders:
+    - SLZ/AdditiveVolumetricHDR
+  - CrateGUID: f5bd1be5c4a360f4c826fa6a5585d705
+    MaterialNames:
+    - mat_GimbalGun (UnityEngine.Material)
+    - mat_GimbalGunXenCrystal (UnityEngine.Material)
+    - mat_line_gravity (UnityEngine.Material)
+    - Ringglow (UnityEngine.Material)
+    - frontglow (UnityEngine.Material)
+    - ZPEFM_blastwave (UnityEngine.Material)
+    - ZPEFM_blast_ball (UnityEngine.Material)
+    - mat_glowGimbal (UnityEngine.Material)
+    Shaders:
+    - SLZ/AdditivePanningVolumetricHDR
+  - CrateGUID: 73aadc4a751a9a44b917cacc5f71889c
+    MaterialNames:
+    - mat_gachaCapsule (UnityEngine.Material)
+    Shaders:
+    - SLZ/Gacha
+  - CrateGUID: 0d45256a3b7b56c42bd2563990426674
+    MaterialNames:
+    - Arrow pointer (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 030d4b4f4a9af3147a4c7761810e9549
+    MaterialNames:
+    - GunSpark_trail_negativeCore (UnityEngine.Material)
+    - BulletFragmentParticles (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2ab6c4de88d2a7249a4b8cab7596a137
+    MaterialNames:
+    - mat_antiGravCup (UnityEngine.Material)
+    - mat_antiGrav_cover (UnityEngine.Material)
+    - mat_gyroBall_xenCrystal (UnityEngine.Material)
+    Shaders:
+    - SLZ/Lit MAS Transparent
+  - CrateGUID: 5dae9c97506da8d488fe940b85e1d3e2
+    MaterialNames:
+    - mat_antiGravPlate (UnityEngine.Material)
+    - mat_antiGravPlate_cover (UnityEngine.Material)
+    - mat_antiGravPlate_xenCrystal (UnityEngine.Material)
+    - mat_gyroBall (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 09ac423e4befddf47bf9037e4b79fc73
+    MaterialNames:
+    - mat_gyroBall_cover (UnityEngine.Material)
+    - mat_thruster (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: b9bbeebbd0d4efd468b15869a014ee06
+    MaterialNames:
+    - mat_fence_chain_parts (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: d2224e98817342143990e54e4c8b5429
+    MaterialNames:
+    - mat_punkPuncher (UnityEngine.Material)
+    - mat_punkPuncherScreen (UnityEngine.Material)
+    - impact_glowStar 1 (UnityEngine.Material)
+    - Glow_particle_wave (UnityEngine.Material)
+    - FlareCard_plasma (UnityEngine.Material)
+    - mat_ui_HoloDot (UnityEngine.Material)
+    Shaders:
+    - Shader Graphs/SLZAlphaParticle
+  - CrateGUID: 0a6eb793c9918b94a83578063e6a96c9
+    MaterialNames:
+    - mat_gachaCapsule_spawnGun (UnityEngine.Material)
+    - mat_spawnGun (UnityEngine.Material)
+    - mat_spawnGunScreen (UnityEngine.Material)
+    - mat_RainbowVoid_spawngun (UnityEngine.Material)
+    - laser Magenta (UnityEngine.Material)
+    - LaserDot SpawnGun (UnityEngine.Material)
+    - LightGlowVilot (UnityEngine.Material)
+    - LaserCore Magenta (UnityEngine.Material)
+    - hologram_blue (UnityEngine.Material)
+    - mat_line_strand_teal (UnityEngine.Material)
+    Shaders:
+    - SLZ/SpawnGunScreen
+    - SLZ/RainbowVoid
+  - CrateGUID: 18d5533b029ceda4b9a42cdfb2971390
+    MaterialNames:
+    - VendingMachine_Pill (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a359241b627469b4dbf0aa23e959cb3e
+    MaterialNames:
+    - VendingMachine_PP (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 50c35eab3e578b348bde8dafce9e7260
+    MaterialNames:
+    - VendingMachine_UM (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: c8e75585c4c2c74498bd88996b11a77e
+    MaterialNames:
+    - Clipboard (UnityEngine.Material)
+    - ClipboardPaper (UnityEngine.Material)
+    - MonogonDecal_mod2x (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2058c3a4dd2fe6448a28d33f0f025652
+    MaterialNames:
+    - Devices_On (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: c9528e3517fd44442a85102c2b585f0c
+    MaterialNames:
+    - mat_taxiTV (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: cab3d55842b5b1e41b240b0b555b74e8
+    MaterialNames:
+    - mat_taxiTVScreen (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 23c9be79a291e9f47b2f135f73c42a76
+    MaterialNames:
+    - TRANA___ SDF Material (UnityEngine.Material)
+    - Alaramclock (UnityEngine.Material)
+    Shaders:
+    - Shader Graphs/TMP_SDF-URP Lit
+  - CrateGUID: 95d69d0168c1772449d54a65bd3cfb42
+    MaterialNames:
+    - i_table (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a42f6b3a4d11b7848b6d14b881999718
+    MaterialNames:
+    - mat_ammoBoxesVert (UnityEngine.Material)
+    - ammo_icons_heavy (UnityEngine.Material)
+    Shaders:
+    - SLZ/LitMAS/LitMAS Vertex Color AO
+  - CrateGUID: b43135767aedeb9449fad95398541e5f
+    MaterialNames:
+    - ammo_icons_light (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 9995a4aa7bd7b444590920bf2cebcb14
+    MaterialNames:
+    - ammo_icons_med (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: fbb7a48fa82526a4b926f83d4602929a
+    MaterialNames:
+    - mat_shield_viking_a (UnityEngine.Material)
+    - Spear_A (UnityEngine.Material)
+    - ApolloModel (UnityEngine.Material)
+    - ApolloModelFlouresent_knome (UnityEngine.Material)
+    - char_safetySteve_05ne_adjPose_AlbedoTransparency_1 (UnityEngine.Material)
+    Shaders:
+    - SLZ/Fluorescence
+  - CrateGUID: 9e7df6ba674e4f847b45f65d908290f2
+    MaterialNames:
+    - mat_GoldGlow (UnityEngine.Material)
+    - ApolloModelGOLD (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 6de0d17f637826b4b9fd1e30e5445e75
+    MaterialNames:
+    - ApolloModelFlouresent_orange (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 11474610d69b7f74397c1e6841673474
+    MaterialNames:
+    - IntPropses2 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 7ad0c641ff2424747bf112153d089f1f
+    MaterialNames:
+    - Barrels (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: afc8204306f08c44f949bca4aa0453f5
+    MaterialNames:
+    - plastic_barrel_melon (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5da1ba1bc86c315469cfd106a3a6713d
+    MaterialNames:
+    - plastic_barrel_blue (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: bd326cf3a78ab69459391dc05dd627a0
+    MaterialNames:
+    - plastic_barrel_yellow (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e9043bc61a6775d42a6d5ed75fae320c
+    MaterialNames:
+    - basketballMonogon (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: d170977470a57ff45895f181408b79b0
+    MaterialNames:
+    - mat_dispatch_ovalWallMotifs (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 8e84541a68c6d1b46a1a61ded239a567
+    MaterialNames:
+    - Office_PropSet (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 44492e4149bfe4b4aad7653da04d998a
+    MaterialNames:
+    - mat_Book_A_Wormholes (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 7b74b51be1087494785a837436f9dbfc
+    MaterialNames:
+    - mat_Book_A_Morons (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 37ad89ed81074e94e856d97f8f57cc82
+    MaterialNames:
+    - mat_Book_A_VideoGames (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5e33870a9af115d4eb7449828f93c161
+    MaterialNames:
+    - mat_bowlingSet (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 01133c5bd88aaa24085b73b5b5229071
+    MaterialNames:
+    - mat_prop_brick (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: bf726dcda1d339f4ba49b67c3602f8f2
+    MaterialNames:
+    - DONTUSE_DungeonLargeBrick (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3bb13cb14b9defe4c8459ff9dadbd372
+    MaterialNames:
+    - DONTUSE_DungeonSmallBrick (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 66438aa42974051478f5e9a64e381209
+    MaterialNames:
+    - MI_Broom (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 21bb49cb849a9ef46ac8ab2ace066f4e
+    MaterialNames:
+    - props_2 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: b2f938af4563b3448990ee37d60ebf9b
+    MaterialNames:
+    - StandeeBoards (UnityEngine.Material)
+    - BushStandee (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 0837d6a57ca6ee242a2ab88407b741a1
+    MaterialNames:
+    - CafeTray_orange (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a787c3276aa3f9f43a450644076949f2
+    MaterialNames:
+    - cardboard_box (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 441ef359592bb564db29fe8b272404ce
+    MaterialNames:
+    - CardboardBox_mat (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3dfb074e2bec679428f2efe1efa0185d
+    MaterialNames:
+    - mat_cbox_Apollo (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 415e494d694853b4987ab1efdbf0ca9e
+    MaterialNames:
+    - mat_cbox_Asphalt (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 8385bb15464958d4a8a3d1a848e554b1
+    MaterialNames:
+    - mat_cbox_Basketball (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 02bd6b7af860d9f47a7dec1276cfdb83
+    MaterialNames:
+    - mat_cbox_Battery (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e4700c4d060f5f345a90a3c178a0b615
+    MaterialNames:
+    - mat_cbox_Books (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 97f1b9bff006acf4e89986f91505fb2f
+    MaterialNames:
+    - mat_cbox_Brick (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: c425bcc6ffa2f7148930dd5d42c97b31
+    MaterialNames:
+    - mat_cbox_Brick_Pattern (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 9b836d232c7a5ad47a4c5b6258b7a820
+    MaterialNames:
+    - mat_cbox_Button (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: d14c01af7327b41448824e2eaf673bbc
+    MaterialNames:
+    - mat_cbox_Ceramic_Tiling (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: d3eb2f0a6fd6d0d4dadcfe817fd6238d
+    MaterialNames:
+    - mat_cbox_ChainFence (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: acb941077ce67f140b81e7600cf8c758
+    MaterialNames:
+    - mat_cbox_Chair (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2298e981709ed0d4bac7cd269c48b189
+    MaterialNames:
+    - mat_cbox_Checkered (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 04424b74fac1df1458f1f3c389f9ad17
+    MaterialNames:
+    - mat_cbox_Clipboard (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 6adca2576d5ab7549b4a8df545192b57
+    MaterialNames:
+    - mat_cbox_CoffeeCup (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4f46d847a8a1fba429b995ad243d3c31
+    MaterialNames:
+    - mat_cbox_Concrete (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 6d8fb1967aac54b4183b1033069167a4
+    MaterialNames:
+    - mat_cbox_Concrete_Pattern (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f31bedb9263fd5848b7a23922524aeb3
+    MaterialNames:
+    - mat_cbox_Cones (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 779f2c68a3803e948a204f96508737a5
+    MaterialNames:
+    - mat_cbox_Confetti (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2ff382cbc49b74648b5ffad7e32ec7e2
+    MaterialNames:
+    - mat_cbox_Garbage (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: c6f66629ca4cdf949b77cbc99347605d
+    MaterialNames:
+    - mat_cbox_GreyTiling (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2472d181cea1b3c4fac4b81517334e5d
+    MaterialNames:
+    - mat_cbox_Hammer (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 88bcd02eacc1674429d3adfbab3fef56
+    MaterialNames:
+    - cardboard_box_HeadsetB (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 74d5b6590f8c16d42949bbdbc70f5783
+    MaterialNames:
+    - cardboard_box_HeadsetA (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 7f5761d819f6a094fbff8d9b17ee0097
+    MaterialNames:
+    - mat_cbox_Knife (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e332df44be8aaf540bd67a02b34910b8
+    MaterialNames:
+    - mat_cbox_Lamp (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: fd2296c3e4c51774492624857c8c798f
+    MaterialNames:
+    - mat_cbox_Lever (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f04e5b5f9e4e9134d8596af415d4b85d
+    MaterialNames:
+    - mat_cbox_Melon (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 97855ed3276efd14788e2846ebf260b2
+    MaterialNames:
+    - mat_cbox_Metal_Pattern (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f8cd26efb2054794595510915b65e66e
+    MaterialNames:
+    - mat_cbox_MetalPlating (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f975170a7da33094abbab8dca9dca3d4
+    MaterialNames:
+    - mat_cbox_Monitor (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 9aa3c2a45fd415846b6bfe8b58c70e21
+    MaterialNames:
+    - mat_cbox_NeonLights (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: cc9e62793ecc15d4f95438b88d083a28
+    MaterialNames:
+    - mat_cbox_Numbers (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 54c0aea36677f6f44a8f6f7d1b98cad7
+    MaterialNames:
+    - mat_cbox_Particles (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 9e425b897ce26014c894928a885c9c2d
+    MaterialNames:
+    - mat_cbox_PipeMysteryBox (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2662ef53c15e47b4a8cedd302cc32690
+    MaterialNames:
+    - mat_cbox_Railing (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 38fe35cf23113e544a2fc528e393db93
+    MaterialNames:
+    - cardboard_box_a_01 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 23d1efcf50ac7f64fa949939dfa0fbb6
+    MaterialNames:
+    - mat_cbox_Screen (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: bf36e79a5db19a945a212361bfd25320
+    MaterialNames:
+    - mat_cbox_ScreenPlant (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 9bb44d901a6bdea40af30b0e8569267c
+    MaterialNames:
+    - mat_cbox_SecurityGlass (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: fab1b551a6714124d8c137dd833a0d00
+    MaterialNames:
+    - mat_cbox_Table_Assembly (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 63b5010efea6072459491d547b4e2a41
+    MaterialNames:
+    - mat_cbox_Trays (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: d79c3734a53946e4f8351913e9f7bd1d
+    MaterialNames:
+    - mat_cbox_Woodplank (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2d41166a9ba05c042bec4ef38be267cb
+    MaterialNames:
+    - Pallet_B_02 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3335b4ba4ce59364187a9a9a72f773c9
+    MaterialNames:
+    - CaveBoulders (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 61b5ecab3480f0746a080595bebab790
+    MaterialNames:
+    - CafeChair (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: ccda8b8da2e94b848885861905bc3a7e
+    MaterialNames:
+    - Chair_and_Dresser (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4d910fe568e934d49806208eeec46385
+    MaterialNames:
+    - Chair_Wooden (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 049967e6df448d5439c7722bd3547b9e
+    MaterialNames:
+    - Props_Pack (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 9d392812351b2aa4d85c6daaf76302ba
+    MaterialNames:
+    - clay_dishes_mat (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5f00ea6ad8a314b46b5e5e0e3a2e68cd
+    MaterialNames:
+    - mat_coffeeCup (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 392ae6f5e0b70284d8e36d3003865f93
+    MaterialNames:
+    - CouchLeather (UnityEngine.Material)
+    - Zinc old denser (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a1ec7ac1843c0d24781fce826120f079
+    MaterialNames:
+    - mat_crownBase (UnityEngine.Material)
+    - impact_glowStar (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e1c4c1c128d668c4fa1341d7a40614df
+    MaterialNames:
+    - mat_Desk (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4dc2f09e45d8c5d48b82d572a2c9eb10
+    MaterialNames:
+    - Furniture_M (UnityEngine.Material)
+    - tableSM (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 81f8f03cac60f9a41927a65c98b18e63
+    MaterialNames:
+    - mat_box_ammo_destructable (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e1ea4400e801dd8489b68910c3b13c44
+    MaterialNames:
+    - mat_dice (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f9f930e798ea1474eb97fda3a1e0d270
+    MaterialNames:
+    - Donut_mtl (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 35db6351dcf547d4aaeee9651e004e76
+    MaterialNames:
+    - Dumpster_Set (UnityEngine.Material)
+    - mat_groundGrunge_garbage_A_noPrllx (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2ef948d19a2a11740864cd96ad91bebd
+    MaterialNames:
+    - flashlight_glass_dirty (UnityEngine.Material)
+    - flashlight_dirty (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 05818fd056f1e904dab94d7810b2150a
+    MaterialNames:
+    - GLOWSTICK Green (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a266892ae82a3764c95a2938f7bdf893
+    MaterialNames:
+    - mat_gym_shapes_J (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 1ba8c02ceb327fb4d88fdbd6c160ea8f
+    MaterialNames:
+    - mat_gym_shapes_I (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 46c94ef28fbaba842be4b3a043eff9f9
+    MaterialNames:
+    - mat_gym_shapes_D (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3a11e9aa9c7bf4a4186c4958c850f20a
+    MaterialNames:
+    - mat_gym_shapes_H (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 7f7ed7b8cb54a9c449175d5e8ba4791d
+    MaterialNames:
+    - mat_gym_shapes_B (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 14472aadffc285d4eb363b537b02ebf2
+    MaterialNames:
+    - mat_gym_shapes_F (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 0a3688f23c7e3f84e90311be3a589802
+    MaterialNames:
+    - mat_gym_shapes_A (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: b543728fc5af54d498dc967aac491185
+    MaterialNames:
+    - m_gym_B (UnityEngine.Material)
+    - M_gym_trimDecal_B (UnityEngine.Material)
+    - m_gym_A (UnityEngine.Material)
+    - M_gym_trimDecal (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 94bb650fc8a055c47a79355dcb095724
+    MaterialNames:
+    - mat_gym_shapes_C (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 37a4930ece69f124b9c0707adca9420c
+    MaterialNames:
+    - mat_gym_shapes_E (UnityEngine.Material)
+    - mat_gym_shapes_E_numbers (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 29b82d759cfdb5b4aa76556ff49ded94
+    MaterialNames:
+    - mat_gym_shapes_G (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 39a4e64df4467eb4fbdb334c75d71f63
+    MaterialNames:
+    - mat_Crablet_body (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 647d39ccee25f554bb83626f8f36aebe
+    MaterialNames:
+    - mat_Crablet_BLACK_body (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: b49384dd3fcad2e439cc1a1ccfb36779
+    MaterialNames:
+    - mat_healthBall (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: b1acc3d50619bea408d92327e07cbd53
+    MaterialNames:
+    - mat_container_waste (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 664f45fbbedf74e4cafdc10f0f9be8d8
+    MaterialNames:
+    - mat_IDcard_Null (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: da21a74c4829f7540a8afd7a8eb9b78e
+    MaterialNames:
+    - mat_lock_destructable (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 83b280c518c17844db97bc4a22b0494d
+    MaterialNames:
+    - LunarLander 1 (UnityEngine.Material)
+    - mat_medium_kitBash_B (UnityEngine.Material)
+    - mat_lamp_Sour (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: d3e5655db06425045be2c0879a01a4b2
+    MaterialNames:
+    - mat_stuffedMonkey (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 79fff439a14c00b43a89e7e440013856
+    MaterialNames:
+    - mat_MarbleFord (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: d971892e482bfec42aba4be2b5be82cb
+    MaterialNames:
+    - Orgincate (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 18c71f8e8c53c6544ae2c86301fe5084
+    MaterialNames:
+    - Office_M (UnityEngine.Material)
+    - mat_Decal_PaperFolder (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: efd559d55beebc748b62decf0cdc3bba
+    MaterialNames:
+    - tvboards1_Material _4_AlbedoTransparency (UnityEngine.Material)
+    - tvboards1_Material _5_AlbedoTransparency (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4c90e1a5ad43dc447b7da3f97410c293
+    MaterialNames:
+    - mor_components (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: fe8fc0bb1b49a4545b50792945f055f0
+    MaterialNames:
+    - speaker_DefaultMaterial_AlbedoTransparency (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 17a464140ae2d1d4ab8e61c96503c0fe
+    MaterialNames:
+    - Monitor06_M (UnityEngine.Material)
+    Shaders:
+    - SLZ/Scanline
+  - CrateGUID: bd547698df1054e409dd4772328843e2
+    MaterialNames:
+    - Monitor06_M_TERM_mini 1 (UnityEngine.Material)
+    - Monitor (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 993fec5588b39b141a639b70890d0a07
+    MaterialNames:
+    - mat_pizzaBox (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 1aaf418046066d842992549b49766cbc
+    MaterialNames:
+    - Plant01 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: ecaeccc43e5dfea479f48fc72c7f593a
+    MaterialNames:
+    - Plant01 base (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 198084deacf81454db7388850f9a12f9
+    MaterialNames:
+    - m_plunger (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 0225848a26ac8ea4ca0b38c40fe79ca7
+    MaterialNames:
+    - Plywood_mat (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a05287d1bead7594e9f868c5a8bdcf49
+    MaterialNames:
+    - Plywood (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4a7ed1e076fea604497ac142f57bf177
+    MaterialNames:
+    - mat_metal_Steel_dentedDry (UnityEngine.Material)
+    - mat_kitbash_connector_panels (UnityEngine.Material)
+    - mat_grid_GLOW_White (UnityEngine.Material)
+    - ShopCovers_ALBEDO (UnityEngine.Material)
+    - mat_holographic_signC (UnityEngine.Material)
+    - mat_holographic_signF (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: caa55c93fdd4904448fba06df3ef8842
+    MaterialNames:
+    - printer (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: dce93cb228234c743a55f83fbf8f721e
+    MaterialNames:
+    - mat_puffinCrate (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 36667f34d4b750c4695e409fb89b51f8
+    MaterialNames:
+    - Road_block_v1 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 111a91b7b82b53247a26f2957ca768d9
+    MaterialNames:
+    - mat_rollBall_white (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5fe7baa15915af74d9fdcae4ebfc7a2a
+    MaterialNames:
+    - mat_rollBall_garbage (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 0d37f6d7ac426b641a8b586ed167761c
+    MaterialNames:
+    - mat_rollBall_amber (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5d2e48d6c138bcd4ebd19d076cca9aa0
+    MaterialNames:
+    - mat_rollBall_blue (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 6163883beef7c61479cb6daaaf6465c5
+    MaterialNames:
+    - mat_rollBall_green (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: ad25b96564ff97944937e4cd095ffde0
+    MaterialNames:
+    - mat_rollBall_purple (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: fe292e585a515f1429f6fff19014fb63
+    MaterialNames:
+    - M_scaffolding (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 801d6159af15840449f030cd796d2c05
+    MaterialNames:
+    - Decor3 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 6f74a469bd3c95f48babac4147c9598c
+    MaterialNames:
+    - Wheels (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2d484fd323abb104ab07295a16af3726
+    MaterialNames:
+    - Bottle (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 56d34cc448cc581488393fdd3f074834
+    MaterialNames:
+    - Bottle02 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 469880c44c9923348baee01f1c44b745
+    MaterialNames:
+    - SodaCan_ParticalPunch (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f68617cfb81bf0548b48d84842700cff
+    MaterialNames:
+    - SodaCan_Ultramersion (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3a566d837d448ee40b23db333ba28400
+    MaterialNames:
+    - mat_soupCan (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5b3ddb55ea532c148b1a4e144feb1d8f
+    MaterialNames:
+    - DungeonFloorBreakup (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 38c69afa01c5991409ad298bffeb0d47
+    MaterialNames:
+    - mat_MeetingRoomTable (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 836c5a3b78a43c74a9a8b59b0ea6cc9f
+    MaterialNames:
+    - CafeTable (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: eaff10b21415b934fa57ad47f972157f
+    MaterialNames:
+    - DONTUSE_Table_Wooden_Clean (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: ab0c12df9994bf44f9bfac51d2b16686
+    MaterialNames:
+    - Table_Wooden_Old (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: fd8337fd9c5c20e4fa3b3280408f3f89
+    MaterialNames:
+    - Barcelona_Table (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2674e86c5d22c704988a28eb6405848c
+    MaterialNames:
+    - target (UnityEngine.Material)
+    - Target-LowPoly (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5a8289e8449d4b34d8b30c26e8c95257
+    MaterialNames:
+    - _red_couchMaterial__2 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 05d2add388eec63418ccd60323cc46d4
+    MaterialNames:
+    - Medieval_IronFixtures_All_4k (UnityEngine.Material)
+    - DitheredShadowCaster (UnityEngine.Material)
+    - QuestLampFlicker (UnityEngine.Material)
+    - mat_araFireCenter (UnityEngine.Material)
+    Shaders:
+    - SLZ/Special/Textured Shadow
+    - SLZ/LampEmission
+    - SLZ/Particle/Torch Panning Volumetric
+  - CrateGUID: b4d3186b5c59b2b4c9c2a5884cb54ad5
+    MaterialNames:
+    - mat_trafficCone_whiteStripe (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 81021544d63ea5a4aab8c1b8af55865e
+    MaterialNames:
+    - Trashbag_Black (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 6e4e2078ebcc0a545bdc98306d11be8c
+    MaterialNames:
+    - Trashbag_Yellow (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: ed4ee59b57470a34b8410470b98a9f85
+    MaterialNames:
+    - Trashcan_Metal (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: b7038172b0805cf44ab7d58cc85aceb3
+    MaterialNames:
+    - M_Trashcan_01 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3d49698ed6ab95248a9a24964c785064
+    MaterialNames:
+    - MELON (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 9957a121113496840a7f74db34be8b55
+    MaterialNames:
+    - mat_kitbash_structural_beams_Red (UnityEngine.Material)
+    - mat_Decal_ImpactZone_red2 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: c3c6ee2c6e655084484dc3de5e47e278
+    MaterialNames:
+    - mat_lamp_Blue (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 9e8a6e0670f8eaf47bc1c9107daa7c6d
+    MaterialNames:
+    - mat_barrel_01 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: d38e0e8e8460de7438f8ec12d81e17e0
+    MaterialNames:
+    - mat_crate_destructible (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 8a4246d5e305f5c4aaa696e508e7c21e
+    MaterialNames:
+    - mat_crate_simpleDestructable (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 58c9c37946b50e040aa3572ce16465ef
+    MaterialNames:
+    - mat_crate_complex (UnityEngine.Material)
+    - mat_crate_wood_interior (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 822206534a561fb4597438784e8aff88
+    MaterialNames:
+    - mat_crate2m_indestructible (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 37c86f2e7ff028d438d3d95cb8de8b3e
+    MaterialNames:
+    - Wooden_Planks (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 28461f748ef868144841c8326e976183
+    MaterialNames:
+    - mat_gokart (UnityEngine.Material)
+    - mat_bonekart_orange (UnityEngine.Material)
+    - mat_racingNo_0 (UnityEngine.Material)
+    - mat_proto_box_075m (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 0309f2f013c1d924baf6e35c3361a6e2
+    MaterialNames:
+    - mat_metal_Zinc (UnityEngine.Material)
+    - prop_gunModel_05ne_new_Material (UnityEngine.Material)
+    - prop_gunModel_05ne_Material (UnityEngine.Material)
+    - Lightning (UnityEngine.Material)
+    Shaders:
+    - SLZ/Motion Vector Opaque
+  - CrateGUID: c9ebbb2eff50c1a40b026c4266c18f13
+    MaterialNames:
+    - e-HG_metal.dark (UnityEngine.Material)
+    - e-HG_carbon.fiber (UnityEngine.Material)
+    - e-HG_decals (UnityEngine.Material)
+    - e-HG_info_decals (UnityEngine.Material)
+    - e-HG_panel_decals (UnityEngine.Material)
+    - e-HG_plastics.red (UnityEngine.Material)
+    - e-HG_metal.chrome (UnityEngine.Material)
+    - emissive.red (UnityEngine.Material)
+    - e-HG_metal.dark.noise1 (UnityEngine.Material)
+    - e-HG_metal.blue.muted (UnityEngine.Material)
+    - e-HG_metal.orange (UnityEngine.Material)
+    - e-HG_metal.yellow.muted (UnityEngine.Material)
+    - e-HG_rubber.dark.knurling.diamond (UnityEngine.Material)
+    - Reflex Scope 1 (UnityEngine.Material)
+    Shaders:
+    - MACHIN3/Surface/Textured
+    - SLZ/Infinite Parallax Addtive
+  - CrateGUID: 2dadca2a1e5b39c4aa63ebb8da5f0e37
+    MaterialNames:
+    - WPNM_Eder22_color (UnityEngine.Material)
+    - flare_rainbow_bilboard (UnityEngine.Material)
+    - DiamondParticle (UnityEngine.Material)
+    - HazyAura (UnityEngine.Material)
+    - mat_line_energy_blue (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 642b070cd0f72cf4f80c81595754c9cb
+    MaterialNames:
+    - WPNM_Gruber (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 1e14f516a993b8f4db66313917905b31
+    MaterialNames:
+    - WPNM_M9 (UnityEngine.Material)
+    - mat_badRobot_heads_C (UnityEngine.Material)
+    - laser Red (UnityEngine.Material)
+    - LaserDot red (UnityEngine.Material)
+    - LightGlowRed (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 7e4b940f8b3770843a7cd2ae915b00aa
+    MaterialNames:
+    - WPNM_P350 (UnityEngine.Material)
+    - WPNM_Ammunition (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5b0fa2153f864924e8dab0ca30b3c0ec
+    MaterialNames:
+    - WPNM_PT8 (UnityEngine.Material)
+    - Silencer_Black (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 64d7c35f9a615a447904d402b12b91f5
+    MaterialNames:
+    - WPNM_AKM (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 07d5f6cc9e3101440abf13bb084960cd
+    MaterialNames:
+    - WPNM_M16_Receiver (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 50a3142753629c7459d1a186825c8db0
+    MaterialNames:
+    - WPNM_M16_Exchangeables (UnityEngine.Material)
+    - m_redDotSight (UnityEngine.Material)
+    - m_redDotSight_glass (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4a9a00cf1a0c08645afe78eb7eb9f43b
+    MaterialNames:
+    - WPNM_Folding_Sights (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 39348c4265288dd4ab816fdde3cd6b16
+    MaterialNames:
+    - WPNM_Optic_Scope (UnityEngine.Material)
+    - RT SCOPE1 (UnityEngine.Material)
+    - RT SCOPE0 (UnityEngine.Material)
+    - WPNM_Optic_Scope_lenses (UnityEngine.Material)
+    - WPNT_Reticles (UnityEngine.Material)
+    Shaders:
+    - SLZ/Scope Infinite Parallax
+  - CrateGUID: fde21e6058691b2408aca0f79643c0fe
+    MaterialNames:
+    - mat_m1_clip (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 8fb1852a03d514a45b4e1936e7dc89a5
+    MaterialNames:
+    - mat_m1_bayonet (UnityEngine.Material)
+    - mat_m1 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a1a1e48b018706e4795d3029bb4f64ba
+    MaterialNames:
+    - WPNM_MK18_E (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 28f865144921b3f4bb6595ae58911b6e
+    MaterialNames:
+    - m_holoSight (UnityEngine.Material)
+    - m_holoGlass (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 8e703da18c91b894a850fe6ae4b51c09
+    MaterialNames:
+    - WPNM_MK18_B (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 48dbb8caf29814f498cab0da882899b7
+    MaterialNames:
+    - WPNM_MK18_C (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4b63688220ca769498b77d6cc6459e88
+    MaterialNames:
+    - mat_magpul (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2e21fb091a44809429b6305876c74409
+    MaterialNames:
+    - G2V3_Mat1 (UnityEngine.Material)
+    - G2V3_Mat2 (UnityEngine.Material)
+    - G2V3_Mat3 (UnityEngine.Material)
+    - G2V3_Mat4 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: c3e630ec3695b85438feaf13012b9ed7
+    MaterialNames:
+    - WPNM_590 (UnityEngine.Material)
+    - WPNM_590_sights (UnityEngine.Material)
+    - mat_shotgunShell (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: fd66e5cb2913ed04197a5d481f87681d
+    MaterialNames:
+    - 870 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 8de8ed0ca10416f46a8939d754e84aa1
+    MaterialNames:
+    - WPNM_Fab (UnityEngine.Material)
+    - WPNM_Fabsights (UnityEngine.Material)
+    - MaterialDF_Dmg (UnityEngine.Material)
+    - SupportG2V3Dmg (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5a5b3e612925eca44a25674f60e6998c
+    MaterialNames:
+    - WPNM_M4 (UnityEngine.Material)
+    - WPNM_M4_sights (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3c57aad25aed5c5478dd5876bb516dba
+    MaterialNames:
+    - WPNM_MP5 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a2c0f1c9485c7d848a2764256b0c6c57
+    MaterialNames:
+    - mat_mp5_accessories (UnityEngine.Material)
+    - mat_mp5_body (UnityEngine.Material)
+    - mat_mp5_lower (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2f5b782cff3a3994ab89f084f870851d
+    MaterialNames:
+    - m_attachLight (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3c5a49b8c905fc84284fbac3a2e64a3a
+    MaterialNames:
+    - mat_mp5_lower_colorful (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 9e806efcef1938c40b7903e6bd1f259e
+    MaterialNames:
+    - Part1 (UnityEngine.Material)
+    - Part2 (UnityEngine.Material)
+    - Red Dot Sight (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 00043b39aebafcc48a0e05d3a2ebc683
+    MaterialNames:
+    - mat_mp5_body_plastic (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 1c5796a9b7c9ccc409436425e20f471c
+    MaterialNames:
+    - WPNM_UMP (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5cd169303f8d3c64eb3a5f921066bb16
+    MaterialNames:
+    - mat_uzi (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e049b4e0ae0105e419f4b5c39440f7cd
+    MaterialNames:
+    - mat_vector (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 6cb99e1a37ee6e74887705499e140b3a
+    MaterialNames:
+    - lambert3 (UnityEngine.Material)
+    - lambert2 (UnityEngine.Material)
+    - unnamed (UnityEngine.Material)
+    - WPNM_MK18_silencer (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: acbab5800a6353e47b989db353afbd7e
+    MaterialNames:
+    - mat_stapler_clip (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4a6aef8aaa5eb034c88918a9269f3989
+    MaterialNames:
+    - mat_stapler (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: c82c4c318df74ac4fbcef2bd8b74ecce
+    MaterialNames:
+    - mat_Axe_Double_A (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 8037aacff555adb4f9eb445c07241b65
+    MaterialNames:
+    - firefighter_axe (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 6af2229077e9a8c4486607299b225a50
+    MaterialNames:
+    - mat_Axe_Horror (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 29d9f195a9017a244a738a83b042f73c
+    MaterialNames:
+    - mat_Sword_Bastard (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: ce70db5066e29344a8942132bbccb984
+    MaterialNames:
+    - mat_Bat_Barbedwire (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2e6f527dfa45b6a4cbe4d11eafc1b9e1
+    MaterialNames:
+    - mat_baseball (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: c773057e9ad006048813b65db8c641ed
+    MaterialNames:
+    - mat_nightstick (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 662ab9f778a97ff43bb187f79549224e
+    MaterialNames:
+    - crowbar (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 2bfe8c25fdbdb144e96e1a366e5607da
+    MaterialNames:
+    - FromCoatKnifeTwo_initialShadingGroup_color (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 49283e83c2b6cc149bbc73e927e15bb0
+    MaterialNames:
+    - ElectricGuitar (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: df8336345ac664e48b8de0d050bdedb1
+    MaterialNames:
+    - castiron (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 311e182aa4edc4e4596a6f9b7606bcd4
+    MaterialNames:
+    - Golf_club (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 73d1b1e57a115d543b3cb839462192be
+    MaterialNames:
+    - hammer (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f4d72ed34033b8048aa719bcbc876d8c
+    MaterialNames:
+    - mat_HandHammer (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 95e092ad2c0cac44494ba64c6fe3930b
+    MaterialNames:
+    - Hatchet (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f83ae204500120148a98c0ef54de2641
+    MaterialNames:
+    - IceAxe_material (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 6173824ffd7a4b843b319b0e9fefbe52
+    MaterialNames:
+    - M_Uchigatana_3_Blade (UnityEngine.Material)
+    - M_Uchigatana_3_Handle (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: bde33ae35b4662449843f71e7ed61434
+    MaterialNames:
+    - mat_katar (UnityEngine.Material)
+    - mat_katarHilt (UnityEngine.Material)
+    - swords_default (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 948fd9118205bdc439a44dba1bb636c1
+    MaterialNames:
+    - Material #31 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 13fca3c70cc08a14e8715f22f7749848
+    MaterialNames:
+    - Cleaver (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a3fab58423303b6498a8947a6d193611
+    MaterialNames:
+    - Knife_Mat (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: cd4675bdf0078684c882770481107cf2
+    MaterialNames:
+    - mat_Kunai (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: db5072b83d42b53448acd2b08d1b768f
+    MaterialNames:
+    - Pipe (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 0dd1f0c08b050444584ee5394ec242c1
+    MaterialNames:
+    - mat_Machete (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 741ad46ae2fc7eb4c8dceef06033891a
+    MaterialNames:
+    - mat_Mace_Morningstar_B (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: aa6edd1df209c404fb12d9ec290d0ec3
+    MaterialNames:
+    - mat_Axe_Norse_Bearded_B (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e1239991fa745f64a9ef787ae6db26a2
+    MaterialNames:
+    - Pickaxe (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3201f48619846fa49840649eda5a000a
+    MaterialNames:
+    - mat_Shovel_Garden (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 44f9a877d2239f4499bb82e003ab0d98
+    MaterialNames:
+    - mat_Sledgehammer_fireman (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 756163bb52d4b2b4694e8dd44464e470
+    MaterialNames:
+    - mat_Club_B (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 5c025d7c3a4711a4db203e63b22b7afd
+    MaterialNames:
+    - FromcoatBigOneTwo_toCoatBigOne_initialShadingGroup_color (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: de1a85e2d3af4b1479af2e97c0bed7ed
+    MaterialNames:
+    - mat_nerfnoodle (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: fb23506a232bc004f9c76b96c1ea0b3b
+    MaterialNames:
+    - mat_Sword_Half (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e50d5a7e5a401b149af0a2e34afb56ff
+    MaterialNames:
+    - M_trashCan (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4686db9ca0f8f8c4fbafa1d7623e6cf1
+    MaterialNames:
+    - mat_Hammer_War_D (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a17edb1a323b1fe44ae581d9868406bd
+    MaterialNames:
+    - wrench (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 536be09b6b30c174eb071791d790dbd9
+    MaterialNames:
+    - mat_shotgunSlug (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 60720878a44fd6f4e8c9a7f0dc6eee59
+    MaterialNames:
+    - Glow_particle (UnityEngine.Material)
+    - FireBall (UnityEngine.Material)
+    - Distortion (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f55cb455b75772346b0e20b5bddf2583
+    MaterialNames:
+    - Impact_glowPowerOrb (UnityEngine.Material)
+    - VoidGrid_generic (UnityEngine.Material)
+    Shaders:
+    - SLZ/Emission Falloff
+    - SLZ/InfinityMirror
+  - CrateGUID: b45f42b97da64304fa1fff08e224b078
+    MaterialNames:
+    - EyeFlare_violet (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a85397e2752a8214d8447b3502a9c514
+    MaterialNames:
+    - BalloonPopLine (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e943767a8f51e90419d8626416999fd5
+    MaterialNames:
+    - Glow_particle_negative (UnityEngine.Material)
+    - Lightning - void (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 70c122d949305af44ad771028470500f
+    MaterialNames:
+    - GunSpark_Rockfizzle_solid (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4eff1c0068921114d953c65bf9cd75ac
+    MaterialNames:
+    - mat_VoidPuddle (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 58379e2b0d257da40a7de0e36f9cb92f
+    MaterialNames:
+    - FlareCard_electrical (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 8248cb3176232d04fb0ec0a372b5c2e7
+    MaterialNames:
+    - ZPEFM_blast_ball_void (UnityEngine.Material)
+    - ZPEFM_blastwave_void (UnityEngine.Material)
+    Shaders:
+    - SLZ/BlendedCubeMap
+  - CrateGUID: 30fdf08546cfb4941ac7c758640f2784
+    MaterialNames:
+    - FlareCard_2 (UnityEngine.Material)
+    - MuzzleSmoke (UnityEngine.Material)
+    - FlareCard (UnityEngine.Material)
+    - FlareCard_alpha (UnityEngine.Material)
+    Shaders:
+    - SLZ/Particle/Motion Vector Emissive
+    - SLZ/Particle/Motion Vector Billboard Correct Shadows
+  - CrateGUID: 50fa3c048fd3fb444881e758e8d1a6af
+    MaterialNames:
+    - GunSpark_fire (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: ff188bd903b67e746a7de9380fa097a8
+    MaterialNames:
+    - Smoke (UnityEngine.Material)
+    - SmokeCard (UnityEngine.Material)
+    Shaders:
+    - SLZ/Particle/Motion Vector
+  - CrateGUID: 92bd7194e8719ce4aa5d5cfa6bbd910c
+    MaterialNames:
+    - EyeFlare_particle_HOT (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: dbaa01091a326c74d8795d0596027f24
+    MaterialNames:
+    - SLZ_SmokePoof (UnityEngine.Material)
+    Shaders:
+    - SLZ/SmokePoof
+  - CrateGUID: bb175176e96a0cd4ebd815a671ac6b0f
+    MaterialNames:
+    - AirBlast (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: b396ef4047ac45e4a8f37890e379fddd
+    MaterialNames:
+    - Impact_latex (UnityEngine.Material)
+    - confetti (UnityEngine.Material)
+    Shaders:
+    - Universal Render Pipeline/Particles/Simple Lit
+  - CrateGUID: ee7d6de12cad2c443896c711a09b9894
+    MaterialNames:
+    - SLZ_Translucent_clear (UnityEngine.Material)
+    - RoundDrip (UnityEngine.Material)
+    - SLZ_Translucent_clear_Splatter3_VertexBlendshape (UnityEngine.Material)
+    - BloodSplatter_cutoff (UnityEngine.Material)
+    Shaders:
+    - SLZ/Translucent Vertex Blendshape
+  - CrateGUID: bc8053122127ab942924401f305ce10c
+    MaterialNames:
+    - Glow_particle_textured (UnityEngine.Material)
+    - Shockwave (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a4bcb45c378ac35489dd73a7bc672403
+    MaterialNames:
+    - GunSplinter glass (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: e839bc9121b40b749b1d270103239734
+    MaterialNames:
+    - PackingFoam (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 3c25a8a97612d8547b102abd884b143b
+    MaterialNames:
+    - Impact_paper (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 424ae797b3deb1f438af65039147efeb
+    MaterialNames:
+    - Rocks (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: aaf773f34675da543a0480b1c3eb1355
+    MaterialNames:
+    - CODE Bold SDF Material (UnityEngine.Material)
+    - flare_rainbow_particle (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: ce947496b9b78bb4c96fbbc96b773dc2
+    MaterialNames:
+    - Flash EyeFlare 1 (UnityEngine.Material)
+    - glowing_blastwave 1 (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 73b83d01a917a1e4fbb012deb335c143
+    MaterialNames:
+    - NoiseSurface Smoked (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 59728828289ecaf42b938b2be2a1b97e
+    MaterialNames:
+    - BulletDecal_zap (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 4a4aabc75b4a1d844ae5ef3c2c2ad635
+    MaterialNames:
+    - Impact_glow (UnityEngine.Material)
+    - Impact_flash (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: a636311714e2cb54b83f829b9940218d
+    MaterialNames:
+    - ZapOpaque (UnityEngine.Material)
+    - mat_Void_distortion_particle (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 8d490675277d3554e89ccd9e020a9c86
+    MaterialNames:
+    - SW_Ventilation_Caps (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: b12f7d06406de2c4e9a0b33fb18a75ac
+    MaterialNames:
+    - mat_kitbash_railings (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: aee96531c1df78e47b8a82a48fc95bb6
+    MaterialNames:
+    - mat_wood_StrandBoard (UnityEngine.Material)
+    - mat_monogon_poster_in_gameA_alt (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 8ba48a39a075a9b4695ad1188662aadd
+    MaterialNames:
+    - mat_zipline (UnityEngine.Material)
+    - Default-Material (UnityEngine.Material)
+    Shaders:
+    - Standard
+  - CrateGUID: c6148889ae165da40bd9e5a199cf5a6d
+    MaterialNames:
+    - mat_minecart_metal (UnityEngine.Material)
+    - mat_minecart_wood (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f919832dce3bd7f47b17dc34c9894a89
+    MaterialNames:
+    - mat_target_bat (UnityEngine.Material)
+    - mat_target_bottle (UnityEngine.Material)
+    - mat_target_dynamite (UnityEngine.Material)
+    - mat_target_ghost (UnityEngine.Material)
+    - mat_target_poison (UnityEngine.Material)
+    - mat_target_rat (UnityEngine.Material)
+    - mat_target_snake (UnityEngine.Material)
+    - mat_target_gacha (UnityEngine.Material)
+    - mat_nogrid_metal (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 29300580729a8c949a287c638b5cbb8b
+    MaterialNames:
+    - decal_targetTeal (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: f4ffbefe2ff94144b842a44c466e7f4c
+    MaterialNames:
+    - mat_JoystickRed (UnityEngine.Material)
+    - mat_specialElectrics (UnityEngine.Material)
+    Shaders: []
+  - CrateGUID: 7253f20c31a837d4bb90ef8167b71f7b
+    MaterialNames:
+    - mat_sliderLever (UnityEngine.Material)
+    Shaders: []
+  AllMaterials:
+  - mat_autowalk (UnityEngine.Material)
+  - mat_rubber_conveyorbelt (UnityEngine.Material)
+  - Lit (UnityEngine.Material)
+  - SW_3_Bridge (UnityEngine.Material)
+  - mat_escalator (UnityEngine.Material)
+  - texture_mat_holster_Albedo (UnityEngine.Material)
+  - mat_bodyLog (UnityEngine.Material)
+  - mat_glowGimbalCore (UnityEngine.Material)
+  - mat_line_energy_amber (UnityEngine.Material)
+  - mat_bodyLogCore (UnityEngine.Material)
+  - mat_bodyLogParticle (UnityEngine.Material)
+  - hologram_Gacha (UnityEngine.Material)
+  - mat_bodyLogUI (UnityEngine.Material)
+  - mat_zipper_dx11Shader (UnityEngine.Material)
+  - ConstelationRings (UnityEngine.Material)
+  - ConstelationLines (UnityEngine.Material)
+  - ConstelationStars (UnityEngine.Material)
+  - ConstelationStarsBillboard (UnityEngine.Material)
+  - texture_mat_hairCards_Albedo (UnityEngine.Material)
+  - mat_face_tShirt (UnityEngine.Material)
+  - texture_mat_lowerBody_Albedo (UnityEngine.Material)
+  - texture_mat_arm_Albedo (UnityEngine.Material)
+  - mat_jacket (UnityEngine.Material)
+  - zipper_dx11Shader (UnityEngine.Material)
+  - mat_teeth (UnityEngine.Material)
+  - mat_EyeAdvanceLOD0 (UnityEngine.Material)
+  - mat_highlight_dim (UnityEngine.Material)
+  - mat_controllerOutline (UnityEngine.Material)
+  - Code-Pro-LC SDF Material (UnityEngine.Material)
+  - UIMaterial (UnityEngine.Material)
+  - Highlight_ui (UnityEngine.Material)
+  - Highlight_ui_no (UnityEngine.Material)
+  - nasalization-rg SDF Material (UnityEngine.Material)
+  - arlon-medium SDF Material (UnityEngine.Material)
+  - Sprites-Default (UnityEngine.Material)
+  - CCRobo SDF Material (UnityEngine.Material)
+  - mat_VantaBlack (UnityEngine.Material)
+  - mat_progressBar (UnityEngine.Material)
+  - Highlight_ui_clear (UnityEngine.Material)
+  - overlay_material (UnityEngine.Material)
+  - SLZ_Icon Billboard (UnityEngine.Material)
+  - mat_angryVoidRadiation (UnityEngine.Material)
+  - glowing_blastwave_negative (UnityEngine.Material)
+  - Lightning Distortion (UnityEngine.Material)
+  - Glow_particle_black (UnityEngine.Material)
+  - mat_Voidmen (UnityEngine.Material)
+  - mat_angryVoidRadiation2 (UnityEngine.Material)
+  - DONTUSE_Metal_Rust (UnityEngine.Material)
+  - mat_glowLamp_core (UnityEngine.Material)
+  - mat_medium_kitBash_C (UnityEngine.Material)
+  - mat_glass_security (UnityEngine.Material)
+  - GunSpark_fizzle (UnityEngine.Material)
+  - mat_ironKeys (UnityEngine.Material)
+  - mat_VoidSpillSign (UnityEngine.Material)
+  - mat_twoButtonRemote (UnityEngine.Material)
+  - mat_lamp_Red (UnityEngine.Material)
+  - mat_bigButton (UnityEngine.Material)
+  - decal_Arrow (UnityEngine.Material)
+  - mat_femPeasant_body (UnityEngine.Material)
+  - mat_femaleHead_48 (UnityEngine.Material)
+  - mat_eyeAdvanced (UnityEngine.Material)
+  - mat_teethTongue (UnityEngine.Material)
+  - mat_hairCards_C (UnityEngine.Material)
+  - mat_hairCap_C (UnityEngine.Material)
+  - mat_peasant_arm_var_F48 (UnityEngine.Material)
+  - skyWall_Dark_nogrid (UnityEngine.Material)
+  - mat_kitbash_structural_frames_A (UnityEngine.Material)
+  - mat_grid_Metal_light (UnityEngine.Material)
+  - mat_lamp_White (UnityEngine.Material)
+  - glow_grid_reactive (UnityEngine.Material)
+  - mat_labLinesOn (UnityEngine.Material)
+  - skyWall_Nebulae_blues (UnityEngine.Material)
+  - mat_combineTrim (UnityEngine.Material)
+  - mat_lamp_Amber (UnityEngine.Material)
+  - Wood_2 (UnityEngine.Material)
+  - Solid Black (UnityEngine.Material)
+  - LiberationSans SDF Material (UnityEngine.Material)
+  - Laser Glow (UnityEngine.Material)
+  - Laser Particle (UnityEngine.Material)
+  - mat_harnessAndBelt (UnityEngine.Material)
+  - mat_backPack (UnityEngine.Material)
+  - mat_Brett_body (UnityEngine.Material)
+  - mat_Brett_teeth (UnityEngine.Material)
+  - mat_Brett_hairCap (UnityEngine.Material)
+  - hidden_Nothin (UnityEngine.Material)
+  - mat_Brett_eye (UnityEngine.Material)
+  - mat_Brett_face (UnityEngine.Material)
+  - M_ford_hairCap (UnityEngine.Material)
+  - mat_ford_hairCards (UnityEngine.Material)
+  - mat_Brett_hands (UnityEngine.Material)
+  - mat_animeBody (UnityEngine.Material)
+  - mat_animeEyes (UnityEngine.Material)
+  - mat_animeHair (UnityEngine.Material)
+  - m_fast_upBody (UnityEngine.Material)
+  - m_fast_loBody (UnityEngine.Material)
+  - m_fast_head (UnityEngine.Material)
+  - m_fast_hair (UnityEngine.Material)
+  - m_fur_arms (UnityEngine.Material)
+  - m_fur_body (UnityEngine.Material)
+  - mat_fur_eyeAdvanced (UnityEngine.Material)
+  - m_fur_head (UnityEngine.Material)
+  - m_fur_mouthEyes (UnityEngine.Material)
+  - mat_fur_eyeAdvanced_dmg (UnityEngine.Material)
+  - m_heavy_arm (UnityEngine.Material)
+  - m_heavy_upperBody (UnityEngine.Material)
+  - m_heavy_lowerBody (UnityEngine.Material)
+  - lambert1 (UnityEngine.Material)
+  - mat_femaleHead_40 (UnityEngine.Material)
+  - mat_peasant_arm_var_F40 (UnityEngine.Material)
+  - mat_femaleHead_31 (UnityEngine.Material)
+  - mat_peasant_arm_var_F31 (UnityEngine.Material)
+  - mat_malePeasant_body (UnityEngine.Material)
+  - mat_maleHead_40 (UnityEngine.Material)
+  - mat_peasant_arm_var_M40 (UnityEngine.Material)
+  - mat_maleHead_19 (UnityEngine.Material)
+  - mat_peasant_arm_var_M19 (UnityEngine.Material)
+  - mat_maleHead_22 (UnityEngine.Material)
+  - mat_hairCards_A (UnityEngine.Material)
+  - mat_hairCap_A (UnityEngine.Material)
+  - mat_peasant_arm_var_M22 (UnityEngine.Material)
+  - mat_secGuard (UnityEngine.Material)
+  - mat_peasant_arm (UnityEngine.Material)
+  - m_strong_head (UnityEngine.Material)
+  - m_strong_arms_subSurf (UnityEngine.Material)
+  - m_strong_upperBody_SS (UnityEngine.Material)
+  - m_strong_lowerBody (UnityEngine.Material)
+  - m_tall_upperBody (UnityEngine.Material)
+  - m_tall_hand (UnityEngine.Material)
+  - m_tall_arm (UnityEngine.Material)
+  - m_tall_lowerBody (UnityEngine.Material)
+  - mat_voidNullmen_disp (UnityEngine.Material)
+  - mat_dog_clean (UnityEngine.Material)
+  - mat_VoidPuddleNormals (UnityEngine.Material)
+  - glow_grid (UnityEngine.Material)
+  - mat_Crablet_eye (UnityEngine.Material)
+  - SLZ_Holographic Killer (UnityEngine.Material)
+  - mat_crablet_quest (UnityEngine.Material)
+  - mat_voidTurret (UnityEngine.Material)
+  - GunSpark_trail (UnityEngine.Material)
+  - mat_voidTurret_head (UnityEngine.Material)
+  - mat_voidTurret_eye (UnityEngine.Material)
+  - mat_projectorCultist (UnityEngine.Material)
+  - mat_voidTurret_inner (UnityEngine.Material)
+  - mat_Brett_eyeshadow (UnityEngine.Material)
+  - mat_Brett_cornea (UnityEngine.Material)
+  - mat_ford_earlyExit_body (UnityEngine.Material)
+  - mat_ford_earlyExit_head (UnityEngine.Material)
+  - mat_ford_earlyExit_eye (UnityEngine.Material)
+  - mat_teethTongue_fordexit (UnityEngine.Material)
+  - mat_small_kitBash_B (UnityEngine.Material)
+  - mat_enemyTurret (UnityEngine.Material)
+  - DarkMat (UnityEngine.Material)
+  - mat_badRobot_heads_B (UnityEngine.Material)
+  - laser_green (UnityEngine.Material)
+  - Eyeflare_cyan (UnityEngine.Material)
+  - LaserDot (UnityEngine.Material)
+  - laserTrail (UnityEngine.Material)
+  - LightGlow (UnityEngine.Material)
+  - WPNM_MK18 (UnityEngine.Material)
+  - mat_small_kitBash_A (UnityEngine.Material)
+  - TacticalFlashlightMat (UnityEngine.Material)
+  - mat_kitbash_railing_orange (UnityEngine.Material)
+  - mat_kitbash_panels_medium_A (UnityEngine.Material)
+  - mat_Decal_GroundMarkings_B_yellow (UnityEngine.Material)
+  - mat_Decal_ImpactZone (UnityEngine.Material)
+  - mat_medium_kitBash_A_grey (UnityEngine.Material)
+  - kitbash_surface_accessories_B_mat (UnityEngine.Material)
+  - kitbash_connectors_mat (UnityEngine.Material)
+  - mat_small_kitBash_B_yellow (UnityEngine.Material)
+  - mat_medium_kitBash_A (UnityEngine.Material)
+  - mat_kitbash_structural_beams_A (UnityEngine.Material)
+  - rgby (UnityEngine.Material)
+  - mat_voidNullmen_disp_Matrix (UnityEngine.Material)
+  - mat_corruptedNullmen_disp (UnityEngine.Material)
+  - NullPeasant (UnityEngine.Material)
+  - mat_nullBody_capsuleCore (UnityEngine.Material)
+  - mat_nullBody_rat_eye (UnityEngine.Material)
+  - mat_nullBody_rat_slimeFur (UnityEngine.Material)
+  - mat_omniProjector (UnityEngine.Material)
+  - laser Omni (UnityEngine.Material)
+  - LaserDot Omni (UnityEngine.Material)
+  - LightGlowCyan (UnityEngine.Material)
+  - LaserCore (UnityEngine.Material)
+  - mat_omniProjHazmat (UnityEngine.Material)
+  - mat_enemyRoller (UnityEngine.Material)
+  - mat_kitbash_railing_yellow (UnityEngine.Material)
+  - mat_metal_Steel_small (UnityEngine.Material)
+  - mat_nme_skeleton (UnityEngine.Material)
+  - mat_Skeleton_eye (UnityEngine.Material)
+  - mat_nme_skeleton_terminator (UnityEngine.Material)
+  - mat_Skeleton_eye 1 (UnityEngine.Material)
+  - mat_nme_skeleton_burning (UnityEngine.Material)
+  - Vase (UnityEngine.Material)
+  - M_ammoDisp_A (UnityEngine.Material)
+  - M_ammoDisp_B (UnityEngine.Material)
+  - mat_bigButton_glow (UnityEngine.Material)
+  - mat_holographic_signH (UnityEngine.Material)
+  - Trail (UnityEngine.Material)
+  - mat_capsule_arena (UnityEngine.Material)
+  - mat_lamp_Yellow (UnityEngine.Material)
+  - hologram_keycolor_yellow (UnityEngine.Material)
+  - mat_large_kitBash_A (UnityEngine.Material)
+  - mat_balloonGun (UnityEngine.Material)
+  - Generic Glass clean (UnityEngine.Material)
+  - mat_balloonGunCore (UnityEngine.Material)
+  - BalloonColor (UnityEngine.Material)
+  - mat_batteryRetexture (UnityEngine.Material)
+  - battery_A_pad (UnityEngine.Material)
+  - battery_A_mat (UnityEngine.Material)
+  - mat_boardGun (UnityEngine.Material)
+  - mat_hologramBoardGun (UnityEngine.Material)
+  - laser_blue (UnityEngine.Material)
+  - LaserDot blue (UnityEngine.Material)
+  - LightGlowBlue (UnityEngine.Material)
+  - mat_constrainer (UnityEngine.Material)
+  - mat_constrainerIcons (UnityEngine.Material)
+  - WPNM_Eder22 (UnityEngine.Material)
+  - mat_highlight_gun_helper (UnityEngine.Material)
+  - mat_GimbalGun (UnityEngine.Material)
+  - mat_GimbalGunXenCrystal (UnityEngine.Material)
+  - mat_line_gravity (UnityEngine.Material)
+  - Ringglow (UnityEngine.Material)
+  - frontglow (UnityEngine.Material)
+  - ZPEFM_blastwave (UnityEngine.Material)
+  - ZPEFM_blast_ball (UnityEngine.Material)
+  - mat_glowGimbal (UnityEngine.Material)
+  - mat_gachaCapsule (UnityEngine.Material)
+  - Arrow pointer (UnityEngine.Material)
+  - GunSpark_trail_negativeCore (UnityEngine.Material)
+  - BulletFragmentParticles (UnityEngine.Material)
+  - mat_antiGravCup (UnityEngine.Material)
+  - mat_antiGrav_cover (UnityEngine.Material)
+  - mat_gyroBall_xenCrystal (UnityEngine.Material)
+  - mat_antiGravPlate (UnityEngine.Material)
+  - mat_antiGravPlate_cover (UnityEngine.Material)
+  - mat_antiGravPlate_xenCrystal (UnityEngine.Material)
+  - mat_gyroBall (UnityEngine.Material)
+  - mat_gyroBall_cover (UnityEngine.Material)
+  - mat_thruster (UnityEngine.Material)
+  - mat_fence_chain_parts (UnityEngine.Material)
+  - mat_punkPuncher (UnityEngine.Material)
+  - mat_punkPuncherScreen (UnityEngine.Material)
+  - impact_glowStar 1 (UnityEngine.Material)
+  - Glow_particle_wave (UnityEngine.Material)
+  - FlareCard_plasma (UnityEngine.Material)
+  - mat_ui_HoloDot (UnityEngine.Material)
+  - mat_gachaCapsule_spawnGun (UnityEngine.Material)
+  - mat_spawnGun (UnityEngine.Material)
+  - mat_spawnGunScreen (UnityEngine.Material)
+  - mat_RainbowVoid_spawngun (UnityEngine.Material)
+  - laser Magenta (UnityEngine.Material)
+  - LaserDot SpawnGun (UnityEngine.Material)
+  - LightGlowVilot (UnityEngine.Material)
+  - LaserCore Magenta (UnityEngine.Material)
+  - hologram_blue (UnityEngine.Material)
+  - mat_line_strand_teal (UnityEngine.Material)
+  - VendingMachine_Pill (UnityEngine.Material)
+  - VendingMachine_PP (UnityEngine.Material)
+  - VendingMachine_UM (UnityEngine.Material)
+  - Clipboard (UnityEngine.Material)
+  - ClipboardPaper (UnityEngine.Material)
+  - MonogonDecal_mod2x (UnityEngine.Material)
+  - Devices_On (UnityEngine.Material)
+  - mat_taxiTV (UnityEngine.Material)
+  - mat_taxiTVScreen (UnityEngine.Material)
+  - TRANA___ SDF Material (UnityEngine.Material)
+  - Alaramclock (UnityEngine.Material)
+  - i_table (UnityEngine.Material)
+  - mat_ammoBoxesVert (UnityEngine.Material)
+  - ammo_icons_heavy (UnityEngine.Material)
+  - ammo_icons_light (UnityEngine.Material)
+  - ammo_icons_med (UnityEngine.Material)
+  - mat_shield_viking_a (UnityEngine.Material)
+  - Spear_A (UnityEngine.Material)
+  - ApolloModel (UnityEngine.Material)
+  - ApolloModelFlouresent_knome (UnityEngine.Material)
+  - char_safetySteve_05ne_adjPose_AlbedoTransparency_1 (UnityEngine.Material)
+  - mat_GoldGlow (UnityEngine.Material)
+  - ApolloModelGOLD (UnityEngine.Material)
+  - ApolloModelFlouresent_orange (UnityEngine.Material)
+  - IntPropses2 (UnityEngine.Material)
+  - Barrels (UnityEngine.Material)
+  - plastic_barrel_melon (UnityEngine.Material)
+  - plastic_barrel_blue (UnityEngine.Material)
+  - plastic_barrel_yellow (UnityEngine.Material)
+  - basketballMonogon (UnityEngine.Material)
+  - mat_dispatch_ovalWallMotifs (UnityEngine.Material)
+  - Office_PropSet (UnityEngine.Material)
+  - mat_Book_A_Wormholes (UnityEngine.Material)
+  - mat_Book_A_Morons (UnityEngine.Material)
+  - mat_Book_A_VideoGames (UnityEngine.Material)
+  - mat_bowlingSet (UnityEngine.Material)
+  - mat_prop_brick (UnityEngine.Material)
+  - DONTUSE_DungeonLargeBrick (UnityEngine.Material)
+  - DONTUSE_DungeonSmallBrick (UnityEngine.Material)
+  - MI_Broom (UnityEngine.Material)
+  - props_2 (UnityEngine.Material)
+  - StandeeBoards (UnityEngine.Material)
+  - BushStandee (UnityEngine.Material)
+  - CafeTray_orange (UnityEngine.Material)
+  - cardboard_box (UnityEngine.Material)
+  - CardboardBox_mat (UnityEngine.Material)
+  - mat_cbox_Apollo (UnityEngine.Material)
+  - mat_cbox_Asphalt (UnityEngine.Material)
+  - mat_cbox_Basketball (UnityEngine.Material)
+  - mat_cbox_Battery (UnityEngine.Material)
+  - mat_cbox_Books (UnityEngine.Material)
+  - mat_cbox_Brick (UnityEngine.Material)
+  - mat_cbox_Brick_Pattern (UnityEngine.Material)
+  - mat_cbox_Button (UnityEngine.Material)
+  - mat_cbox_Ceramic_Tiling (UnityEngine.Material)
+  - mat_cbox_ChainFence (UnityEngine.Material)
+  - mat_cbox_Chair (UnityEngine.Material)
+  - mat_cbox_Checkered (UnityEngine.Material)
+  - mat_cbox_Clipboard (UnityEngine.Material)
+  - mat_cbox_CoffeeCup (UnityEngine.Material)
+  - mat_cbox_Concrete (UnityEngine.Material)
+  - mat_cbox_Concrete_Pattern (UnityEngine.Material)
+  - mat_cbox_Cones (UnityEngine.Material)
+  - mat_cbox_Confetti (UnityEngine.Material)
+  - mat_cbox_Garbage (UnityEngine.Material)
+  - mat_cbox_GreyTiling (UnityEngine.Material)
+  - mat_cbox_Hammer (UnityEngine.Material)
+  - cardboard_box_HeadsetB (UnityEngine.Material)
+  - cardboard_box_HeadsetA (UnityEngine.Material)
+  - mat_cbox_Knife (UnityEngine.Material)
+  - mat_cbox_Lamp (UnityEngine.Material)
+  - mat_cbox_Lever (UnityEngine.Material)
+  - mat_cbox_Melon (UnityEngine.Material)
+  - mat_cbox_Metal_Pattern (UnityEngine.Material)
+  - mat_cbox_MetalPlating (UnityEngine.Material)
+  - mat_cbox_Monitor (UnityEngine.Material)
+  - mat_cbox_NeonLights (UnityEngine.Material)
+  - mat_cbox_Numbers (UnityEngine.Material)
+  - mat_cbox_Particles (UnityEngine.Material)
+  - mat_cbox_PipeMysteryBox (UnityEngine.Material)
+  - mat_cbox_Railing (UnityEngine.Material)
+  - cardboard_box_a_01 (UnityEngine.Material)
+  - mat_cbox_Screen (UnityEngine.Material)
+  - mat_cbox_ScreenPlant (UnityEngine.Material)
+  - mat_cbox_SecurityGlass (UnityEngine.Material)
+  - mat_cbox_Table_Assembly (UnityEngine.Material)
+  - mat_cbox_Trays (UnityEngine.Material)
+  - mat_cbox_Woodplank (UnityEngine.Material)
+  - Pallet_B_02 (UnityEngine.Material)
+  - CaveBoulders (UnityEngine.Material)
+  - CafeChair (UnityEngine.Material)
+  - Chair_and_Dresser (UnityEngine.Material)
+  - Chair_Wooden (UnityEngine.Material)
+  - Props_Pack (UnityEngine.Material)
+  - clay_dishes_mat (UnityEngine.Material)
+  - mat_coffeeCup (UnityEngine.Material)
+  - CouchLeather (UnityEngine.Material)
+  - Zinc old denser (UnityEngine.Material)
+  - mat_crownBase (UnityEngine.Material)
+  - impact_glowStar (UnityEngine.Material)
+  - mat_Desk (UnityEngine.Material)
+  - Furniture_M (UnityEngine.Material)
+  - tableSM (UnityEngine.Material)
+  - mat_box_ammo_destructable (UnityEngine.Material)
+  - mat_dice (UnityEngine.Material)
+  - Donut_mtl (UnityEngine.Material)
+  - Dumpster_Set (UnityEngine.Material)
+  - mat_groundGrunge_garbage_A_noPrllx (UnityEngine.Material)
+  - flashlight_glass_dirty (UnityEngine.Material)
+  - flashlight_dirty (UnityEngine.Material)
+  - GLOWSTICK Green (UnityEngine.Material)
+  - mat_gym_shapes_J (UnityEngine.Material)
+  - mat_gym_shapes_I (UnityEngine.Material)
+  - mat_gym_shapes_D (UnityEngine.Material)
+  - mat_gym_shapes_H (UnityEngine.Material)
+  - mat_gym_shapes_B (UnityEngine.Material)
+  - mat_gym_shapes_F (UnityEngine.Material)
+  - mat_gym_shapes_A (UnityEngine.Material)
+  - m_gym_B (UnityEngine.Material)
+  - M_gym_trimDecal_B (UnityEngine.Material)
+  - m_gym_A (UnityEngine.Material)
+  - M_gym_trimDecal (UnityEngine.Material)
+  - mat_gym_shapes_C (UnityEngine.Material)
+  - mat_gym_shapes_E (UnityEngine.Material)
+  - mat_gym_shapes_E_numbers (UnityEngine.Material)
+  - mat_gym_shapes_G (UnityEngine.Material)
+  - mat_Crablet_body (UnityEngine.Material)
+  - mat_Crablet_BLACK_body (UnityEngine.Material)
+  - mat_healthBall (UnityEngine.Material)
+  - mat_container_waste (UnityEngine.Material)
+  - mat_IDcard_Null (UnityEngine.Material)
+  - mat_lock_destructable (UnityEngine.Material)
+  - LunarLander 1 (UnityEngine.Material)
+  - mat_medium_kitBash_B (UnityEngine.Material)
+  - mat_lamp_Sour (UnityEngine.Material)
+  - mat_stuffedMonkey (UnityEngine.Material)
+  - mat_MarbleFord (UnityEngine.Material)
+  - Orgincate (UnityEngine.Material)
+  - Office_M (UnityEngine.Material)
+  - mat_Decal_PaperFolder (UnityEngine.Material)
+  - tvboards1_Material _4_AlbedoTransparency (UnityEngine.Material)
+  - tvboards1_Material _5_AlbedoTransparency (UnityEngine.Material)
+  - mor_components (UnityEngine.Material)
+  - speaker_DefaultMaterial_AlbedoTransparency (UnityEngine.Material)
+  - Monitor06_M (UnityEngine.Material)
+  - Monitor06_M_TERM_mini 1 (UnityEngine.Material)
+  - Monitor (UnityEngine.Material)
+  - mat_pizzaBox (UnityEngine.Material)
+  - Plant01 (UnityEngine.Material)
+  - Plant01 base (UnityEngine.Material)
+  - m_plunger (UnityEngine.Material)
+  - Plywood_mat (UnityEngine.Material)
+  - Plywood (UnityEngine.Material)
+  - mat_metal_Steel_dentedDry (UnityEngine.Material)
+  - mat_kitbash_connector_panels (UnityEngine.Material)
+  - mat_grid_GLOW_White (UnityEngine.Material)
+  - ShopCovers_ALBEDO (UnityEngine.Material)
+  - mat_holographic_signC (UnityEngine.Material)
+  - mat_holographic_signF (UnityEngine.Material)
+  - printer (UnityEngine.Material)
+  - mat_puffinCrate (UnityEngine.Material)
+  - Road_block_v1 (UnityEngine.Material)
+  - mat_rollBall_white (UnityEngine.Material)
+  - mat_rollBall_garbage (UnityEngine.Material)
+  - mat_rollBall_amber (UnityEngine.Material)
+  - mat_rollBall_blue (UnityEngine.Material)
+  - mat_rollBall_green (UnityEngine.Material)
+  - mat_rollBall_purple (UnityEngine.Material)
+  - M_scaffolding (UnityEngine.Material)
+  - Decor3 (UnityEngine.Material)
+  - Wheels (UnityEngine.Material)
+  - Bottle (UnityEngine.Material)
+  - Bottle02 (UnityEngine.Material)
+  - SodaCan_ParticalPunch (UnityEngine.Material)
+  - SodaCan_Ultramersion (UnityEngine.Material)
+  - mat_soupCan (UnityEngine.Material)
+  - DungeonFloorBreakup (UnityEngine.Material)
+  - mat_MeetingRoomTable (UnityEngine.Material)
+  - CafeTable (UnityEngine.Material)
+  - DONTUSE_Table_Wooden_Clean (UnityEngine.Material)
+  - Table_Wooden_Old (UnityEngine.Material)
+  - Barcelona_Table (UnityEngine.Material)
+  - target (UnityEngine.Material)
+  - Target-LowPoly (UnityEngine.Material)
+  - _red_couchMaterial__2 (UnityEngine.Material)
+  - Medieval_IronFixtures_All_4k (UnityEngine.Material)
+  - DitheredShadowCaster (UnityEngine.Material)
+  - QuestLampFlicker (UnityEngine.Material)
+  - mat_araFireCenter (UnityEngine.Material)
+  - mat_trafficCone_whiteStripe (UnityEngine.Material)
+  - Trashbag_Black (UnityEngine.Material)
+  - Trashbag_Yellow (UnityEngine.Material)
+  - Trashcan_Metal (UnityEngine.Material)
+  - M_Trashcan_01 (UnityEngine.Material)
+  - MELON (UnityEngine.Material)
+  - mat_kitbash_structural_beams_Red (UnityEngine.Material)
+  - mat_Decal_ImpactZone_red2 (UnityEngine.Material)
+  - mat_lamp_Blue (UnityEngine.Material)
+  - mat_barrel_01 (UnityEngine.Material)
+  - mat_crate_destructible (UnityEngine.Material)
+  - mat_crate_simpleDestructable (UnityEngine.Material)
+  - mat_crate_complex (UnityEngine.Material)
+  - mat_crate_wood_interior (UnityEngine.Material)
+  - mat_crate2m_indestructible (UnityEngine.Material)
+  - Wooden_Planks (UnityEngine.Material)
+  - mat_gokart (UnityEngine.Material)
+  - mat_bonekart_orange (UnityEngine.Material)
+  - mat_racingNo_0 (UnityEngine.Material)
+  - mat_proto_box_075m (UnityEngine.Material)
+  - mat_metal_Zinc (UnityEngine.Material)
+  - prop_gunModel_05ne_new_Material (UnityEngine.Material)
+  - prop_gunModel_05ne_Material (UnityEngine.Material)
+  - Lightning (UnityEngine.Material)
+  - e-HG_metal.dark (UnityEngine.Material)
+  - e-HG_carbon.fiber (UnityEngine.Material)
+  - e-HG_decals (UnityEngine.Material)
+  - e-HG_info_decals (UnityEngine.Material)
+  - e-HG_panel_decals (UnityEngine.Material)
+  - e-HG_plastics.red (UnityEngine.Material)
+  - e-HG_metal.chrome (UnityEngine.Material)
+  - emissive.red (UnityEngine.Material)
+  - e-HG_metal.dark.noise1 (UnityEngine.Material)
+  - e-HG_metal.blue.muted (UnityEngine.Material)
+  - e-HG_metal.orange (UnityEngine.Material)
+  - e-HG_metal.yellow.muted (UnityEngine.Material)
+  - e-HG_rubber.dark.knurling.diamond (UnityEngine.Material)
+  - Reflex Scope 1 (UnityEngine.Material)
+  - WPNM_Eder22_color (UnityEngine.Material)
+  - flare_rainbow_bilboard (UnityEngine.Material)
+  - DiamondParticle (UnityEngine.Material)
+  - HazyAura (UnityEngine.Material)
+  - mat_line_energy_blue (UnityEngine.Material)
+  - WPNM_Gruber (UnityEngine.Material)
+  - WPNM_M9 (UnityEngine.Material)
+  - mat_badRobot_heads_C (UnityEngine.Material)
+  - laser Red (UnityEngine.Material)
+  - LaserDot red (UnityEngine.Material)
+  - LightGlowRed (UnityEngine.Material)
+  - WPNM_P350 (UnityEngine.Material)
+  - WPNM_Ammunition (UnityEngine.Material)
+  - WPNM_PT8 (UnityEngine.Material)
+  - Silencer_Black (UnityEngine.Material)
+  - WPNM_AKM (UnityEngine.Material)
+  - WPNM_M16_Receiver (UnityEngine.Material)
+  - WPNM_M16_Exchangeables (UnityEngine.Material)
+  - m_redDotSight (UnityEngine.Material)
+  - m_redDotSight_glass (UnityEngine.Material)
+  - WPNM_Folding_Sights (UnityEngine.Material)
+  - WPNM_Optic_Scope (UnityEngine.Material)
+  - RT SCOPE1 (UnityEngine.Material)
+  - RT SCOPE0 (UnityEngine.Material)
+  - WPNM_Optic_Scope_lenses (UnityEngine.Material)
+  - WPNT_Reticles (UnityEngine.Material)
+  - mat_m1_clip (UnityEngine.Material)
+  - mat_m1_bayonet (UnityEngine.Material)
+  - mat_m1 (UnityEngine.Material)
+  - WPNM_MK18_E (UnityEngine.Material)
+  - m_holoSight (UnityEngine.Material)
+  - m_holoGlass (UnityEngine.Material)
+  - WPNM_MK18_B (UnityEngine.Material)
+  - WPNM_MK18_C (UnityEngine.Material)
+  - mat_magpul (UnityEngine.Material)
+  - G2V3_Mat1 (UnityEngine.Material)
+  - G2V3_Mat2 (UnityEngine.Material)
+  - G2V3_Mat3 (UnityEngine.Material)
+  - G2V3_Mat4 (UnityEngine.Material)
+  - WPNM_590 (UnityEngine.Material)
+  - WPNM_590_sights (UnityEngine.Material)
+  - mat_shotgunShell (UnityEngine.Material)
+  - 870 (UnityEngine.Material)
+  - WPNM_Fab (UnityEngine.Material)
+  - WPNM_Fabsights (UnityEngine.Material)
+  - MaterialDF_Dmg (UnityEngine.Material)
+  - SupportG2V3Dmg (UnityEngine.Material)
+  - WPNM_M4 (UnityEngine.Material)
+  - WPNM_M4_sights (UnityEngine.Material)
+  - WPNM_MP5 (UnityEngine.Material)
+  - mat_mp5_accessories (UnityEngine.Material)
+  - mat_mp5_body (UnityEngine.Material)
+  - mat_mp5_lower (UnityEngine.Material)
+  - m_attachLight (UnityEngine.Material)
+  - mat_mp5_lower_colorful (UnityEngine.Material)
+  - Part1 (UnityEngine.Material)
+  - Part2 (UnityEngine.Material)
+  - Red Dot Sight (UnityEngine.Material)
+  - mat_mp5_body_plastic (UnityEngine.Material)
+  - WPNM_UMP (UnityEngine.Material)
+  - mat_uzi (UnityEngine.Material)
+  - mat_vector (UnityEngine.Material)
+  - lambert3 (UnityEngine.Material)
+  - lambert2 (UnityEngine.Material)
+  - unnamed (UnityEngine.Material)
+  - WPNM_MK18_silencer (UnityEngine.Material)
+  - mat_stapler_clip (UnityEngine.Material)
+  - mat_stapler (UnityEngine.Material)
+  - mat_Axe_Double_A (UnityEngine.Material)
+  - firefighter_axe (UnityEngine.Material)
+  - mat_Axe_Horror (UnityEngine.Material)
+  - mat_Sword_Bastard (UnityEngine.Material)
+  - mat_Bat_Barbedwire (UnityEngine.Material)
+  - mat_baseball (UnityEngine.Material)
+  - mat_nightstick (UnityEngine.Material)
+  - crowbar (UnityEngine.Material)
+  - FromCoatKnifeTwo_initialShadingGroup_color (UnityEngine.Material)
+  - ElectricGuitar (UnityEngine.Material)
+  - castiron (UnityEngine.Material)
+  - Golf_club (UnityEngine.Material)
+  - hammer (UnityEngine.Material)
+  - mat_HandHammer (UnityEngine.Material)
+  - Hatchet (UnityEngine.Material)
+  - IceAxe_material (UnityEngine.Material)
+  - M_Uchigatana_3_Blade (UnityEngine.Material)
+  - M_Uchigatana_3_Handle (UnityEngine.Material)
+  - mat_katar (UnityEngine.Material)
+  - mat_katarHilt (UnityEngine.Material)
+  - swords_default (UnityEngine.Material)
+  - Material #31 (UnityEngine.Material)
+  - Cleaver (UnityEngine.Material)
+  - Knife_Mat (UnityEngine.Material)
+  - mat_Kunai (UnityEngine.Material)
+  - Pipe (UnityEngine.Material)
+  - mat_Machete (UnityEngine.Material)
+  - mat_Mace_Morningstar_B (UnityEngine.Material)
+  - mat_Axe_Norse_Bearded_B (UnityEngine.Material)
+  - Pickaxe (UnityEngine.Material)
+  - mat_Shovel_Garden (UnityEngine.Material)
+  - mat_Sledgehammer_fireman (UnityEngine.Material)
+  - mat_Club_B (UnityEngine.Material)
+  - FromcoatBigOneTwo_toCoatBigOne_initialShadingGroup_color (UnityEngine.Material)
+  - mat_nerfnoodle (UnityEngine.Material)
+  - mat_Sword_Half (UnityEngine.Material)
+  - M_trashCan (UnityEngine.Material)
+  - mat_Hammer_War_D (UnityEngine.Material)
+  - wrench (UnityEngine.Material)
+  - mat_shotgunSlug (UnityEngine.Material)
+  - Glow_particle (UnityEngine.Material)
+  - FireBall (UnityEngine.Material)
+  - Distortion (UnityEngine.Material)
+  - Impact_glowPowerOrb (UnityEngine.Material)
+  - VoidGrid_generic (UnityEngine.Material)
+  - EyeFlare_violet (UnityEngine.Material)
+  - BalloonPopLine (UnityEngine.Material)
+  - Glow_particle_negative (UnityEngine.Material)
+  - Lightning - void (UnityEngine.Material)
+  - GunSpark_Rockfizzle_solid (UnityEngine.Material)
+  - mat_VoidPuddle (UnityEngine.Material)
+  - FlareCard_electrical (UnityEngine.Material)
+  - ZPEFM_blast_ball_void (UnityEngine.Material)
+  - ZPEFM_blastwave_void (UnityEngine.Material)
+  - FlareCard_2 (UnityEngine.Material)
+  - MuzzleSmoke (UnityEngine.Material)
+  - FlareCard (UnityEngine.Material)
+  - FlareCard_alpha (UnityEngine.Material)
+  - GunSpark_fire (UnityEngine.Material)
+  - Smoke (UnityEngine.Material)
+  - SmokeCard (UnityEngine.Material)
+  - EyeFlare_particle_HOT (UnityEngine.Material)
+  - SLZ_SmokePoof (UnityEngine.Material)
+  - AirBlast (UnityEngine.Material)
+  - Impact_latex (UnityEngine.Material)
+  - confetti (UnityEngine.Material)
+  - SLZ_Translucent_clear (UnityEngine.Material)
+  - RoundDrip (UnityEngine.Material)
+  - SLZ_Translucent_clear_Splatter3_VertexBlendshape (UnityEngine.Material)
+  - BloodSplatter_cutoff (UnityEngine.Material)
+  - Glow_particle_textured (UnityEngine.Material)
+  - Shockwave (UnityEngine.Material)
+  - GunSplinter glass (UnityEngine.Material)
+  - PackingFoam (UnityEngine.Material)
+  - Impact_paper (UnityEngine.Material)
+  - Rocks (UnityEngine.Material)
+  - CODE Bold SDF Material (UnityEngine.Material)
+  - flare_rainbow_particle (UnityEngine.Material)
+  - Flash EyeFlare 1 (UnityEngine.Material)
+  - glowing_blastwave 1 (UnityEngine.Material)
+  - NoiseSurface Smoked (UnityEngine.Material)
+  - BulletDecal_zap (UnityEngine.Material)
+  - Impact_glow (UnityEngine.Material)
+  - Impact_flash (UnityEngine.Material)
+  - ZapOpaque (UnityEngine.Material)
+  - mat_Void_distortion_particle (UnityEngine.Material)
+  - SW_Ventilation_Caps (UnityEngine.Material)
+  - mat_kitbash_railings (UnityEngine.Material)
+  - mat_wood_StrandBoard (UnityEngine.Material)
+  - mat_monogon_poster_in_gameA_alt (UnityEngine.Material)
+  - mat_zipline (UnityEngine.Material)
+  - Default-Material (UnityEngine.Material)
+  - mat_minecart_metal (UnityEngine.Material)
+  - mat_minecart_wood (UnityEngine.Material)
+  - mat_target_bat (UnityEngine.Material)
+  - mat_target_bottle (UnityEngine.Material)
+  - mat_target_dynamite (UnityEngine.Material)
+  - mat_target_ghost (UnityEngine.Material)
+  - mat_target_poison (UnityEngine.Material)
+  - mat_target_rat (UnityEngine.Material)
+  - mat_target_snake (UnityEngine.Material)
+  - mat_target_gacha (UnityEngine.Material)
+  - mat_nogrid_metal (UnityEngine.Material)
+  - decal_targetTeal (UnityEngine.Material)
+  - mat_JoystickRed (UnityEngine.Material)
+  - mat_specialElectrics (UnityEngine.Material)
+  - mat_sliderLever (UnityEngine.Material)
+  AllShaders:
+  - SLZ/LitMAS/LitMAS Standard
+  - SLZ/TextureRampEmissive
+  - SLZ/AdditiveWithDistortion
+  - Universal Render Pipeline/Particles/Unlit (Particles)
+  - SLZ/Additive HDR
+  - SLZ/Hologram Depth fade
+  - SLZ/OpaqueMotion
+  - Universal Render Pipeline/Lit (PBR Workflow)
+  - SLZ/ConstelationLines
+  - SLZ/ParticleStar
+  - SLZ/Polyblank Instanced Quad
+  - Lux URP/Human/Hair
+  - Lux URP/Human/Skin (TEMPORARYILY REPLACED WITH POSESPACE IMPACTS)
+  - SLZ/LitMAS/LitMAS Posespace
+  - EyeAdvanced_LOD0_URP
+  - SLZ/Highlighter
+  - Universal Render Pipeline/Unlit
+  - TextMeshPro/Distance Field
+  - UI/Unlit/Text
+  - Custom/HighlightAlt
+  - Sprites/Default
+  - Unlit/URP Unlit Color
+  - SLZ/SpiderChart
+  - SimpleOverlay
+  - SLZ/Icon Billboard
+  - SLZ/Screen Distortion
+  - SLZ/Simple Geo Skybox
+  - SLZ/LitMAS Lenticular
+  - Universal Render Pipeline/Particles/Lit (Particles)
+  - Lux URP/Human/Hair Blend
+  - SLZ/ReactiveGrid
+  - SLZ/Holographic Wall Simple
+  - TextMeshPro/Mobile/Distance Field
+  - Hidden/InternalErrorShader
+  - Hidden/Nothin
+  - SLZ/Anime
+  - SLZ/Nullman
+  - SLZ/VoidWitch
+  - SLZ/Holographic Visor
+  - SLZ/Mod2x
+  - SLZ/Laser
+  - SLZ/Billboard Texture Additive
+  - SLZ/AdditiveFalloff
+  - SLZ/VR ColorTint
+  - SLZ/Translucent
+  - SLZ/Additive Hologram with Depth
+  - SLZ/Glass SLZ
+  - SLZ/AdditiveVolumetricHDR
+  - SLZ/AdditivePanningVolumetricHDR
+  - SLZ/Gacha
+  - SLZ/Lit MAS Transparent
+  - Shader Graphs/SLZAlphaParticle
+  - SLZ/SpawnGunScreen
+  - SLZ/RainbowVoid
+  - Shader Graphs/TMP_SDF-URP Lit
+  - SLZ/LitMAS/LitMAS Vertex Color AO
+  - SLZ/Fluorescence
+  - SLZ/Scanline
+  - SLZ/Special/Textured Shadow
+  - SLZ/LampEmission
+  - SLZ/Particle/Torch Panning Volumetric
+  - SLZ/Motion Vector Opaque
+  - MACHIN3/Surface/Textured
+  - SLZ/Infinite Parallax Addtive
+  - SLZ/Scope Infinite Parallax
+  - SLZ/Emission Falloff
+  - SLZ/InfinityMirror
+  - SLZ/BlendedCubeMap
+  - SLZ/Particle/Motion Vector Emissive
+  - SLZ/Particle/Motion Vector Billboard Correct Shadows
+  - SLZ/Particle/Motion Vector
+  - SLZ/SmokePoof
+  - Universal Render Pipeline/Particles/Simple Lit
+  - SLZ/Translucent Vertex Blendshape
+  - Standard

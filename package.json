@@ -1,8 +1,8 @@
 {
     "name": "com.holadivinus.blpreviewtool",
     "displayName": "BL Preview Tool",
-    "version": "1.1.1",
-    "description": "MarrowSDK Addon (Patch 6) that remotely loads Spawnable, Level, and Avatar data from your bonelab install / Mods.\nAccess the Level Loader via Stress Level Zero > Void Tools > (BLPTool) Level Loader.\nCreate a Material Copier via Right Click > MarrowSDK > (BLPTool) Material Copier.",
+    "version": "2.0.0",
+    "description": "MarrowSDK Addon (Patch 6) that remotely loads Spawnable, Level, and Avatar data from your bonelab install / Mods.\nAccess the Level Loader via Stress Level Zero > Void Tools > (BLPTool) Level Loader.\nRefference SLZ Materials via Stress Level Zero > Void Tools > (BLPTool) External Material Copier.",
     "unity": "2021.3",
     "dependencies": 
     {

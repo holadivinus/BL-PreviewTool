@@ -1,0 +1,3 @@
+TemplateContainer {
+    flex-grow: 1;
+}

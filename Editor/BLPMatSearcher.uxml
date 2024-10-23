@@ -1,0 +1,33 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/BL-PreviewTool/Editor/BLPMatSearcher.uss?fileID=7433441132597879392&amp;guid=c554a7ebf5b25204cbadc75861ee8734&amp;type=3#BLPMatSearcher" />
+    <ui:VisualElement name="SearchBar" style="flex-direction: row;">
+        <ui:Button text="Materials" display-tooltip-when-elided="true" name="MatBT" style="margin-left: 0; margin-right: 0;" />
+        <ui:Button text="Shaders" display-tooltip-when-elided="true" name="ShaderBT" focusable="true" style="margin-left: 0; margin-right: 0; visibility: visible; display: none;" />
+        <ui:TextField picking-mode="Ignore" name="SearchText" style="flex-grow: 1; margin-left: 0; margin-right: 0;" />
+        <ui:Button display-tooltip-when-elided="true" name="SearchBT" style="background-image: url(&apos;project://database/Assets/BL-PreviewTool/Editor/MagnifyingGlass.png?fileID=21300000&amp;guid=9911b278f908cdb49b46df9e0bb178ad&amp;type=3#MagnifyingGlass&apos;); -unity-slice-right: 2; -unity-background-scale-mode: stretch-to-fill; min-width: 20px; -unity-slice-left: 2; -unity-slice-top: 1; -unity-slice-bottom: 1; margin-left: 0; margin-right: 0;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="lowerHalf" style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="WhiteListTab" style="flex-grow: 0; min-width: 71px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; display: none;">
+            <ui:VisualElement name="top" style="flex-direction: row; align-items: center; border-left-color: rgb(166, 166, 166); border-right-color: rgb(166, 166, 166); border-top-color: rgb(166, 166, 166); border-bottom-color: rgb(166, 166, 166); border-bottom-width: 1px; min-width: auto;">
+                <ui:Label text="Pallet Whitelist" display-tooltip-when-elided="true" />
+                <ui:VisualElement style="flex-direction: row; flex-grow: 1;" />
+                <ui:Button text="&lt;" display-tooltip-when-elided="true" name="WhiteListTabBT" style="margin-left: 0; margin-right: 0;" />
+            </ui:VisualElement>
+            <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto" style="flex-grow: 1;">
+                <ui:VisualElement name="PalletFilterList" style="flex-grow: 1;">
+                    <ui:Toggle label="wadjiapwod apwdjpwapawpowapodjawpo " style="flex-direction: row-reverse;" />
+                    <ui:Toggle label="weee" style="flex-direction: row-reverse;" />
+                    <ui:Toggle label="wadjiapwod apwdjpwapawpowapodjawpo " style="flex-direction: row-reverse;" />
+                    <ui:Toggle label="wadjiapwod apwdjpwapawpowapodjawpo " style="flex-direction: row-reverse;" />
+                </ui:VisualElement>
+            </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement name="SearchResults" style="flex-grow: 1;">
+            <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="AlwaysVisible" style="flex-grow: 1;">
+                <ui:GroupBox name="SearchResultBTs" style="flex-direction: row; flex-wrap: wrap;" />
+            </ui:ScrollView>
+            <ui:Button text="Load More" display-tooltip-when-elided="true" name="LoadMoreBT" />
+        </ui:VisualElement>
+        <ui:Button text="&gt;" display-tooltip-when-elided="true" name="OpenFilterTabBT" style="position: absolute; display: none;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,30 +1,32 @@
 #if UNITY_EDITOR
 using SLZ.Marrow.Warehouse;
+using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEditor.SceneManagement;
-using System;
+using UnityEngine;
 
 namespace BLPTool
 {
     [InitializeOnLoad]
     public static class BLPTool
-    {
+    { 
+        public static string PluginPath => "Assets/" + Path.GetRelativePath(Application.dataPath, Directory.GetParent(new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileName()).Parent.FullName) + '/';
         static BLPTool()
-        {
+        { 
             EditorApplication.update += OnUpdate;
             AssetBundle.UnloadAllAssetBundles(false);
             SceneView.duringSceneGui += DuringSceneGui;
+            EditorSceneManager.sceneSaving += OnSceneSaving;
+
 
             foreach (var item in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
                 if (item != null && item.GetComponent<MeshRenderer>())
                     item.GetComponent<MeshRenderer>().enabled = true;
         }
 
-        static void OnUpdate()
+        static bool setupMats = false;
+        static void OnUpdate() // terrible code tbh
         {
             if (Application.isPlaying) return;
             UnityEngine.Object[] selecteds = Selection.objects.ToArray();
@@ -45,6 +47,27 @@ namespace BLPTool
                 CratePreview previewer = spawner.GetComponent<CratePreview>();
                 if (previewer == null) spawner.gameObject.AddComponent<CratePreview>();
             }
+            foreach (var matLink in BLPDefinitions.Instance.Links.ToArray())
+            {
+                if (matLink.AssetMat == null)
+                {
+                    BLPDefinitions.Instance.Links.Remove(matLink);
+                    return;
+                }
+                if (!matLink.AssetMat.name.EndsWith(PreviewTag))
+                {
+                    matLink.Preview();
+                }
+            }
+            if (AssetWarehouse.ready && !setupMats)
+            {
+                setupMats = true;
+                foreach (var link in BLPDefinitions.Instance.Links)
+                {
+                    RevertMaterial(link.AssetMat);
+                    link.Preview();
+                }
+            }
         }
 
         private static void DuringSceneGui(SceneView sceneView)
@@ -64,15 +87,7 @@ namespace BLPTool
             }
         }
 
-        [MenuItem("GameObject/MarrowSDK/(BLPTool) Material Copier", priority = 1)]
-        static void CreateMaterialCopier(UnityEditor.MenuCommand menuCommand)
-        {
-            GameObject prefabSource = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("t:Prefab Material Copier")[0]));
-            GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(prefabSource);
 
-            GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject);
-            Selection.activeObject = go;
-        }
         [MenuItem("Stress Level Zero/Void Tools/(BLPTool) Level Loader", priority = 1)]
         static void LevelLoader(UnityEditor.MenuCommand menuCommand)
         {
@@ -80,27 +95,159 @@ namespace BLPTool
             Selection.activeGameObject = new GameObject("LevelLoader", typeof(LevelLoader));
         }
         //[MenuItem("Stress Level Zero/Void Tools/Test", priority = 1)]
-        static void Test(UnityEditor.MenuCommand menuCommand)
+        static void Test(MenuCommand menuCommand) { }
+        //[MenuItem("Stress Level Zero/Void Tools/Test2", priority = 1)]
+        static void Test2(MenuCommand menuCommand) { }
+        static void OnSceneSaving(UnityEngine.SceneManagement.Scene scene, string path)
         {
-            foreach (var item in Addressables.ResourceLocators)
+            // First, remove any existing copiers.
+            HideFlags stealerHiding = HideFlags.HideInHierarchy | HideFlags.HideInInspector;
+            foreach (var rooter in scene.GetRootGameObjects())
             {
-                if (item is ResourceLocationMap map)
+                if (rooter.name == "SLZ MAT-STEAL SYSTEM") //&& rooter.hideFlags == stealerHiding)
                 {
-                    foreach (var item1 in map.Locations)
-                    {
-                        if (item1.Value.First().ResourceType == typeof(Material))
-                            Debug.Log(item1.Key + ": " + item1.Value.First().InternalId);
-                    }
+                    // we found it
+                    UnityEngine.Object.DestroyImmediate(rooter);
                 }
             }
-        }
-        //[MenuItem("Stress Level Zero/Void Tools/Test2", priority = 1)]
-        static void Test2(UnityEditor.MenuCommand menuCommand)
-        {
-            foreach (var item in AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes()).Where(t => t.IsSubclassOf(typeof(ScriptableObject))))
+
+            // Scan scene for offending mats:
+            foreach (var rooter in scene.GetRootGameObjects())
             {
-                if (!item.Namespace.Contains("Unity"))
-                    Debug.Log(item);
+                var offenders = rooter.GetComponentsInChildren<Renderer>(true).SelectMany(r => r.sharedMaterials).Where(m => m != null && BLPDefinitions.Instance.Links.Any(l => l.AssetMat == m)).Distinct();
+                GameObject copierRoot = null;
+                GameObject prefab = null;
+                foreach (var assetMat in offenders)
+                {
+                    if (copierRoot == null)
+                    {
+                        copierRoot = new GameObject("SLZ MAT-STEAL SYSTEM"); // create new root
+                        copierRoot.transform.SetAsFirstSibling();
+                    }
+                    if (prefab == null)
+                        prefab = AssetDatabase.LoadAssetAtPath<GameObject>(BLPTool.PluginPath + "Material Copier.prefab");
+
+                    GameObject newCopier = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+                    newCopier.transform.SetParent(copierRoot.transform);
+                    newCopier.GetComponent<MaterialCopier>().TargetMat(BLPDefinitions.Instance.Links.First(l => l.AssetMat == assetMat).SLZMat, assetMat);
+                    // copier for the offending mat is now set up!
+                }
+            }
+            
+        }
+
+        public const string PreviewTag = " (IN PREVIEW MODE)";
+        private static Material[] s_matCache = new Material[3];
+        public static Material DefaultMat => s_matCache[0] ??= AssetDatabase.LoadAssetAtPath<Material>(Path.Combine(PluginPath, "DefaultMat.mat"));
+        public static Material RefHolderMat => s_matCache[1] ??= AssetDatabase.LoadAssetAtPath<Material>(Path.Combine(PluginPath, "RefHolderMat.mat"));
+        static Material RefHolderMat2 => s_matCache[2] ??= AssetDatabase.LoadAssetAtPath<Material>(Path.Combine(PluginPath, "RefHolderMat2.mat"));
+
+        /// <summary>
+        /// Reverts a Material to its initial, stub state.
+        /// </summary>
+        /// <param name="mat"></param>
+        public static void RevertMaterial(Material mat)
+        {
+            if (mat == null) 
+                return;
+
+            if (mat.name.EndsWith(PreviewTag))
+            {
+                // save mat data to BLPDefinition
+                var link = BLPDefinitions.Instance.Links.FirstOrDefault(l => l.AssetMat == mat);
+                if (link != null && link.SLZMat != null && link.AssetMat.shader == link.SLZMat.shader)
+                {
+                    //we need to note changes between the AssetMat and SLZMat.
+                    BLPDefinitions.MatLink.Changes changes = new();
+
+                    // we get api access to texture data!!! :)
+                    foreach (var texPropName in link.SLZMat.GetTexturePropertyNames())
+                    {
+                        if (link.SLZMat.GetTexture(texPropName) != link.AssetMat.GetTexture(texPropName))
+                            changes.TexChanges.Add(new() { TexName = texPropName, ChangedTo = link.AssetMat.GetTexture(texPropName) });
+                        if (link.SLZMat.GetTextureOffset(texPropName) != link.AssetMat.GetTextureOffset(texPropName))
+                            changes.TexOffsetChanges.Add(new() { TexName = texPropName, ChangedTo = link.AssetMat.GetTextureOffset(texPropName) });
+                        if (link.SLZMat.GetTextureScale(texPropName) != link.AssetMat.GetTextureScale(texPropName))
+                            changes.TexScaleChanges.Add(new() { TexName = texPropName, ChangedTo = link.AssetMat.GetTextureScale(texPropName) });
+                    }
+
+                    {
+                        // Color data
+                        var SLZedit = new SerializedObject(link.SLZMat);
+                        var Assetedit = new SerializedObject(link.AssetMat);
+
+                        var slzIt = SLZedit.FindProperty("m_SavedProperties");
+                        var assetIt = Assetedit.FindProperty("m_SavedProperties");
+
+                        var slz_type_Props = slzIt.Copy().FindPropertyRelative("m_Colors")?.GetChildren();
+                        if (slz_type_Props != null)
+                        {
+                            var asset_type_Props = assetIt.Copy().FindPropertyRelative("m_Colors").GetChildren();
+                            foreach (var SlzAssetProp in slz_type_Props.Zip(asset_type_Props, (slz, asset) => (slz, asset)).Skip(1))
+                            {
+                                string propName = SlzAssetProp.slz.displayName;
+                                var slzVal = SlzAssetProp.slz.FindPropertyRelative("second").colorValue; // change to targ val type
+                                var assetVal = SlzAssetProp.asset.FindPropertyRelative("second").colorValue; // change to targ val type
+
+                                if (slzVal != assetVal) changes.ColorChanges.Add(new() { ColorName = propName, ChangedTo = assetVal });
+                            }
+                        } 
+                    }
+
+                    {
+                        // int data
+                        var SLZedit = new SerializedObject(link.SLZMat);
+                        var Assetedit = new SerializedObject(link.AssetMat);
+
+                        var slzIt = SLZedit.FindProperty("m_SavedProperties");
+                        var assetIt = Assetedit.FindProperty("m_SavedProperties");
+
+                        var slz_type_Props = slzIt.Copy().FindPropertyRelative("m_Ints")?.GetChildren();
+                        if (slz_type_Props != null)
+                        {
+                            var asset_type_Props = assetIt.Copy().FindPropertyRelative("m_Ints").GetChildren();
+                            foreach (var SlzAssetProp in slz_type_Props.Zip(asset_type_Props, (slz, asset) => (slz, asset)).Skip(1))
+                            {
+                                string propName = SlzAssetProp.slz.displayName;
+                                var slzVal = SlzAssetProp.slz.FindPropertyRelative("second").intValue; // change to targ val type
+                                var assetVal = SlzAssetProp.asset.FindPropertyRelative("second").intValue; // change to targ val type
+
+                                if (slzVal != assetVal) changes.IntChanges.Add(new() { IntName = propName, ChangedTo = assetVal });
+                            }
+                        }
+                    }
+
+                    {
+                        // float data
+                        var SLZedit = new SerializedObject(link.SLZMat);
+                        var Assetedit = new SerializedObject(link.AssetMat);
+
+                        var slzIt = SLZedit.FindProperty("m_SavedProperties");
+                        var assetIt = Assetedit.FindProperty("m_SavedProperties");
+
+                        var slz_type_Props = slzIt.Copy().FindPropertyRelative("m_Floats")?.GetChildren();
+                        if (slz_type_Props != null)
+                        {
+                            var asset_type_Props = assetIt.Copy().FindPropertyRelative("m_Floats").GetChildren();
+                            foreach (var SlzAssetProp in slz_type_Props.Zip(asset_type_Props, (slz, asset) => (slz, asset)).Skip(1))
+                            {
+                                string propName = SlzAssetProp.slz.displayName;
+                                var slzVal = SlzAssetProp.slz.FindPropertyRelative("second").floatValue; // change to targ val type
+                                var assetVal = SlzAssetProp.asset.FindPropertyRelative("second").floatValue; // change to targ val type
+
+                                if (slzVal != assetVal) changes.FloatChanges.Add(new() { FloatName = propName, ChangedTo = assetVal });
+                            }
+                        }
+                    }
+
+                    link.MatChanges = changes;
+                }
+
+                // reset the material
+                mat.shader = DefaultMat.shader;
+                mat.CopyPropertiesFromMaterial(DefaultMat);
+
+                mat.name = mat.name.Substring(0, mat.name.Length - PreviewTag.Length);
             }
         }
     }
