@@ -138,6 +138,7 @@ namespace BLPTool
         }
         private static string GetActiveFolderPath()
         {
+            return "Assets/";
             Type projectWindowUtilType = typeof(ProjectWindowUtil);
             MethodInfo getActiveFolderPath = projectWindowUtilType.GetMethod("GetActiveFolderPath", BindingFlags.Static | BindingFlags.NonPublic);
             object obj = getActiveFolderPath.Invoke(null, new object[0]);
