@@ -1,8 +1,11 @@
 ﻿using SLZ.Marrow.Zones;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+
 using UnityEditor.PackageManager;
 using UnityEditor.SceneManagement;
+#endif
 using UnityEngine;
 
 namespace BLPTool
