@@ -162,6 +162,33 @@ namespace BLPTool
             
         }
 
+        [MenuItem("CONTEXT/Material/(BLPTool) Steal Mat", true)]
+        static bool StealMatContextMenuVerifier(MenuCommand menuCommand)
+        {
+            return AssetDatabase.GetAssetPath(menuCommand.context) == "";
+        }
+
+        [MenuItem("CONTEXT/Material/(BLPTool) Steal Mat")]
+        static void StealMatContextMenu(MenuCommand menuCommand)
+        {
+            Material found = (Material)menuCommand.context;
+            Material newMat = UnityEngine.Object.Instantiate<Material>(BLPTool.DefaultMat);
+            AssetDatabase.CreateAsset(newMat, "Assets/" + found.name + ".mat");
+            var matLink = new BLPDefinitions.MatLink()
+            {
+                AssetMat = newMat,
+                SpawnerAssetGUID = MaterialDB.Instance.Data.First(d => d.MaterialNames.Contains(found.ToString())).CrateGUID,
+                SLZAssetName = found.ToString(),
+                SLZMat = found,
+            };
+            matLink.Crate = new SpawnableCrateReference(AssetWarehouse.Instance.GetCrates().First(c => c?.MainAsset?.AssetGUID == matLink.SpawnerAssetGUID).Barcode);
+
+            BLPDefinitions.Instance.Links.Add(matLink);
+            EditorGUIUtility.PingObject(newMat);
+            EditorUtility.SetDirty(BLPDefinitions.Instance);
+        }
+
+
         public const string PreviewTag = " (IN PREVIEW MODE)";
         private static Material[] s_matCache = new Material[3];
         public static Material DefaultMat => s_matCache[0] ??= AssetDatabase.LoadAssetAtPath<Material>(Path.Combine(PluginPath, "DefaultMat.mat"));
