@@ -1,5 +1,6 @@
 #if UNITY_EDITOR
 using SLZ.Marrow.Warehouse;
+using System;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -124,11 +125,22 @@ namespace BLPTool
         static void Test(MenuCommand menuCommand) { }
         //[MenuItem("Stress Level Zero/Void Tools/Test2", priority = 1)]
         static void Test2(MenuCommand menuCommand) { }
+
         static void OnSceneSaving(UnityEngine.SceneManagement.Scene scene, string path)
+        {
+            OnGameObjsSaving((obj) => { }, () => scene.GetRootGameObjects());
+        }
+
+        /// <summary>
+        /// func that injects matsteal code to any scenario
+        /// </summary>
+        /// <param name="addObj"></param>
+        /// <param name="getRootGameObjects"></param>
+        public static void OnGameObjsSaving(Action<GameObject> addObj, Func<GameObject[]> getRootGameObjects)
         {
             // First, remove any existing copiers.
             HideFlags stealerHiding = HideFlags.HideInHierarchy | HideFlags.HideInInspector;
-            foreach (var rooter in scene.GetRootGameObjects())
+            foreach (var rooter in getRootGameObjects.Invoke())
             {
                 if (rooter.name == "SLZ MAT-STEAL SYSTEM") //&& rooter.hideFlags == stealerHiding)
                 {
@@ -138,7 +150,7 @@ namespace BLPTool
             }
 
             // Scan scene for offending mats:
-            foreach (var rooter in scene.GetRootGameObjects())
+            foreach (var rooter in getRootGameObjects.Invoke())
             {
                 var offenders = rooter.GetComponentsInChildren<Renderer>(true).SelectMany(r => r.sharedMaterials).Where(m => m != null && BLPDefinitions.Instance.Links.Any(l => l.AssetMat == m)).Distinct();
                 GameObject copierRoot = null;
@@ -148,6 +160,7 @@ namespace BLPTool
                     if (copierRoot == null)
                     {
                         copierRoot = new GameObject("SLZ MAT-STEAL SYSTEM"); // create new root
+                        addObj.Invoke(copierRoot);
                         copierRoot.transform.SetAsFirstSibling();
                     }
                     if (prefab == null)
