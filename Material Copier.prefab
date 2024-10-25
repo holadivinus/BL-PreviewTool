@@ -201,7 +201,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5209532321204788927}
-  - {fileID: 782878258456415337}
   m_Father: {fileID: 4966337947959488290}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -440,30 +439,6 @@ MonoBehaviour:
     - _Target: {fileID: 4966337948216392811}
       _MethodName: Invoke
       _PersistentArguments: []
-    - _Target: {fileID: 5636182284677017986}
-      _MethodName: Invoke
-      _PersistentArguments: []
-    - _Target: {fileID: 0}
-      _MethodName: UnityEngine.Object, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null.Destroy
-      _PersistentArguments:
-      - _Type: 13
-        _Int: 0
-        _String: UnityEngine.Object, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        _X: 0
-        _Y: 0
-        _Z: 0
-        _W: 0
-        _Object: {fileID: 3604463932885669383}
-      - _Type: 5
-        _Int: 0
-        _String: 
-        _X: 3
-        _Y: 0
-        _Z: 0
-        _W: 0
-        _Object: {fileID: 0}
   _Delay: 0.1
 --- !u!114 &4305955426265928583
 MonoBehaviour:
@@ -479,90 +454,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Event:
     _PersistentCalls: []
---- !u!1 &3604463932885669383
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 782878258456415337}
-  - component: {fileID: 5636182284677017986}
-  m_Layer: 0
-  m_Name: QualityUpdatesLoop
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &782878258456415337
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3604463932885669383}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7154328562167459791}
-  m_Father: {fileID: 953335325420883339}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5636182284677017986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3604463932885669383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f574d8b2153a0d4fa15f5de878f680c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Event:
-    _PersistentCalls:
-    - _Target: {fileID: 3591067366559194571}
-      _MethodName: Invoke
-      _PersistentArguments: []
-    - _Target: {fileID: 2100000, guid: 8463e0db25bd51949a2bb18492d5e806, type: 2}
-      _MethodName: get_shader
-      _PersistentArguments: []
-    - _Target: {fileID: 2100000, guid: 60c0feddcd7608649a75a7a734d3302b, type: 2}
-      _MethodName: set_shader
-      _PersistentArguments:
-      - _Type: 15
-        _Int: 1
-        _String: UnityEngine.Shader, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        _X: 0
-        _Y: 0
-        _Z: 0
-        _W: 0
-        _Object: {fileID: 0}
-    - _Target: {fileID: 2100000, guid: 60c0feddcd7608649a75a7a734d3302b, type: 2}
-      _MethodName: CopyPropertiesFromMaterial
-      _PersistentArguments:
-      - _Type: 13
-        _Int: 0
-        _String: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        _X: 0
-        _Y: 0
-        _Z: 0
-        _W: 0
-        _Object: {fileID: 2100000, guid: 8463e0db25bd51949a2bb18492d5e806, type: 2}
-    - _Target: {fileID: 1496469450108833465}
-      _MethodName: Invoke
-      _PersistentArguments: []
-    - _Target: {fileID: 4305955426265928583}
-      _MethodName: Invoke
-      _PersistentArguments: []
-  _Delay: 0.1
 --- !u!1 &3894274964924068803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,9 +1403,7 @@ MonoBehaviour:
   - {fileID: 4966337948714140395}
   - {fileID: 4966337949540263077}
   ComparisonEvt: {fileID: 4966337949146592570}
-  IntegrationEvts:
-  - {fileID: 1496469450108833465}
-  - {fileID: 5636182284677017986}
+  IntegrationEvt: {fileID: 1496469450108833465}
   MatPropApplyEvt: {fileID: 4305955426265928583}
 --- !u!1 &4966337949146592564
 GameObject:
@@ -1818,6 +1707,14 @@ MonoBehaviour:
         _String: UnityEngine.Object, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+      - _Type: 5
+        _Int: 0
+        _String: 
+        _X: 10
         _Y: 0
         _Z: 0
         _W: 0
@@ -2437,53 +2334,3 @@ Transform:
   m_Father: {fileID: 4966337949862822491}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8429048671913955893
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7154328562167459791}
-  - component: {fileID: 3591067366559194571}
-  m_Layer: 0
-  m_Name: looop
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7154328562167459791
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8429048671913955893}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 782878258456415337}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3591067366559194571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8429048671913955893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f574d8b2153a0d4fa15f5de878f680c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Event:
-    _PersistentCalls:
-    - _Target: {fileID: 5636182284677017986}
-      _MethodName: Invoke
-      _PersistentArguments: []
-  _Delay: 0.1
