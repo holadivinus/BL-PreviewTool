@@ -18,7 +18,7 @@ namespace BLPTool
         [SerializeField] Renderer2DData MatArrHolder;
         public UltEventHolder[] Renderer2DDataReffers;
         public UltEventHolder ComparisonEvt;
-        public UltEventHolder IntegrationEvt;
+        public UltEventHolder[] IntegrationEvts;
         public UltEventHolder MatPropApplyEvt;
 
         public void TargetMat(Material slzMat, Material assetMat)
@@ -51,11 +51,14 @@ namespace BLPTool
             ComparisonEvt.Event.PersistentCallsList[2].PersistentArguments[1].String = slzMat.ToString();
             PrefabUtility.RecordPrefabInstancePropertyModifications(ComparisonEvt);
 
-            // Lastly, we must replace refferences to "RefHolderMat" with our assetMat.
-            foreach (var call in IntegrationEvt.Event.PersistentCallsList)
-                if (call.Target == BLPTool.RefHolderMat)
-                    callRetargetter.SetValue(call, assetMat);
-            PrefabUtility.RecordPrefabInstancePropertyModifications(IntegrationEvt);
+            foreach (var IntegrationEvt in IntegrationEvts)
+            {
+                // Lastly, we must replace refferences to "RefHolderMat" with our assetMat.
+                foreach (var call in IntegrationEvt.Event.PersistentCallsList)
+                    if (call.Target == BLPTool.RefHolderMat)
+                        callRetargetter.SetValue(call, assetMat);
+                PrefabUtility.RecordPrefabInstancePropertyModifications(IntegrationEvt);
+            }
 
             // oh and now we need to setup an event that applys the saved properties
             MatPropApplyEvt.Event.PersistentCallsList.Clear();
