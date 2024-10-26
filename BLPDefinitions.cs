@@ -106,8 +106,19 @@ namespace BLPTool
 
 
                         await Addressables.LoadAssetAsync<GameObject>(SpawnerAssetGUID).Task;
+                        
 
                         SLZMat = Resources.FindObjectsOfTypeAll<Material>().FirstOrDefault(m => m.ToString() == SLZAssetName && AssetDatabase.GetAssetPath(m) == "");
+
+                        // we need the original material to be rendered for full tex loading (hypthetically, lol)
+                        if (SLZMat != null)
+                        {
+                            var newGobj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                            newGobj.transform.transform.localScale = Vector3.one * .00000001f;
+                            newGobj.GetComponent<Renderer>().sharedMaterial = SLZMat;
+                            newGobj.hideFlags = HideFlags.HideAndDontSave;
+                        }
+
                         AssetMat.name = AssetMat.name.Substring(0, AssetMat.name.Length - BLPTool.PreviewTag.Length);
                     }
                 }

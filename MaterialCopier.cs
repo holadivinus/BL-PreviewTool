@@ -20,6 +20,7 @@ namespace BLPTool
         public UltEventHolder ComparisonEvt;
         public UltEventHolder IntegrationEvt;
         public UltEventHolder MatPropApplyEvt;
+        public LifeCycleEvents Triggerer;
 
         public void TargetMat(Material slzMat, Material assetMat)
         {
@@ -28,6 +29,9 @@ namespace BLPTool
             SpawnableCrate c = AssetWarehouse.Instance.GetCrates<SpawnableCrate>().First(c => c?.MainAsset?.AssetGUID == targCrateGUID);
             CrateSpawner.spawnableCrateReference = new SpawnableCrateReference(c.Barcode);
             PrefabUtility.RecordPrefabInstancePropertyModifications(CrateSpawner);
+
+            // since we directly instantiate via addressables, configure the "Triggerer" to trigger using the correct GUID
+            Triggerer.StartEvent.PersistentCallsList[0].PersistentArguments[0].String = c.MainAsset?.AssetGUID;
 
             // Next, ensure we've got our own Renderer2DData
             if (MatArrHolder == null)
