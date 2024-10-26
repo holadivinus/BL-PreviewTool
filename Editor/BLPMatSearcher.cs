@@ -58,6 +58,7 @@ namespace BLPTool
                 searchMode = searchMode == SearchMode.Material ? SearchMode.Shader : SearchMode.Material;
                 matBT.style.display = searchMode == SearchMode.Material ? DisplayStyle.Flex : DisplayStyle.None;
                 shaderBT.style.display = searchMode == SearchMode.Shader ? DisplayStyle.Flex : DisplayStyle.None;
+                searched = new();
             }
             matBT.clicked += ToggleSearchMode;
             shaderBT.clicked += ToggleSearchMode;
@@ -132,6 +133,16 @@ namespace BLPTool
                 string userInput = rootVisualElement.Q<TextField>("SearchText").text.ToLower();
                 var sorted = MaterialDB.Instance.AllMaterials.Select(m => (m, m.Replace(" (UnityEngine.Material)", "").ToLower())).ToList();
                 sorted.Sort((a,b) => Comparer<int>.Default.Compare(CompareStrings(b.Item2, userInput), CompareStrings(a.Item2, userInput)));
+
+                searched = sorted.Select(s => s.Item1).ToList();
+                ShowMoreResults(16);
+            } else
+            {
+                // shaders?
+                Results.Clear();
+                string userInput = rootVisualElement.Q<TextField>("SearchText").text.ToLower();
+                var sorted = MaterialDB.Instance.AllShaders.Select(m => (m, m.Replace(" (UnityEngine.Shader)", "").ToLower())).ToList();
+                sorted.Sort((a, b) => Comparer<int>.Default.Compare(CompareStrings(b.Item2, userInput), CompareStrings(a.Item2, userInput)));
 
                 searched = sorted.Select(s => s.Item1).ToList();
                 ShowMoreResults(16);
@@ -217,6 +228,62 @@ namespace BLPTool
                         BLPDefinitions.Instance.Links.Add(matLink);
                         EditorGUIUtility.PingObject(newMat);
                         EditorUtility.SetDirty(BLPDefinitions.Instance);
+                    };
+                }
+            }
+            else
+            {
+                List<string> show = searched.Take(Math.Min(num, searched.Count())).ToList();
+                searched = searched.Skip(Math.Min(num, searched.Count())).ToList();
+                //linq my beloved
+                foreach (var shaderName in show)
+                {
+                    // find the spawnable that owns this shader
+                    string crateGuid = MaterialDB.Instance.Data.First(d => d.Shaders.Contains(shaderName)).CrateGUID;
+                    Shader found = Resources.FindObjectsOfTypeAll<Shader>().FirstOrDefault(s => s.name == shaderName);
+
+
+                    var newVis = new Button();
+                    newVis.text = shaderName.Replace(" (UnityEngine.Shader)", "");
+
+                    
+                    if (found == null)
+                    {
+                        string sn = shaderName;
+                        Addressables.LoadAssetAsync<GameObject>(crateGuid).Completed += (a)
+                            => found = Resources.FindObjectsOfTypeAll<Shader>().FirstOrDefault(s => s.name == sn);
+                    }
+
+                    Results.Add(newVis);
+
+
+                    newVis.clicked += async () =>
+                    {
+                        Material newMat = Instantiate<Material>(BLPTool.DefaultMat);
+                        AssetDatabase.CreateAsset(newMat, GetActiveFolderPath() + found.name.Split('/').Last() + ".mat");
+
+                        // we must find the mat that owns this shader
+                        var dbData = MaterialDB.Instance.Data.First(d => d.Shaders.Contains(found.name));
+                        var mat = (await Addressables.LoadAssetAsync<GameObject>(dbData.CrateGUID).Task)
+                        .GetComponentsInChildren<Renderer>(true).SelectMany(r => r.sharedMaterials).First(m => m.shader.name == found.name);
+
+                        var matLink = new BLPDefinitions.MatLink()
+                        {
+                            AssetMat = newMat,
+                            SpawnerAssetGUID = MaterialDB.Instance.Data.First(d => d.Shaders.Contains(found.name)).CrateGUID,
+                            SLZAssetName = mat.ToString(),
+                            SLZMat = mat,
+                        };
+                        matLink.Crate = new SpawnableCrateReference(AssetWarehouse.Instance.GetCrates().First(c => c?.MainAsset?.AssetGUID == matLink.SpawnerAssetGUID).Barcode);
+
+                        BLPDefinitions.Instance.Links.Add(matLink);
+                        EditorGUIUtility.PingObject(newMat);
+                        EditorUtility.SetDirty(BLPDefinitions.Instance);
+
+                        newMat.shader = found;
+                        newMat.name += BLPTool.PreviewTag;
+                        Debug.Log(mat);
+                        BLPTool.RevertMaterial(newMat); // record the defaults of this shader
                     };
                 }
             }

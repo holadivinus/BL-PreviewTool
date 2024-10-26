@@ -113,6 +113,8 @@ namespace BLPTool
             get => EditorPrefs.GetBool("BLPTOOL_PreviewDefault", true);
             set => EditorPrefs.SetBool("BLPTOOL_PreviewDefault", value);
         }
+
+
         [MenuItem("Stress Level Zero/Void Tools/(BLPTool) Auto Preview Spawners?", priority = 1)]
         static void PreviewDefaultToggle(UnityEditor.MenuCommand menuCommand)
         {
@@ -175,6 +177,8 @@ namespace BLPTool
             
         }
 
+
+
         [MenuItem("CONTEXT/Material/(BLPTool) Steal Mat", true)]
         static bool StealMatContextMenuVerifier(MenuCommand menuCommand)
         {
@@ -187,14 +191,26 @@ namespace BLPTool
             Material found = (Material)menuCommand.context;
             Material newMat = UnityEngine.Object.Instantiate<Material>(BLPTool.DefaultMat);
             AssetDatabase.CreateAsset(newMat, "Assets/" + found.name + ".mat");
+
+            // find the spawner that's using this mat
+            CrateSpawner spawner = Resources.FindObjectsOfTypeAll<CrateSpawner>()
+                                            .FirstOrDefault(p => p?.spawnableCrateReference?.Crate?.MainAsset?.AssetGUID != null
+                                                              && p.GetComponentsInChildren<Renderer>(true).SelectMany(r => r.sharedMaterials)
+                                                                                                      .Any(m => m == found));
+            if (spawner == null)
+            {
+                Debug.Log($"Error, material \"{found.name}\" couldn't be copied: source spawner not found in scene.");
+                return;
+            }
+
             var matLink = new BLPDefinitions.MatLink()
             {
                 AssetMat = newMat,
-                SpawnerAssetGUID = MaterialDB.Instance.Data.First(d => d.MaterialNames.Contains(found.ToString())).CrateGUID,
+                SpawnerAssetGUID = spawner.spawnableCrateReference.Crate.MainAsset.AssetGUID,
                 SLZAssetName = found.ToString(),
                 SLZMat = found,
             };
-            matLink.Crate = new SpawnableCrateReference(AssetWarehouse.Instance.GetCrates().First(c => c?.MainAsset?.AssetGUID == matLink.SpawnerAssetGUID).Barcode);
+            matLink.Crate = new SpawnableCrateReference(spawner.spawnableCrateReference.Crate.Barcode);
 
             BLPDefinitions.Instance.Links.Add(matLink);
             EditorGUIUtility.PingObject(newMat);
@@ -221,7 +237,7 @@ namespace BLPTool
             {
                 // save mat data to BLPDefinition
                 var link = BLPDefinitions.Instance.Links.FirstOrDefault(l => l.AssetMat == mat);
-                if (link != null && link.SLZMat != null && link.AssetMat.shader == link.SLZMat.shader)
+                if (link != null && link.SLZMat != null && link.AssetMat.shader.name == link.SLZMat.shader.name)
                 {
                     //we need to note changes between the AssetMat and SLZMat.
                     BLPDefinitions.MatLink.Changes changes = new();
