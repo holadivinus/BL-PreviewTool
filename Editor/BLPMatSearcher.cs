@@ -282,7 +282,6 @@ namespace BLPTool
 
                         newMat.shader = found;
                         newMat.name += BLPTool.PreviewTag;
-                        Debug.Log(mat);
                         BLPTool.RevertMaterial(newMat); // record the defaults of this shader
                     };
                 }
