@@ -27,19 +27,22 @@ namespace BLPTool
         private static string[] OnWillSaveAssets(string[] paths)
         {
             foreach (var savePath in paths)
-                if (savePath.EndsWith(".mat"))
-                    BLPTool.RevertMaterial(AssetDatabase.LoadAssetAtPath<Material>(savePath));
-                else if (savePath.EndsWith(".prefab"))
+                try
                 {
-                    GameObject prefabRoot = PrefabStageUtility.GetCurrentPrefabStage().prefabContentsRoot;
-                    BLPTool.OnGameObjsSaving((newObj) => newObj.transform.parent = prefabRoot.transform, () =>
+                    if (savePath.EndsWith(".mat"))
+                        BLPTool.RevertMaterial(AssetDatabase.LoadAssetAtPath<Material>(savePath));
+                    else if (savePath.EndsWith(".prefab"))
                     {
-                        var childs = new GameObject[prefabRoot.transform.childCount];
-                        for (global::System.Int32 i = 0; i < prefabRoot.transform.childCount; i++)
-                            childs[i] = prefabRoot.transform.GetChild(i).gameObject;
-                        return childs;
-                    });
-                }
+                        GameObject prefabRoot = PrefabStageUtility.GetCurrentPrefabStage().prefabContentsRoot;
+                        BLPTool.OnGameObjsSaving((newObj) => newObj.transform.parent = prefabRoot.transform, () =>
+                        {
+                            var childs = new GameObject[prefabRoot.transform.childCount];
+                            for (global::System.Int32 i = 0; i < prefabRoot.transform.childCount; i++)
+                                childs[i] = prefabRoot.transform.GetChild(i).gameObject;
+                            return childs;
+                        });
+                    }
+                } catch { }
             return paths;
         }
     }
