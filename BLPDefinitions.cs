@@ -117,6 +117,7 @@ namespace BLPTool
                             newGobj.transform.transform.localScale = Vector3.one * .00000001f;
                             newGobj.GetComponent<Renderer>().sharedMaterial = SLZMat;
                             newGobj.hideFlags = HideFlags.HideAndDontSave;
+                            newGobj.AddComponent<CamStalk>();
                         }
 
                         AssetMat.name = AssetMat.name.Substring(0, AssetMat.name.Length - BLPTool.PreviewTag.Length);

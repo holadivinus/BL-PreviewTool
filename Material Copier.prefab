@@ -1757,6 +1757,7 @@ MonoBehaviour:
   - {fileID: 4966337948672227849}
   - {fileID: 4966337948714140395}
   - {fileID: 4966337949540263077}
+  StartEvent: {fileID: 923987689314760015}
   ComparisonEvt: {fileID: 4966337949146592570}
   IntegrationEvt: {fileID: 1496469450108833465}
   MatPropApplyEvt: {fileID: 4305955426265928583}
@@ -2081,7 +2082,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _AwakeEvent:
-    _PersistentCalls: []
+    _PersistentCalls:
+    - _Target: {fileID: 2100000, guid: 60c0feddcd7608649a75a7a734d3302b, type: 2}
+      _MethodName: set_name
+      _PersistentArguments:
+      - _Type: 2
+        _Int: 0
+        _String: pastemat
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
   _StartEvent:
     _PersistentCalls:
     - _Target: {fileID: 0}

@@ -17,6 +17,7 @@ namespace BLPTool
         public CrateSpawner CrateSpawner;
         [SerializeField] Renderer2DData MatArrHolder;
         public UltEventHolder[] Renderer2DDataReffers;
+        public LifeCycleEvents StartEvent;
         public UltEventHolder ComparisonEvt;
         public UltEventHolder IntegrationEvt;
         public UltEventHolder MatPropApplyEvt;
@@ -50,6 +51,10 @@ namespace BLPTool
                         callRetargetter.SetValue(call, MatArrHolder);
                 PrefabUtility.RecordPrefabInstancePropertyModifications(evt);
             }
+
+            callRetargetter.SetValue(StartEvent.AwakeEvent.PersistentCallsList[0], assetMat);
+            PrefabUtility.RecordPrefabInstancePropertyModifications(StartEvent);
+
 
             // we must update our comparison event to look for this slz mat
             ComparisonEvt.Event.PersistentCallsList[2].PersistentArguments[1].String = slzMat.ToString();
