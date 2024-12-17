@@ -42,17 +42,6 @@ namespace BLPTool
             Menu.SetChecked("Stress Level Zero/Void Tools/(BLPTool) Auto Preview Spawners?", PreviewDefault);
         }
         
-        [UnityEditor.Callbacks.DidReloadScripts]
-        private static async void ReloadUsedCrates()
-        {
-            await Task.Delay(3000);
-            foreach (var link in BLPDefinitions.Instance.Links)
-            {
-                link.SourceLoaded = await Addressables.LoadAssetAsync<GameObject>(link.SpawnerAssetGUID).Task;
-            }  
-            Debug.Log("Reloaded all MatLink Prefabs!");
-        }
-
         static bool setupMats = false;
         static void OnUpdate() // terrible code tbh
         {
@@ -181,6 +170,7 @@ namespace BLPTool
             }
 
             // Scan scene for offending mats:
+            MaterialCopier.SaveDelays.Clear();
             foreach (var rooter in getRootGameObjects.Invoke())
             {
                 var offenders = rooter.GetComponentsInChildren<Renderer>(true).SelectMany(r => r.sharedMaterials).Where(m => m != null && BLPDefinitions.Instance.Links.Any(l => l.AssetMat == m)).Distinct();
@@ -203,9 +193,27 @@ namespace BLPTool
                     // copier for the offending mat is now set up!
                 }
             }
-            
+            if (MaterialCopier.SaveDelays.Count > 0) 
+                SlowSaveFollowup();
         }
-
+        private static async void SlowSaveFollowup()
+        {
+            EditorUtility.DisplayProgressBar("This usually happens on first load or Recompilation.", "Loading required SLZ Crates for Mats...", 0);
+            int c = 0;
+            int m = MaterialCopier.SaveDelays.Count;
+            foreach (var t in MaterialCopier.SaveDelays)
+            {
+                t.GetAwaiter().OnCompleted(() => 
+                {
+                    c++;
+                    EditorUtility.DisplayProgressBar("This usually happens on first load or Recompilation.", "Loading required SLZ Crates for Mats...", c/(float)m);
+                });
+            }
+            await Task.WhenAll(MaterialCopier.SaveDelays);
+            EditorUtility.ClearProgressBar();
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+            EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
+        }
 
 
         [MenuItem("CONTEXT/Material/(BLPTool) Steal Mat", true)]

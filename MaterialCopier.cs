@@ -2,9 +2,11 @@ using JetBrains.Annotations;
 using SLZ.Marrow.Utilities;
 using SLZ.Marrow.Warehouse;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using UltEvents;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -48,12 +50,13 @@ namespace BLPTool
             }
             return path;
         }
-        private async void SlowSave(BLPDefinitions.MatLink link)
+        private async Task SlowSave(BLPDefinitions.MatLink link)
         {
             link.SourceLoaded = await Addressables.LoadAssetAsync<GameObject>(link.SpawnerAssetGUID).Task;
             Debug.Log("Loaded Required Data for " + link.SLZAssetName + ", Save the level again now!");
             EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         }
+        public static List<Task> SaveDelays = new();
         public void TargetMat(Material slzMat, Material assetMat)
         {
             // first figure out what crate makes this mat
@@ -70,7 +73,7 @@ namespace BLPTool
             if (object.ReferenceEquals(spawnedGobj, null)) 
             {
                 Debug.LogError("Couldn't load required data for " + llink.SLZAssetName + "! Please wait for load, then save.");
-                SlowSave(llink); 
+                SaveDelays.Add(SlowSave(llink)); 
                 DestroyImmediate(transform.parent.gameObject);
                 return; 
             }
