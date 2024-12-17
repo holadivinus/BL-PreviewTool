@@ -52,7 +52,7 @@ namespace BLPTool
         private async Task SlowSave(BLPDefinitions.MatLink link)
         {
             link.SourceLoaded = await Addressables.LoadAssetAsync<GameObject>(link.SpawnerAssetGUID).Task;
-            Debug.Log("Loaded Required Data for " + link.SLZAssetName + ", Save the level again now!");
+            //Debug.Log("Loaded Required Data for " + link.SLZAssetName + ", Save the level again now!");
             EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         }
         public static List<Task> SaveDelays = new();
@@ -71,7 +71,7 @@ namespace BLPTool
             GameObject spawnedGobj = llink.SourceLoaded; 
             if (object.ReferenceEquals(spawnedGobj, null)) 
             {
-                Debug.LogError("Couldn't load required data for " + llink.SLZAssetName + "! Please wait for load, then save.");
+                //Debug.LogError("Couldn't load required data for " + llink.SLZAssetName + "! Please wait for load, then save.");
                 SaveDelays.Add(SlowSave(llink)); 
                 DestroyImmediate(transform.parent.gameObject);
                 return; 

@@ -213,6 +213,17 @@ namespace BLPTool
             EditorUtility.ClearProgressBar();
             EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
             EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
+
+            PrefabStage currentPrefabStage = PrefabStageUtility.GetCurrentPrefabStage();
+
+            if (currentPrefabStage != null)
+            {
+                // Mark the prefab contents root dirty
+                EditorUtility.SetDirty(currentPrefabStage.prefabContentsRoot);
+
+                // Save the prefab stage 
+                PrefabUtility.SaveAsPrefabAsset(currentPrefabStage.prefabContentsRoot, currentPrefabStage.assetPath);
+            }
         }
 
 
