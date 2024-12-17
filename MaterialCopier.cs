@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using UltEvents;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering.Universal;
@@ -47,7 +48,12 @@ namespace BLPTool
             }
             return path;
         }
-
+        private async void SlowSave(BLPDefinitions.MatLink link)
+        {
+            link.SourceLoaded = await Addressables.LoadAssetAsync<GameObject>(link.SpawnerAssetGUID).Task;
+            Debug.Log("Loaded Required Data for " + link.SLZAssetName + ", Save the level again now!");
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+        }
         public void TargetMat(Material slzMat, Material assetMat)
         {
             // first figure out what crate makes this mat
@@ -61,7 +67,13 @@ namespace BLPTool
             // at this point we're saving the scene that had a stubbed in mat, meaning it's garuanteed a matlink has the spawned prefab.
             var llink = BLPDefinitions.Instance.Links.FirstOrDefault(l => l.AssetMat == assetMat);
             GameObject spawnedGobj = llink.SourceLoaded; 
-            if (object.ReferenceEquals(spawnedGobj, null)) { return; }
+            if (object.ReferenceEquals(spawnedGobj, null)) 
+            {
+                Debug.LogError("Couldn't load required data for " + llink.SLZAssetName + "! Please wait for load, then save.");
+                SlowSave(llink); 
+                DestroyImmediate(transform.parent.gameObject);
+                return; 
+            }
 
             // find the renderer using the slzMat 
             Renderer r = spawnedGobj.GetComponentsInChildren<Renderer>(true).FirstOrDefault(mr => mr.sharedMaterials.Any(sr => sr.ToString() == slzMat.ToString()));                                                        
