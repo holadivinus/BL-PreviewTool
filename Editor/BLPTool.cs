@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using SLZ.Marrow.Warehouse;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,14 +32,14 @@ namespace BLPTool
             Client.Add("https://github.com/holadivinus/BLXRComp.git");
 
             EditorApplication.update += OnUpdate;
-            AssetBundle.UnloadAllAssetBundles(false);
+            AssetBundle.UnloadAllAssetBundles(true);
             SceneView.duringSceneGui += DuringSceneGui;
             EditorSceneManager.sceneSaving += OnSceneSaving;
-
+            
             foreach (var item in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
                 if (item != null && item.GetComponent<MeshRenderer>())
                     item.GetComponent<MeshRenderer>().enabled = true;
-
+            
             Menu.SetChecked("Stress Level Zero/Void Tools/(BLPTool) Auto Preview Spawners?", PreviewDefault);
         }
         
@@ -46,6 +47,8 @@ namespace BLPTool
         static void OnUpdate() // terrible code tbh
         {
             if (Application.isPlaying) return;
+
+            // Deselect Preview's children if ExplorablePreview off
             UnityEngine.Object[] selecteds = Selection.objects.ToArray();
             bool changed = false;
             for (int i = 0; i < selecteds.Length; i++)
@@ -59,24 +62,30 @@ namespace BLPTool
                 }
             }
             if (changed) Selection.objects = selecteds;
+
+            // Attach CratePreview to CrateSpawners
             foreach (CrateSpawner spawner in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
             {
                 CratePreview previewer = spawner.GetComponent<CratePreview>();
                 if (previewer == null) spawner.gameObject.AddComponent<CratePreview>();
             }
+
+            // Remove invalid MatLinks, force previewing
             foreach (var matLink in BLPDefinitions.Instance.Links.ToArray())
             {
                 if (matLink.AssetMat == null)
                 {
                     BLPDefinitions.Instance.Links.Remove(matLink);
                     EditorUtility.SetDirty(BLPDefinitions.Instance);
-                    return;
+                    continue;
                 }
                 if (!matLink.AssetMat.name.EndsWith(PreviewTag))
                 {
                     matLink.Preview();
                 }
             }
+
+            // reset mats on AssetWarehouse.ready
             if (AssetWarehouse.ready && !setupMats)
             {
                 setupMats = true;
@@ -171,35 +180,35 @@ namespace BLPTool
 
             // Scan scene for offending mats:
             MaterialCopier.SaveDelays.Clear();
-            foreach (var rooter in getRootGameObjects.Invoke())
+            var offenders = getRootGameObjects.Invoke().SelectMany(r => r.GetComponentsInChildren<Renderer>(true)).SelectMany(r => r.sharedMaterials).Where(m => m != null && BLPDefinitions.Instance.Links.Any(l => l.AssetMat == m)).Distinct().ToList();
+            GameObject copierRoot = null;
+            GameObject prefab = null;
+            foreach (var assetMat in offenders)
             {
-                var offenders = rooter.GetComponentsInChildren<Renderer>(true).SelectMany(r => r.sharedMaterials).Where(m => m != null && BLPDefinitions.Instance.Links.Any(l => l.AssetMat == m)).Distinct();
-                GameObject copierRoot = null;
-                GameObject prefab = null;
-                foreach (var assetMat in offenders)
+                if (copierRoot == null)
                 {
-                    if (copierRoot == null)
-                    {
-                        copierRoot = new GameObject("SLZ MAT-STEAL SYSTEM"); // create new root
-                        addObj.Invoke(copierRoot);
-                        copierRoot.transform.SetAsFirstSibling();
-                    }
-                    if (prefab == null)
-                        prefab = AssetDatabase.LoadAssetAtPath<GameObject>(BLPTool.PluginPath + "Material Copier.prefab");
-
-                    GameObject newCopier = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
-                    newCopier.transform.SetParent(copierRoot.transform);
-                    newCopier.GetComponent<MaterialCopier>().TargetMat(BLPDefinitions.Instance.Links.First(l => l.AssetMat == assetMat).SLZMat, assetMat);
-                    // copier for the offending mat is now set up!
+                    copierRoot = new GameObject("SLZ MAT-STEAL SYSTEM"); // create new root
+                    addObj.Invoke(copierRoot);
+                    copierRoot.transform.SetAsFirstSibling();
                 }
+                if (prefab == null)
+                    prefab = AssetDatabase.LoadAssetAtPath<GameObject>(BLPTool.PluginPath + "Material Copier.prefab");
+
+                GameObject newCopier = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+                newCopier.transform.SetParent(copierRoot.transform);
+                newCopier.GetComponent<MaterialCopier>().TargetMat(BLPDefinitions.Instance.Links.First(l => l.AssetMat == assetMat).SLZMat, assetMat);
+                // copier for the offending mat is now set up!
             }
+            
             if (MaterialCopier.SaveDelays.Count > 0) 
                 SlowSaveFollowup();
         }
         private static async void SlowSaveFollowup()
         {
-            EditorUtility.DisplayProgressBar("Loading required SLZ Crates for Mats...", "This usually happens on first load or Recompilation.", 0);
-            int c = 0;
+            // I liked the loading bar, but if 1 error occurs unity just makes it run for infinity.
+            // so no progress bar for anyone yippee
+            //EditorUtility.DisplayProgressBar("Loading required SLZ Crates for Mats...", "This usually happens on first load or Recompilation.", 0);
+            /*int c = 0;
             int m = MaterialCopier.SaveDelays.Count;
             foreach (var t in MaterialCopier.SaveDelays)
             {
@@ -207,20 +216,24 @@ namespace BLPTool
                 {
                     c++;
                     EditorUtility.DisplayProgressBar("Loading required SLZ Crates for Mats...", "This usually happens on first load or Recompilation.", c/(float)m);
-                });
-            }
+                    if (c == m)
+                        EditorUtility.ClearProgressBar();
+                }); 
+            }*/
             await Task.WhenAll(MaterialCopier.SaveDelays);
-            EditorUtility.ClearProgressBar();
+            //EditorUtility.ClearProgressBar();
+
+
+            // Scene Re-save
             EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
             EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
 
+            // Prefab Re-save
             PrefabStage currentPrefabStage = PrefabStageUtility.GetCurrentPrefabStage();
-
             if (currentPrefabStage != null)
             {
                 // Mark the prefab contents root dirty
                 EditorUtility.SetDirty(currentPrefabStage.prefabContentsRoot);
-
                 // Save the prefab stage 
                 PrefabUtility.SaveAsPrefabAsset(currentPrefabStage.prefabContentsRoot, currentPrefabStage.assetPath);
             }

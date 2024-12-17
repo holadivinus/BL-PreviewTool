@@ -58,6 +58,8 @@ namespace BLPTool
         public static List<Task> SaveDelays = new();
         public void TargetMat(Material slzMat, Material assetMat)
         {
+            gameObject.name = assetMat.name + " ctor";
+
             // first figure out what crate makes this mat
             string targCrateGUID = MaterialDB.Instance.Data.First(d => d.MaterialNames.Contains(slzMat.ToString())).CrateGUID;
             SpawnableCrate c = AssetWarehouse.Instance.GetCrates<SpawnableCrate>().First(c => c?.MainAsset?.AssetGUID == targCrateGUID);

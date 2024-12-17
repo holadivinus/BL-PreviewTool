@@ -42,7 +42,7 @@ namespace BLPTool
         {
             if (CrateSpawner == null)
             {
-                DestroyImmediate(this);
+                DestroyImmediate(this, true);
                 return;
             }
             if (_lastID != SpawnerGUID || _curPreview == null) // update / load preview
@@ -55,7 +55,7 @@ namespace BLPTool
                 if (SpawnerGUID == string.Empty)
                 {
                     if (_curPreview != null)
-                        DestroyImmediate(_curPreview);
+                        DestroyImmediate(_curPreview, true);
                     if (CrateMeshRenderer != null)
                         CrateMeshRenderer.enabled = true;
                     _lastID = SpawnerGUID;
@@ -94,12 +94,12 @@ namespace BLPTool
             {
                 //delete other previews 
                 if (transform.GetChild(i).name == "Preview")
-                    DestroyImmediate(transform.GetChild(i).gameObject);
+                    DestroyImmediate(transform.GetChild(i).gameObject, true);
             }
             if (CrateMeshRenderer) CrateMeshRenderer.enabled = true;
         }
 
-        public static bool InDrag;
+        public static bool InDrag; 
         public static List<Collider> DraggedCols = new();
         void OnLoad(AsyncOperationHandle<GameObject> op)
         {
@@ -115,7 +115,7 @@ namespace BLPTool
             {
                 //delete other previews
                 if (transform.GetChild(i) != _curPreview.transform && transform.GetChild(i).gameObject.name == "Preview")
-                    DestroyImmediate(transform.GetChild(i).gameObject);
+                    DestroyImmediate(transform.GetChild(i).gameObject, true);
             }
             spawn.transform.parent = _curPreview.transform;
             spawn.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
@@ -133,7 +133,7 @@ namespace BLPTool
         private void OnDestroy()
         {
             if (_curPreview != null)
-                DestroyImmediate(_curPreview);
+                DestroyImmediate(_curPreview, true);
         }
 #endif
     }
