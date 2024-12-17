@@ -3,9 +3,12 @@ using SLZ.Marrow.Warehouse;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEditor;
+using UnityEditor.PackageManager;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace BLPTool
 {
@@ -23,18 +26,31 @@ namespace BLPTool
             }
         }
         static BLPTool()
-        { 
+        {
+            // Ensure XR Package
+            Client.Add("https://github.com/holadivinus/BLXRComp.git");
+
             EditorApplication.update += OnUpdate;
             AssetBundle.UnloadAllAssetBundles(false);
             SceneView.duringSceneGui += DuringSceneGui;
             EditorSceneManager.sceneSaving += OnSceneSaving;
-
 
             foreach (var item in UnityEngine.Object.FindObjectsOfType<CrateSpawner>(true))
                 if (item != null && item.GetComponent<MeshRenderer>())
                     item.GetComponent<MeshRenderer>().enabled = true;
 
             Menu.SetChecked("Stress Level Zero/Void Tools/(BLPTool) Auto Preview Spawners?", PreviewDefault);
+        }
+        
+        [UnityEditor.Callbacks.DidReloadScripts]
+        private static async void ReloadUsedCrates()
+        {
+            await Task.Delay(3000);
+            foreach (var link in BLPDefinitions.Instance.Links)
+            {
+                link.SourceLoaded = await Addressables.LoadAssetAsync<GameObject>(link.SpawnerAssetGUID).Task;
+            }  
+            Debug.Log("Reloaded all MatLink Prefabs!");
         }
 
         static bool setupMats = false;
@@ -124,7 +140,20 @@ namespace BLPTool
                 item.enabled = BLPTool.PreviewDefault;
         }
         //[MenuItem("Stress Level Zero/Void Tools/Test", priority = 1)]
-        static void Test(MenuCommand menuCommand) { }
+        static void Test(MenuCommand menuCommand) 
+        {
+            var ts = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes())
+                .Where(t => t.IsSubclassOf(typeof(Component)) || t.IsSubclassOf(typeof(ScriptableObject)));
+            foreach (var t in ts)
+            {
+                foreach (var prop in t.GetProperties())
+                {
+                    if (prop.PropertyType.IsSubclassOf(typeof(UnityEngine.Object)))
+                        Debug.Log(prop.DeclaringType.Name + ": " + prop.Name + " : " + prop.PropertyType.Name);
+                }
+            }
+
+        }
         //[MenuItem("Stress Level Zero/Void Tools/Test2", priority = 1)]
         static void Test2(MenuCommand menuCommand) { }
 

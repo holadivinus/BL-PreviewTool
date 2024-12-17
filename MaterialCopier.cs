@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using SLZ.Marrow.Utilities;
 using SLZ.Marrow.Warehouse;
 using System;
 using System.IO;
@@ -6,6 +8,7 @@ using System.Reflection;
 using UltEvents;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering.Universal;
 
 namespace BLPTool
@@ -14,14 +17,36 @@ namespace BLPTool
     public class MaterialCopier : MonoBehaviour
     {
 #if UNITY_EDITOR
+        private static Assembly _xrAssmb;
+        public static Assembly XRAssembly => _xrAssmb ??= AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(ass => ass.FullName.StartsWith("Unity.XR.Interaction.Toolkit"));
+        public static Type GetExtType(string name, Assembly ass = null)
+        {
+            ass ??= XRAssembly;
+            if (ass == null)
+                return null;
+            foreach (Type t in ass.GetTypes())
+                try
+                {
+                    if (t.Name == name) return t;
+                }
+                catch (TypeLoadException) { }
+            return null;
+        }
+        public static Type XRType = GetExtType("XRInteractorAffordanceStateProvider");
+
         public CrateSpawner CrateSpawner;
-        [SerializeField] Renderer2DData MatArrHolder;
-        public UltEventHolder[] Renderer2DDataReffers;
-        public LifeCycleEvents StartEvent;
-        public UltEventHolder ComparisonEvt;
-        public UltEventHolder IntegrationEvt;
-        public UltEventHolder MatPropApplyEvt;
-        public LifeCycleEvents Triggerer;
+        public UltEventHolder MatPropApplyEvt; 
+
+        private static string GetPath(GameObject go)
+        {
+            string path = go.name;
+            while (go.transform.parent != null)
+            {
+                go = go.transform.parent.gameObject;
+                path = $"{go.name}/{path}";
+            }
+            return path;
+        }
 
         public void TargetMat(Material slzMat, Material assetMat)
         {
@@ -31,42 +56,32 @@ namespace BLPTool
             CrateSpawner.spawnableCrateReference = new SpawnableCrateReference(c.Barcode);
             PrefabUtility.RecordPrefabInstancePropertyModifications(CrateSpawner);
 
-            // since we directly instantiate via addressables, configure the "Triggerer" to trigger using the correct GUID
-            Triggerer.StartEvent.PersistentCallsList[0].PersistentArguments[0].String = c.MainAsset?.AssetGUID;
 
-            // Next, ensure we've got our own Renderer2DData
-            if (MatArrHolder == null)
+            // next get the ""spawned"" prefab
+            // at this point we're saving the scene that had a stubbed in mat, meaning it's garuanteed a matlink has the spawned prefab.
+            var llink = BLPDefinitions.Instance.Links.FirstOrDefault(l => l.AssetMat == assetMat);
+            GameObject spawnedGobj = llink.SourceLoaded; 
+            if (object.ReferenceEquals(spawnedGobj, null)) { return; }
+
+            // find the renderer using the slzMat 
+            Renderer r = spawnedGobj.GetComponentsInChildren<Renderer>(true).FirstOrDefault(mr => mr.sharedMaterials.Any(sr => sr.ToString() == slzMat.ToString()));                                                        
+            slzMat = r.sharedMaterials.FirstOrDefault(mat => mat.ToString() == slzMat.ToString());
+            if (object.ReferenceEquals(r, null)) { return; }
+
+            // make all those ults get the right gobj
+            CrateSpawner.onSpawnEvent.PersistentCallsList[1].PersistentArguments[0].String = "/{0}" + GetPath(r.gameObject).Substring(GetPath(spawnedGobj).Length);
+
+            // get the correct shared mat idx from the renderer
+            CrateSpawner.onSpawnEvent.PersistentCallsList[29].PersistentArguments[1].Int = Array.IndexOf(r.sharedMaterials, slzMat);
+
+            // replace instances of "RefHolderMat" with asset mat
+            foreach (PersistentCall pcall in CrateSpawner.onSpawnEvent.PersistentCallsList)
             {
-                MatArrHolder = ScriptableObject.CreateInstance<Renderer2DData>();
-                if (!Directory.Exists("Assets/BLPTool/MatScan Storages/")) Directory.CreateDirectory("Assets/BLPTool/MatScan Storages/");
-                AssetDatabase.CreateAsset(MatArrHolder, "Assets/BLPTool/MatScan Storages/" + GUID.Generate().ToString() + ".asset");
-                PrefabUtility.RecordPrefabInstancePropertyModifications(this);
+                if (pcall.Target == BLPTool.RefHolderMat) 
+                    callRetargetter.SetValue(pcall, assetMat);
             }
 
-            // Lots of our events need an up-to-date refference to the Renderer2DData.
-            foreach (var evt in Renderer2DDataReffers) 
-            {
-                foreach (var call in evt.Event.PersistentCallsList)
-                    if (call.Target.GetType() == typeof(Renderer2DData))
-                        callRetargetter.SetValue(call, MatArrHolder);
-                PrefabUtility.RecordPrefabInstancePropertyModifications(evt);
-            }
-
-            callRetargetter.SetValue(StartEvent.AwakeEvent.PersistentCallsList[0], assetMat);
-            PrefabUtility.RecordPrefabInstancePropertyModifications(StartEvent);
-
-
-            // we must update our comparison event to look for this slz mat
-            ComparisonEvt.Event.PersistentCallsList[2].PersistentArguments[1].String = slzMat.ToString();
-            PrefabUtility.RecordPrefabInstancePropertyModifications(ComparisonEvt);
-
-            // Lastly, we must replace refferences to "RefHolderMat" with our assetMat.
-            foreach (var call in IntegrationEvt.Event.PersistentCallsList)
-                if (call.Target == BLPTool.RefHolderMat)
-                    callRetargetter.SetValue(call, assetMat);
-            PrefabUtility.RecordPrefabInstancePropertyModifications(IntegrationEvt);
-
-            // oh and now we need to setup an event that applys the saved properties
+            // decorate paste mat
             MatPropApplyEvt.Event.PersistentCallsList.Clear();
             var link = BLPDefinitions.Instance.Links.First(l => l.AssetMat == assetMat);
             if (link.MatChanges != null)
@@ -135,8 +150,6 @@ namespace BLPTool
 
                 PrefabUtility.RecordPrefabInstancePropertyModifications(MatPropApplyEvt);
             }
-
-            // Okay, it should steal and setup the texture properly now.
         }
 
         private void Update()

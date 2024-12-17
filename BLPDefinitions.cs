@@ -94,6 +94,8 @@ namespace BLPTool
             }
             [SerializeField] public Changes MatChanges;
 
+            [NonSerialized] public GameObject SourceLoaded;
+
             public async void Preview()
             {
                 if (SLZMat == null)
@@ -105,7 +107,7 @@ namespace BLPTool
                             AssetMat.name += BLPTool.PreviewTag; // do this, so that we Preview() isn't called 6000 times
 
 
-                        await Addressables.LoadAssetAsync<GameObject>(SpawnerAssetGUID).Task;
+                        SourceLoaded = await Addressables.LoadAssetAsync<GameObject>(SpawnerAssetGUID).Task;
                         
 
                         SLZMat = Resources.FindObjectsOfTypeAll<Material>().FirstOrDefault(m => m.ToString() == SLZAssetName && AssetDatabase.GetAssetPath(m) == "");
