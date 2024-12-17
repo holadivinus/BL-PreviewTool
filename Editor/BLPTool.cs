@@ -180,7 +180,8 @@ namespace BLPTool
 
             // Scan scene for offending mats:
             MaterialCopier.SaveDelays.Clear();
-            var offenders = getRootGameObjects.Invoke().SelectMany(r => r.GetComponentsInChildren<Renderer>(true)).SelectMany(r => r.sharedMaterials).Where(m => m != null && BLPDefinitions.Instance.Links.Any(l => l.AssetMat == m)).Distinct().ToList();
+            //also if scene ignore prefab mats
+            var offenders = getRootGameObjects.Invoke().SelectMany(r => r.GetComponentsInChildren<Renderer>(true)).Where(r => PrefabUtility.GetPrefabInstanceHandle(r) == null).SelectMany(r => r.sharedMaterials).Where(m => m != null && BLPDefinitions.Instance.Links.Any(l => l.AssetMat == m)).Distinct();
             GameObject copierRoot = null;
             GameObject prefab = null;
             foreach (var assetMat in offenders)
