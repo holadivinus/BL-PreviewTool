@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using UltEvents;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEditor.SceneManagement;
@@ -245,6 +246,23 @@ namespace BLPTool
         static bool StealMatContextMenuVerifier(MenuCommand menuCommand)
         {
             return AssetDatabase.GetAssetPath(menuCommand.context) == "";
+        }
+
+        //[MenuItem("CONTEXT/UltEventHolder/Inc RetVals")]
+        static void aaaaaa(MenuCommand menuCommand)
+        {
+            UltEventHolder h = (UltEventHolder)menuCommand.context;
+
+            foreach (var plist in h.Event.PersistentCallsList)
+            {
+                foreach (var arg in plist.PersistentArguments)
+                {
+                    if (arg.Type == PersistentArgumentType.ReturnValue)
+                    {
+                        arg.ReturnedValueIndex++;
+                    }
+                }
+            }
         }
 
         [MenuItem("CONTEXT/Material/(BLPTool) Steal Mat")]

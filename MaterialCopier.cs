@@ -37,7 +37,9 @@ namespace BLPTool
         public static Type XRType = GetExtType("XRInteractorAffordanceStateProvider");
 
         public CrateSpawner CrateSpawner;
-        public UltEventHolder MatPropApplyEvt; 
+        public UltEventHolder ExtractMatEvt; 
+        public UltEventHolder MatPropApplyEvt;
+        public LifeCycleEvents OnStartHolder;
 
         private static string GetPath(GameObject go)
         {
@@ -62,6 +64,7 @@ namespace BLPTool
 
             // first figure out what crate makes this mat
             string targCrateGUID = MaterialDB.Instance.Data.First(d => d.MaterialNames.Contains(slzMat.ToString())).CrateGUID;
+            OnStartHolder.StartEvent.PersistentCallsList[0].PersistentArguments[0].String = targCrateGUID;
             SpawnableCrate c = AssetWarehouse.Instance.GetCrates<SpawnableCrate>().First(c => c?.MainAsset?.AssetGUID == targCrateGUID);
             CrateSpawner.spawnableCrateReference = new SpawnableCrateReference(c.Barcode);
             PrefabUtility.RecordPrefabInstancePropertyModifications(CrateSpawner);
@@ -85,13 +88,13 @@ namespace BLPTool
             if (object.ReferenceEquals(r, null)) { return; }
 
             // make all those ults get the right gobj
-            CrateSpawner.onSpawnEvent.PersistentCallsList[1].PersistentArguments[0].String = "/{0}" + GetPath(r.gameObject).Substring(GetPath(spawnedGobj).Length);
+            ExtractMatEvt.Event.PersistentCallsList[2].PersistentArguments[0].String = "/{0}" + GetPath(r.gameObject).Substring(GetPath(spawnedGobj).Length);
 
             // get the correct shared mat idx from the renderer
-            CrateSpawner.onSpawnEvent.PersistentCallsList[29].PersistentArguments[1].Int = Array.IndexOf(r.sharedMaterials, slzMat);
+            ExtractMatEvt.Event.PersistentCallsList[30].PersistentArguments[1].Int = Array.IndexOf(r.sharedMaterials, slzMat);
 
             // replace instances of "RefHolderMat" with asset mat
-            foreach (PersistentCall pcall in CrateSpawner.onSpawnEvent.PersistentCallsList)
+            foreach (PersistentCall pcall in ExtractMatEvt.Event.PersistentCallsList)
             {
                 if (pcall.Target == BLPTool.RefHolderMat) 
                     callRetargetter.SetValue(pcall, assetMat);
