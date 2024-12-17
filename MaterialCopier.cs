@@ -1,18 +1,17 @@
-using JetBrains.Annotations;
-using SLZ.Marrow.Utilities;
 using SLZ.Marrow.Warehouse;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using UltEvents;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Rendering.Universal;
+
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
+#endif
 
 namespace BLPTool
 {
