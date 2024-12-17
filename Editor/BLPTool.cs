@@ -198,7 +198,7 @@ namespace BLPTool
         }
         private static async void SlowSaveFollowup()
         {
-            EditorUtility.DisplayProgressBar("This usually happens on first load or Recompilation.", "Loading required SLZ Crates for Mats...", 0);
+            EditorUtility.DisplayProgressBar("Loading required SLZ Crates for Mats...", "This usually happens on first load or Recompilation.", 0);
             int c = 0;
             int m = MaterialCopier.SaveDelays.Count;
             foreach (var t in MaterialCopier.SaveDelays)
@@ -206,7 +206,7 @@ namespace BLPTool
                 t.GetAwaiter().OnCompleted(() => 
                 {
                     c++;
-                    EditorUtility.DisplayProgressBar("This usually happens on first load or Recompilation.", "Loading required SLZ Crates for Mats...", c/(float)m);
+                    EditorUtility.DisplayProgressBar("Loading required SLZ Crates for Mats...", "This usually happens on first load or Recompilation.", c/(float)m);
                 });
             }
             await Task.WhenAll(MaterialCopier.SaveDelays);
