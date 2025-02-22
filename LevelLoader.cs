@@ -8,6 +8,12 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEditor;
 using SLZ.Marrow.Zones;
 using UltEvents;
+using UnityEngine.ResourceManagement.ResourceLocations;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using static UnityEditor.Progress;
+
+
+
 
 
 #if UNITY_EDITOR
@@ -22,8 +28,9 @@ namespace BLPTool
 #if UNITY_EDITOR
         void Start()
         {
-
             if (!EditorApplication.isPlaying) return;
+            this.gameObject.AddComponent<Camera>();
+            
 
             Texture.streamingTextureForceLoadAll = true;
             Time.timeScale = 0;
@@ -80,11 +87,13 @@ namespace BLPTool
         }
         [SerializeField][HideInInspector] List<string> targCatalogs;
         [SerializeField][HideInInspector] PalletReference Pallet;
-        [SerializeField] CrateReferenceT<LevelCrate> level;
+        [SerializeField] CrateReferenceT<LevelCrate> level;/*
+        [SerializeField] bool LoadAllScenesThatStartWith;
+        [SerializeField] string StartWith;*/
 
 
         [SerializeField][HideInInspector] string Bonelab_Folder = "";
-        [SerializeField][HideInInspector] string stupid_key = "";
+        [SerializeField] string[] will_be_loaded = null;
         string a;
         string b;
         string standPath => b ??= Path.Combine(Bonelab_Folder, "StreamingAssets", "aa", "StandaloneWindows64");
@@ -96,13 +105,43 @@ namespace BLPTool
                 await Addressables.LoadContentCatalogAsync(catalogPath).Task;
                 print("Loaded!");
             }
-
-            print("loading crate: " + level.Barcode);
-            LoadedScenes.Add(stupid_key);
-            loadingScene = Addressables.LoadSceneAsync(stupid_key);
-            loadingScene.Value.Completed += OnLoad_Completed;
+            /*if (LoadAllScenesThatStartWith)
+            {
+                foreach (var catalog in Addressables.ResourceLocators)
+                    if (catalog is ResourceLocationMap map)
+                        foreach (var loc in map.Locations.Values)
+                            if (loc.First().ResourceType == typeof(UnityEngine.ResourceManagement.ResourceProviders.SceneInstance))
+                            {
+                                string name = loc.First().InternalId.Split('/').Last();
+                                if (name.StartsWith(StartWith))
+                                {
+                                    AsyncOperationHandle<SceneInstance> loadee;
+                                    (string, AsyncOperationHandle<SceneInstance>) tuple = (
+                                        name,
+                                        loadee = Addressables.LoadSceneAsync(loc.First(), UnityEngine.SceneManagement.LoadSceneMode.Additive)
+                                    );
+                                    loadingSubScenes.Add(tuple);
+                                    loadee.Completed += (a) => loadingSubScenes.Remove(tuple);
+                                }
+                            }
+                return;
+            }
+            else*/
+            {
+                foreach (var guid in will_be_loaded)
+                {
+                    //var loc = ((ResourceLocationMap)Addressables.ResourceLocators.First(loc => loc is ResourceLocationMap)).Locations.Values.First(v => v.First().ProviderId == guid);
+                    AsyncOperationHandle<SceneInstance> loadee;
+                    (string, AsyncOperationHandle<SceneInstance>) tuple = (
+                        guid,//loc.First().InternalId.Split('/').Last(),
+                        loadee = Addressables.LoadSceneAsync(guid, UnityEngine.SceneManagement.LoadSceneMode.Additive)
+                    );
+                    loadingSubScenes.Add(tuple);
+                    loadee.Completed += (a) => loadingSubScenes.Remove(tuple);
+                }
+            }
         }
-
+        /*
         private List<string> LoadedScenes = new List<string>();
         private void OnLoad_Completed(AsyncOperationHandle<SceneInstance> obj)
         {
@@ -110,22 +149,32 @@ namespace BLPTool
             {
                 foreach (var item1 in (MarrowScene[])item.GetType().GetField("sceneLayers", UltEventUtils.AnyAccessBindings).GetValue(item))
                 {
+                    Debug.Log(item.gameObject.name + " has " + item1.AssetGUID);
                     if (!LoadedScenes.Contains(item1.AssetGUID))
                     {
                         LoadedScenes.Add(item1.AssetGUID);
-                        Addressables.LoadSceneAsync(item1.AssetGUID, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+                        AsyncOperationHandle<SceneInstance> loadee; 
+                        (string, AsyncOperationHandle<SceneInstance>) tuple = (
+                            item.gameObject.name,
+                            loadee = Addressables.LoadSceneAsync(item1.AssetGUID, UnityEngine.SceneManagement.LoadSceneMode.Additive)
+                        );
+                        loadingSubScenes.Add(tuple);
+                        loadee.Completed += (a) => loadingSubScenes.Remove(tuple);
                     }
                 }
             }
-        }
+        }*/
 
-        AsyncOperationHandle<SceneInstance>? loadingScene = null;
+        List<(string, AsyncOperationHandle<SceneInstance>)> loadingSubScenes = new();
         private void OnGUI()
         {
             if (!EditorApplication.isPlaying) return;
-            if (loadingScene.HasValue && !loadingScene.Value.IsDone)
+            if (loadingSubScenes.Count > 0)
             {
-                GUILayout.Label("Loading at " + (int)(loadingScene.Value.PercentComplete * 100) + "%");
+                foreach (var loader in loadingSubScenes)
+                {
+                    GUILayout.Label($"Loading {loader.Item1} at {(int)(loader.Item2.PercentComplete * 100)}%");
+                }
             }
             else GUILayout.Label("\ndone");
         }
@@ -134,7 +183,18 @@ namespace BLPTool
             if (!EditorApplication.isPlaying)
             {
                 Bonelab_Folder = SDKProjectPreferences.MarrowGameInstallPaths[0];
-                stupid_key = level?.Crate?.MainAsset?.AssetGUID;
+                if (level != null && level.Crate != null)
+                {
+                    int keyCount = level.Crate.PersistentScenes.Count + level.Crate.ChunkScenes.Count + 1;
+                    will_be_loaded ??= new string[keyCount];
+                    if (will_be_loaded.Length != keyCount)
+                        will_be_loaded = new string[keyCount];
+                    will_be_loaded[0] = level.Crate.MainAsset.AssetGUID;
+                    for (int i = 0; i < level.Crate.PersistentScenes.Count; i++)
+                        will_be_loaded[i + 1] = level.Crate.PersistentScenes[i].AssetGUID;
+                    for (int i = 0; i < level.Crate.ChunkScenes.Count; i++)
+                        will_be_loaded[level.Crate.PersistentScenes.Count + 1 + i] = level.Crate.ChunkScenes[i].AssetGUID;
+                }
                 Pallet.Barcode = new Barcode(level?.Crate?.Pallet?.Barcode);
                 targCatalogs = (List<string>)typeof(AssetWarehouse).GetField("loadedCatalogs", UltEvents.UltEventUtils.AnyAccessBindings).GetValue(AssetWarehouse.Instance);
             }

@@ -106,9 +106,15 @@ namespace BLPTool
                         if (!AssetMat.name.EndsWith(BLPTool.PreviewTag))
                             AssetMat.name += BLPTool.PreviewTag; // do this, so that we Preview() isn't called 6000 times
 
+                        try
+                        {
+                            SourceLoaded = await Addressables.LoadAssetAsync<GameObject>(SpawnerAssetGUID).Task;
+                        } catch (UnityEngine.AddressableAssets.InvalidKeyException)
+                        {
+                            return; // please stop spamming log on fail :/
+                        }
 
-                        SourceLoaded = await Addressables.LoadAssetAsync<GameObject>(SpawnerAssetGUID).Task;
-                        
+
 
                         SLZMat = Resources.FindObjectsOfTypeAll<Material>().FirstOrDefault(m => m.ToString() == SLZAssetName && AssetDatabase.GetAssetPath(m) == "");
 
