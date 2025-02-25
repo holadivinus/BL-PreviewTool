@@ -10,7 +10,8 @@ using SLZ.Marrow.Zones;
 using UltEvents;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.AddressableAssets.ResourceLocators;
-using static UnityEditor.Progress;
+using System.Threading.Tasks;
+
 
 
 
@@ -94,6 +95,7 @@ namespace BLPTool
 
         [SerializeField][HideInInspector] string Bonelab_Folder = "";
         [SerializeField] string[] will_be_loaded = null;
+        [SerializeField] float wait_between_loads = 0;
         string a;
         string b;
         string standPath => b ??= Path.Combine(Bonelab_Folder, "StreamingAssets", "aa", "StandaloneWindows64");
@@ -131,6 +133,7 @@ namespace BLPTool
                 foreach (var guid in will_be_loaded)
                 {
                     //var loc = ((ResourceLocationMap)Addressables.ResourceLocators.First(loc => loc is ResourceLocationMap)).Locations.Values.First(v => v.First().ProviderId == guid);
+                    await Task.Delay((int)(wait_between_loads*1000));
                     AsyncOperationHandle<SceneInstance> loadee;
                     (string, AsyncOperationHandle<SceneInstance>) tuple = (
                         guid,//loc.First().InternalId.Split('/').Last(),
